@@ -35,6 +35,9 @@ params:
   gitRepo: https://github.com/salahdin-ahmed/salahdin-ahmed.github.io
   gitBranch: master
 
+  # Background image of the landing page
+  background: /images/site/background.jpg
+
   # specify whether you want to write some blog posts or not
   enableBlogPost: true
 
