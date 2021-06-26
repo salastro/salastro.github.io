@@ -1,4 +1,4 @@
-name: deblog hugo
+name: hugo
 
 on:
   push:
