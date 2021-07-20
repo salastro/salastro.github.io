@@ -38,11 +38,6 @@ params:
   # Background image of the landing page
   background: /images/site/background.jpg
 
-  # Dark theme
-  darkTheme:
-    enable: true
-    default: dark
-
   # specify whether you want to write some blog posts or not
   enableBlogPost: true
 
