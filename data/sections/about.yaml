@@ -1,0 +1,63 @@
+# section information
+section:
+  name: About
+  id: about
+  enable: true
+  weight: 1
+  showOnNavbar: true
+  template: sections/about.html
+
+# your designation
+designation: High School Student
+# your company information
+company:
+  name: STEM Luxor
+  url: "https://www.example.com"
+
+# your resume. this file path should be relative to you "static" directory
+# resume: "files/resume.pdf"
+
+# a summary about you
+summary: 'I am a passionate senior high school student.'
+
+# your social links
+# give as many as you want. use font-awesome for the icons.
+socialLinks:
+- name: Github
+  icon: "fab fa-github"
+  url: "https://www.github.com/salahdin-ahmed"
+- name: Facebook
+  icon: "fab fa-facebook"
+  url: "https://www.facebook.com/salah.dinahmed.39"
+# - name: Youtube
+#   icon: "fab fa-youtube"
+#   url: "https://youtube.com/example"
+- name: Linkedin
+  icon: "fab fa-linkedin"
+  url: "https://www.linkedin.com/in/salahdin-rezk-2386b21b5"
+- name: Linkedin
+  icon: "fab fa-researchgate"
+  url: "https://www.researchgate.net/profile/Salahdin-Rezk"
+
+# your soft skills
+# give the percentage between 50 to 100 with 5 intervals.
+# currently supported colors: blue, yellow, pink, green, sky, orange
+softSkills:
+- name: Leadership
+  percentage: 60
+  color: blue
+- name: Team Work
+  percentage: 90
+  color: yellow
+- name: Communication
+  percentage: 75
+  color: pink
+- name: Hard Working
+  percentage: 95
+  color: sky
+- name: Problem Solving
+  percentage: 85
+  color: orange
+- name: Willing to learn
+  percentage: 100
+  color: green
