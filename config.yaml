@@ -2,7 +2,7 @@ baseURL: https://salahdin-ahmed.github.io
 
 languageCode: en-us
 title: "SalahDin Ahmed"
-theme: "toha"
+theme: "toha-improved"
 
 # Manage languages
 # For any more details, you can check the official documentation: https://gohugo.io/content-management/multilingual/
