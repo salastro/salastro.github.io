@@ -24,13 +24,13 @@ summary: 'I am a passionate senior high school student.'
 # give as many as you want. use font-awesome for the icons.
 socialLinks:
 - name: Github
-  icon: "fab fa-github"
+  icon: "fab fa-github-square"
   url: "https://www.github.com/salahdin-ahmed"
 - name: Facebook
-  icon: "fab fa-facebook"
+  icon: "fab fa-facebook-square"
   url: "https://www.facebook.com/salah.dinahmed.39"
 # - name: Youtube
-#   icon: "fab fa-youtube"
+#   icon: "fab fa-youtube-square"
 #   url: "https://youtube.com/example"
 - name: Linkedin
   icon: "fab fa-linkedin"
