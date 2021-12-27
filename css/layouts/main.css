@@ -159,10 +159,6 @@ img.right {
   transform: scale(1.2);
 }
 
-.card-body {
-  text-align: justify;
-}
-
 .sub-title {
   color: #c0ccda;
   font-size: 10pt;
