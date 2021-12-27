@@ -18,7 +18,7 @@ degrees:
     url: "https://www.facebook.com/Luxor.STEM.School"
   grade: #(optional)
     scale: GPA
-    achieved: 3.6
+    achieved: 3.8
     outOf: 4.0
   publications: #(optional)
   - title: Building a Cable Floating Bridge
@@ -28,14 +28,15 @@ degrees:
   - title: Water Reuse - Azotobacter C
     url: "https://www.researchgate.net/project/Water-Reuse-8"
   extracurricularActivities: #(optional)
+  - Co-Founder of Fab Lab Club
   - The Head of Scientific Committee in School's Students' Union
-    # for two consecutive years
+    # for Two Consecutive Years
   - Former Head of Scientific Committee Branch 10A
-  - Co-founder of Luxor Computer Coding Club
+  - Co-Founder of Luxor Computer Coding Club
   - Former Head of Web Development Branch in Biology Club
-  - Member in The Math Club
-  - Member in The Tennis Team
-  - Member in The Darts Team
+  - Member in the Math Club
+  - Member in the Tennis Team
+  - Member in the Darts Team
   - Participant in Qena and Luxor Schools' Running Marathon
 
 - name: Middle School Certificate
@@ -69,8 +70,6 @@ degrees:
   #   url: "#"
   # - title: Fusce eu augue ut odio porttitor pulvinar.
   #   url: "#"
-  # extracurricularActivities: #(optional)
-  # - 
-  # - Vestibulum consectetur lorem justo, at laoreet lorem feugiat et.
-  # - Duis sed massa feugiat, ornare justo et, aliquam est.
-  # - Pellentesque ut fringilla magna.
+  extracurricularActivities: #(optional)
+  - Participated in English Day — Gave a Speech About the American Indigence
+  - Elected the Class's Scientific Representative 3 Consecutive Years
