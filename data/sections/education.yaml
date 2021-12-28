@@ -20,6 +20,16 @@ degrees:
     scale: GPA
     achieved: 3.8
     outOf: 4.0
+  takenCourses: #(optional)
+    # if true, the courses will be rendered as a table otherwise it will render as a list and the grades will be hidden.
+    # showGrades: true
+    # courses:
+    # - name: Arabic
+    #   achieved: 3.7
+    #   outOf: 4
+    # - name: Arabic
+    #   achieved: 
+    #   outOf: 4
   publications: #(optional)
   - title: Building a Cable Floating Bridge
     url: "https://www.researchgate.net/project/Floating-Bridge-3"
@@ -56,20 +66,8 @@ degrees:
   #   - name: Data Structures and Algorithm
   #     achieved: 3.75
   #     outOf: 4
-  #   - name: Network Security
-  #     achieved: 3.80
-  #     outOf: 4
-  #   - name: Operating System
-  #     achieved: 3.5
-  #     outOf: 4
-  #   - name: Artificial Intelligent
-  #     achieved: 3.75
-  #     outOf: 4
-  # publications: #(optional)
-  # - title: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  #   url: "#"
-  # - title: Fusce eu augue ut odio porttitor pulvinar.
-  #   url: "#"
   extracurricularActivities: #(optional)
-  - Participated in English Day — Gave a Speech About the American Indigence
+  - Participated in English Day — Gave a Speech About the American Independence
   - Elected the Class's Scientific Representative 3 Consecutive Years
+  - Participated in the Elite Students School Competition Representing My Class
+  - Chose by Teachers as the Best Student in Class
