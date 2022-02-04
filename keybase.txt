@@ -1,0 +1,72 @@
+==================================================================
+https://keybase.io/salastro
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://salahdin-ahmed.github.io
+  * I am salastro (https://keybase.io/salastro) on keybase.
+  * I have a public key with fingerprint 82B9 73D4 5DDB F796 84E1  6526 3F7A FA54 7711 DD90
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101a6637f16c1a1dc61989df8efc1d853a9c531bba3c84e4924c63759df6e71d4cf0a",
+      "fingerprint": "82b973d45ddbf79684e165263f7afa547711dd90",
+      "host": "keybase.io",
+      "key_id": "3f7afa547711dd90",
+      "kid": "0101a6637f16c1a1dc61989df8efc1d853a9c531bba3c84e4924c63759df6e71d4cf0a",
+      "uid": "5e85a234a9015467b1c714d1a28f0319",
+      "username": "salastro"
+    },
+    "service": {
+      "hostname": "salahdin-ahmed.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1644013043,
+  "expire_in": 157680000,
+  "prev": "3b8e37a8fabc2eac49ef931ddec610f0c13e6c64bd04a1e848e91936e9e72b20",
+  "seqno": 9,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtkn9MlHUcx++Ou4U3TAGxO4zwntBBwvl8n9/PGXNChpGSCx3WGvD8+D53jxzP
+wd3DwY0oQqaALJDAGDMbInMDZNgamhEqdG1RI8bUisho0hQFF1nOzFjPQ7n1R3/2
+/ee772ev9/vz+bz3bV4ZYYg0VlfbAk2Cdcr4xRxv4P7svl+J8D4xhLgqkSK4fEGv
+CANqQZEsIi4EBSjgKAqnJUAJgAOiQAGWYUWJgZIARIbEOVYgccDzHC4wBCRYjBA0
+nNQQCtJAJAQJ5ZBURJIVN/SX+GVF1WwZjGdpXCRIUeQlmqU0JaBIjMIlmpM4kqBp
+AESRRTWhxxfQFdpwPBeATtmn1bRHwfJ4/8H/z3OXLduRkCE5DCc4FgUkQdE8EGhA
+iIDDGAnFAauDAehXuGKo0QHOywVUvw+pSkW0alAWoB6svsm/CI8oK2mcpxiKTres
+esr4v3cr8ftUn+DzapRHVUsCLt1FDZXosnLIF/xjWMDLimbg1hRB6A/IPgVxAY0U
+VFnvACiCQAGOEngqAitKZD8skHWCpCkG1Y7eR4RBPUKegTjNMRLHCxjkBIKFEotr
+aUItMlRCBYBDSqAIXkQJDkCGYCALWJyCLKQxHtMjD8BSxYe4WG1Ozq1vJ7sVTi3z
+Q6TKWm/CzQZjpCFhrcPsf/aEpebo7z1p+1tvPfqHFpP+CQ3WFasfVdAXVy0RGy+n
+rMTmHvzQ1OkM7LMmMkGjoGx4bnZ2On1nZlf3xc/fXrPzgvPQu/nHfs0ZLx08Fxtz
+Pfox3557d4/MvJTZZZPqF7ftDfeTwdGnHoSbbqe/tepxdqh3L+/tPTYpKp/ibUPs
+qVD0kzOx/Za8b3r6zsrIpqyiBZhjMaJR330Vd1IdHqrMbIlaPD7RMjHZEFqrIqPx
+fYW/tEcNv3qg6p5jjr1hd3yERu//0nbQbBof+Xbpk/zB1tq0bqyF7jyc8Nv5m3cv
+XJ+csuRfdbw58UbawpWGccJQ1zsTjC0Ndvs6/uAdjos/ibKnIvj97np0tsXU8/NC
+6bod/sv2vERzU1Lv6ivFH1rG1mcMNNMd7vbUQlNV2yZjrPNUzOa8yM1ZJ+fuPBOX
+Gl+3YseQaaQRNFT2VTjmWxZefjrjbISUVN0Zrm/cbbb152wr3dV4BrUdyE5OPvNe
+nSul9cTN8OhrttPzabdDoO2dxBfK0p+3bxkPRzeUX5q/cfD49uJDzeesw6cfDr+e
+pKxJOPy+ff2IOh0RtWGijabGauOvJu+55fDWPBybqFlnXqrNmtpnT0kqfOLjGaeY
+3V702X31jn3WGZcUvnRtsbkrt92UcyRj40hH7ZZczBzj/noXE7F1pP6DH+U2TzV/
+bTvcev7oJF7uXQxN99TFzSfUDNTQDTHlr2TnDuaGBqx/AQ==
+=1chL
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/salastro
+
+==================================================================
