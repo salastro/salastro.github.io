@@ -49,18 +49,18 @@ softSkills:
 - name: Leadership
   percentage: 60
   color: blue
-- name: Team Work
-  percentage: 90
-  color: yellow
 - name: Communication
   percentage: 75
   color: pink
-- name: Hard Working
-  percentage: 95
-  color: sky
 - name: Problem Solving
   percentage: 85
   color: orange
+- name: Team Work
+  percentage: 90
+  color: yellow
+- name: Hard Working
+  percentage: 95
+  color: sky
 - name: Willing to learn
   percentage: 100
   color: green
