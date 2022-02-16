@@ -5,8 +5,9 @@ hero: /images/posts/writing-posts/linux-hero.jpg
 description: Know the distro you want as easily and as soon as possible
 menu:
   sidebar:
-    name: which distro
+    name: Which Distro
     identifier: which-distro
+    parent: linux
     weight: 500
 ---
 
