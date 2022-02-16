@@ -31,7 +31,7 @@ enableEmoji: true
 
 # Site parameters
 params:
-  description: "Salah's place for dumbing stuff."
+  description: "My place for dumbing stuff."
   # GitHub repo URL and branch of your site
   gitRepo: https://github.com/salastro/salastro.github.io
   gitBranch: master
@@ -44,6 +44,7 @@ params:
 
   # specify whether you want to show Table of Contents in reading page
   enableTOC: true
+  enableTags: true
 
   footer:
           enable: false
