@@ -50,6 +50,4 @@ Initial setup Search depends on additional output content type of JSON in config
 No content shown here is rendered, all content is based in the template layouts/page/search.html
 Setting a very low sitemap priority will tell search engines this is not important content.
 This implementation uses Fusejs, jquery and mark.js
-Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description></item><item><title>Which Linux distribution? A dead simple guide!</title><link>https://salastro.github.io/posts/which-distor/</link><pubDate>Thu, 11 Nov 2021 01:44:13 +0200</pubDate><guid>https://salastro.github.io/posts/which-distor/</guid><description>Introduction What is a Linux distribution Linux distributions usually refers to a family of operating systems that uses the Linux kernel and are similar in some design aspects. For the most part, Linux distributions follows the Unix philosophy and are Unix-like operating systems.
-Distro is just a shorthand for distribution!
-Does it even matter So little, most things that can be done on Linux can be done on all distros. Distros are more of an entry point, how you would like your system to look like when you start using it.</description></item></channel></rss>
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description></item></channel></rss>
