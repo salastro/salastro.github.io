@@ -1,10 +1,10 @@
 # Meta description for your site.  This will help the search engines to find your site.
-copyright: © 2021 Copyright.
-description: Portfolio and professional blog of SalahDin Ahmed.
+copyright: © 2022 Copyright.
+description: Salah's place for dumbing stuff.
 # Specify OpenGraph Headers
 openGraph:
   title: SalahDin Ahmed
   type: website
-  description: Portfolio or something.
+  description: Salah's place for dumbing stuff.
   image: images/site/logo.jpg
   url: https://salastro.github.io
