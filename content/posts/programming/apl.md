@@ -22,11 +22,11 @@ APL is a quite old language. It started as a book (under the same name) written 
 
 The notation was used inside IBM (his workplace) for describing some reports. However, the first interpreter was not built until a year later for limited use. On the other hand, the first commercially available one was introduced in 1968. After that, APL started gaining popularity from the late 1960s till the early 1980s.
 
-In contrast, these days APL is not as popular as it used to be. Despite that, development is still going. The most popular implementation of APL is Dyalog, a commercial implementation started in 1983 (yes, even the most modern of implementations is on the old side) that in recent years added useful extensions like object-oriented and functional programming, nested arrays, lambda calculus, etc. Additionally, if you are not a fan of commercial restricted use, you may try GNU APL but with a little bit fewer extensions.
+In contrast, these days APL is not as popular as it used to be. Despite that, development is still going. The most popular implementation of APL is Dyalog, a commercial implementation started in 1983 (yes, even the most modern of implementations is on the old side) that in recent years added useful extensions like object-oriented and functional programming, nested arrays, lambda calculus, etc. Additionally, if you are not a fan of commercial restricted use, you may try GNU APL but with fewer extensions.
 
 ## Scripts of Magic
 
-As mentioned before, APL uses a unique combination of mathematical symbols. These symbols represents polymorphic functions used to tackle a variety of problems. For example, the symbol `⌈` behaves as celling when a single integer is passed to it and as maximum when two numbers is passed to it. In addition, the symbol for the exact opposite behaviour is `⌊` resulting in beautiful symmetry.
+As mentioned before, APL uses a unique combination of mathematical symbols. These symbols represent polymorphic functions used to tackle a variety of problems. For example, the symbol `⌈` behaves as celling when a single integer is passed to it and as maximum when two numbers are passed to it. In addition, the symbol for the exact opposite behavior is `⌊` resulting in beautiful symmetry.
 ```apl
 	⌈ 2.4 
 3
@@ -53,7 +53,7 @@ Life ← {↑1 ⍵∨.∧3 4=+/,¯1 0 1∘.⊖¯1 0 1∘.⌽⊂⍵}
 
 ## Simple Array Logic
 
-A fascinating aspect of APL is the way it handles arrays. It just works exactly how I expect it to work. First off, there is no special syntax to write arrays, they are just numbers/string separated with spaces. `1 4 3` is an array of three elements: 1, 4, and 3. `'hello' 'world'` is an array of two elements: 'hello' and 'world'. On the other hand, operations also makes sense. `1 2 3 + 4 5 6` sums the two arrays into `5 7 9`, which is exactly what I thought of the first time I saw a plus between two arrays. You want to sum the elements of the array? No problem just add `+/` in front of the array and it is done. A running sum? Just replace the `/` with `\`. More stuff like [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product) are also simple; just insert `∘.,` between the two arrays. This partially extends to strings since they also are arrays but of characters.
+A fascinating aspect of APL is the way it handles arrays. It just works exactly how I expect it to work. First off, there is no special syntax to write arrays, they are just numbers/string separated with spaces. `1 4 3` is an array of three elements: 1, 4, and 3. `'hello' 'world'` is an array of two elements: 'hello' and 'world'. On the other hand, operations also makes sense. `1 2 3 + 4 5 6` sums the two arrays into `5 7 9`, which is exactly what I thought of the first time I saw a plus between two arrays. You want to sum the elements of the array? No problem just add `+/` in front of the array, and it is done. A running sum? Just replace the `/` with `\`. More stuff like [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product) are also simple; just insert `∘.,` between the two arrays. This partially extends to strings since they also are arrays but of characters.
 
 ## Comparison
 
