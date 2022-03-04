@@ -43,7 +43,7 @@ socialLinks:
   url: "mailto:salahdin.1519013@stemluxor.moe.edu.eg"
 - name: RSS Feed
   icon: "fas fa-rss-square"
-  url: "salastro.github.io/index.xml"
+  url: "index.xml"
 
 # your soft skills
 # give the percentage between 50 to 100 with 5 intervals.
