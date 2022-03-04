@@ -18,49 +18,52 @@ company:
 # resume: "files/resume.pdf"
 
 # a summary about you
-summary: 'I am a passionate senior high school student.'
+summary: "I am one of whom think, invent, and seek the truth behind what is visible. The pursuit of what to be realized behind every existence corner is my goal. Look into the monster that of fear, and fight until every bone of one's mere concious crumble into ashes."
 
 # your social links
 # give as many as you want. use font-awesome for the icons.
 socialLinks:
+- name: Facebook                                       
+  icon: "fab fa-facebook-square"                       
+  url: "https://www.facebook.com/salah.dinahmed.39"    
 - name: Github
   icon: "fab fa-github-square"
   url: "https://www.github.com/salastro"
-- name: Facebook
-  icon: "fab fa-facebook-square"
-  url: "https://www.facebook.com/salah.dinahmed.39"
 # - name: Youtube
 #   icon: "fab fa-youtube-square"
 #   url: "https://youtube.com/example"
 - name: Linkedin
   icon: "fab fa-linkedin"
   url: "https://www.linkedin.com/in/salastro"
-- name: Linkedin
+- name: ResearchGate
   icon: "fab fa-researchgate"
   url: "https://www.researchgate.net/profile/Salahdin-Rezk"
 - name: Email
   icon: "fas fa-envelope-square"
   url: "mailto:salahdin.1519013@stemluxor.moe.edu.eg"
+- name: RSS Feed
+  icon: "fas fa-rss-square"
+  url: "salastro.github.io/index.xml"
 
 # your soft skills
 # give the percentage between 50 to 100 with 5 intervals.
 # currently supported colors: blue, yellow, pink, green, sky, orange
-softSkills:
-- name: Leadership
-  percentage: 60
-  color: blue
-- name: Communication
-  percentage: 75
-  color: pink
-- name: Problem Solving
-  percentage: 85
-  color: orange
-- name: Team Work
-  percentage: 90
-  color: yellow
-- name: Hard Working
-  percentage: 95
-  color: sky
-- name: Willing to learn
-  percentage: 100
-  color: green
+# softSkills:
+# - name: Leadership
+#   percentage: 60
+#   color: blue
+# - name: Communication
+#   percentage: 75
+#   color: pink
+# - name: Problem Solving
+#   percentage: 85
+#   color: orange
+# - name: Team Work
+#   percentage: 90
+#   color: yellow
+# - name: Hard Working
+#   percentage: 95
+#   color: sky
+# - name: Willing to learn
+#   percentage: 100
+#   color: green
