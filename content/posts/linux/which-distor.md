@@ -1,5 +1,5 @@
 ---
-title: "Which Linux distribution? A dead simple guide!"
+title: "A Linux dead simple guide!"
 date: 2021-11-11T01:44:13+02:00
 hero: /images/posts/writing-posts/linux-hero.jpg
 description: Know the distro you want as easily and as soon as possible
