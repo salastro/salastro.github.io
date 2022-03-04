@@ -1,57 +1,57 @@
-# section information
-section:
-  name: Skills
-  id: skills
-  enable: true
-  weight: 2
-  showOnNavbar: true
-  # Can optionally hide the title in sections
-  # hideTitle: true
+# # section information
+# section:
+#   name: Skills
+#   id: skills
+#   enable: true
+#   weight: 2
+#   showOnNavbar: true
+#   # Can optionally hide the title in sections
+#   # hideTitle: true
 
-# Your Skills.
-# Give a summary of you each skill in the summary section.
-skills:
-- name: Hugo
-  # logo: "/images/sections/skills/kubernetes.png"
-  summary: "Capable of deploying and managing sites using Hugo (like this one)."
-  url: "https://gohugo.io/"
+# # Your Skills.
+# # Give a summary of you each skill in the summary section.
+# skills:
+# - name: Hugo
+#   # logo: "/images/sections/skills/kubernetes.png"
+#   summary: "Capable of deploying and managing sites using Hugo (like this one)."
+#   url: "https://gohugo.io/"
 
-- name: HTML/CSS/JS
-  # logo: "/images/sections/skills/go.png"
-  summary: "Basic toolkit for front-end development."
+# - name: HTML/CSS/JS
+#   # logo: "/images/sections/skills/go.png"
+#   summary: "Basic toolkit for front-end development."
 
-- name: Python
-  # logo: "/images/sections/skills/go.png"
-  summary: "Using as the main language for professional development. Capable of writing scalable, testable, and maintainable program."
+# - name: Python
+#   # logo: "/images/sections/skills/go.png"
+#   summary: "Using as the main language for professional development. Capable of writing scalable, testable, and maintainable program."
 
-- name: C/C++
-  # logo: "/images/sections/skills/go.png"
-  summary: "Know basic C/C++ programming. Mainly use it for patching suckless software. Sometimes use it to deal with embedded systems like Arduino programming"
+# - name: C/C++
+#   # logo: "/images/sections/skills/go.png"
+#   summary: "Know basic C/C++ programming. Mainly use it for patching suckless software. Sometimes use it to deal with embedded systems like Arduino programming"
 
-- name: C#
-  # logo: "/images/sections/skills/go.png"
-  summary: "Wrote couple medium-sized games with it on Unity game engine."
+# - name: C#
+#   # logo: "/images/sections/skills/go.png"
+#   summary: "Wrote couple medium-sized games with it on Unity game engine."
 
-- name: Bash
-  # logo: "/images/sections/skills/go.png"
-  summary: "Using it mainly to automate some tasks in a Unix-like operating systems. Experienced with tools like awk, sed, tail, etc."
+# - name: Bash
+#   # logo: "/images/sections/skills/go.png"
+#   summary: "Using it mainly to automate some tasks in a Unix-like operating systems. Experienced with tools like awk, sed, tail, etc."
 
-- name: LaTeX
-  # logo: "/images/sections/skills/go.png"
-  summary: "Consistently writing personal scientific-related concepts with it"
+# - name: LaTeX
+#   # logo: "/images/sections/skills/go.png"
+#   summary: "Consistently writing personal scientific-related concepts with it"
 
-- name: Groff/Troff
-  # logo: "/images/sections/skills/go.png"
-  summary: "Sometimes use it to write simple documents."
+# - name: Groff/Troff
+#   # logo: "/images/sections/skills/go.png"
+#   summary: "Sometimes use it to write simple documents."
 
-- name: Markdown
-  # logo: "/images/sections/skills/go.png"
-  summary: "The tool to write day-to-day documents, mainly taking normal notes."
+# - name: Markdown
+#   # logo: "/images/sections/skills/go.png"
+#   summary: "The tool to write day-to-day documents, mainly taking normal notes."
 
-- name: SketchUp
-  # logo: "/images/sections/skills/go.png"
-  summary: "Using it to create simple 3-dimensional models for engineering project's prototypes, sometimes even for 3D printing."
+# - name: SketchUp
+#   # logo: "/images/sections/skills/go.png"
+#   summary: "Using it to create simple 3-dimensional models for engineering project's prototypes, sometimes even for 3D printing."
 
-- name: Blender
-  # logo: "/images/sections/skills/go.png"
-  summary: "Used for more advanced modeling. Mostly, however, for artistic purposes."
+# - name: Blender
+#   # logo: "/images/sections/skills/go.png"
+#   summary: "Used for more advanced modeling. Mostly, however, for artistic purposes."

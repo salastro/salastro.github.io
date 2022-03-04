@@ -1,41 +1,41 @@
-# section information
-section:
-  name: Voluntering Activities
-  id: experiences
-  enable: true
-  weight: 3
-  showOnNavbar: true
-  # Can optionally hide the title in sections
-  # hideTitle: true 
+# # section information
+# section:
+#   name: Voluntering Activities
+#   id: experiences
+#   enable: true
+#   weight: 3
+#   showOnNavbar: true
+#   # Can optionally hide the title in sections
+#   # hideTitle: true 
 
-# Your experiences
-experiences:
-- company:
-    name: TEDxYouth@LuxorSTEM
-    url: "https://www.facebook.com/TEDxYouth-Luxor-STEM-109341737931140/"
-    location: Egypt, Luxor
-  positions:
-  - designation: Head of Information Technology Department
-    start: Apr 2021
-    # give some points about what was your responsibilities at the company.
-    responsibilities:
-      - Organized the work of the volunteers to maximize results in the events.
-      - Trained 10 volunteers the use of Git and GitHub for 20+ hours.
-      - Was responsible for the technical side of managing social media.
-      - Working on building a website for the event — IN PROGRESS.
-- company:
-    name: NASA Space Apps Luxor 
-    url: ""
-    location: Egypt, Luxor
-    # company overview
-    # overview: In the spirit of ideas worth spreading, TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. At a TEDx event, TEDTalks video and live speakers combine to spark deep discussion and connection in a small group. These local, self-organized events are branded TEDx, where x = independently organized TED event. The TED Conference provides general guidance for the TEDx program, but individual TEDx events are self-organized (subject to certain rules and regulations).
-  positions:
-  - designation: Head of Content Writing
-    start: Jul 2021
-    # don't provide end date if you are currently working there. It will be replaced by "Present"
-    end: Oct 2021
-    # give some points about what was your responsibilities at the company.
-    responsibilities:
-      - Organized a team of 4 volunteers to write posts about space exploration.
-      - Wrote — with the team — summaries of NASA challenges.
-      - Wrote some sponsors ads.
+# # Your experiences
+# experiences:
+# - company:
+#     name: TEDxYouth@LuxorSTEM
+#     url: "https://www.facebook.com/TEDxYouth-Luxor-STEM-109341737931140/"
+#     location: Egypt, Luxor
+#   positions:
+#   - designation: Head of Information Technology Department
+#     start: Apr 2021
+#     # give some points about what was your responsibilities at the company.
+#     responsibilities:
+#       - Organized the work of the volunteers to maximize results in the events.
+#       - Trained 10 volunteers the use of Git and GitHub for 20+ hours.
+#       - Was responsible for the technical side of managing social media.
+#       - Working on building a website for the event — IN PROGRESS.
+# - company:
+#     name: NASA Space Apps Luxor 
+#     url: ""
+#     location: Egypt, Luxor
+#     # company overview
+#     # overview: In the spirit of ideas worth spreading, TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. At a TEDx event, TEDTalks video and live speakers combine to spark deep discussion and connection in a small group. These local, self-organized events are branded TEDx, where x = independently organized TED event. The TED Conference provides general guidance for the TEDx program, but individual TEDx events are self-organized (subject to certain rules and regulations).
+#   positions:
+#   - designation: Head of Content Writing
+#     start: Jul 2021
+#     # don't provide end date if you are currently working there. It will be replaced by "Present"
+#     end: Oct 2021
+#     # give some points about what was your responsibilities at the company.
+#     responsibilities:
+#       - Organized a team of 4 volunteers to write posts about space exploration.
+#       - Wrote — with the team — summaries of NASA challenges.
+#       - Wrote some sponsors ads.

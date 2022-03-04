@@ -1,73 +1,73 @@
-# section information
-section:
-  name: Education
-  id: education
-  template: sections/education.html # Use "sections/education-alt.html for alternate template.
-  enable: true
-  weight: 4
-  showOnNavbar: true
-  # Can optionally hide the title in sections
-  # hideTitle: true
+# # section information
+# section:
+#   name: Education
+#   id: education
+#   template: sections/education.html # Use "sections/education-alt.html for alternate template.
+#   enable: true
+#   weight: 4
+#   showOnNavbar: true
+#   # Can optionally hide the title in sections
+#   # hideTitle: true
 
-degrees:
-- name: High School Diploma
-  icon: fa-university
-  timeframe: 2019-2022
-  institution:
-    name: Luxor STEM School
-    url: "https://www.facebook.com/Luxor.STEM.School"
-  grade: #(optional)
-    scale: GPA
-    achieved: 3.8
-    outOf: 4.0
-  takenCourses: #(optional)
-    # if true, the courses will be rendered as a table otherwise it will render as a list and the grades will be hidden.
-    # showGrades: true
-    # courses:
-    # - name: Arabic
-    #   achieved: 3.7
-    #   outOf: 4
-    # - name: Arabic
-    #   achieved: 
-    #   outOf: 4
-  publications: #(optional)
-  - title: Building a Cable Floating Bridge
-    url: "https://www.researchgate.net/project/Floating-Bridge-3"
-  - title: Analyzing Hydropower, The Possibility of Increasing its Efficiency by Using Modern Technologies, The Development of its Properties and Recommendations for Applying Them in Egypt
-    url: "http://dx.doi.org/10.13140/RG.2.2.19463.62889"
-  - title: Water Reuse - Azotobacter C
-    url: "https://www.researchgate.net/project/Water-Reuse-8"
-  extracurricularActivities: #(optional)
-  - Co-Founder of Fab Lab Club
-  - The Head of Scientific Committee in School's Students' Union
-    # for Two Consecutive Years
-  - Former Head of Scientific Committee Branch 10A
-  - Co-Founder of Luxor Computer Coding Club
-  - Former Head of Web Development Branch in Biology Club
-  - Member in the Math Club
-  - Member in the Tennis Team
-  - Member in the Darts Team
-  - Participant in Qena and Luxor Schools' Running Marathon
+# degrees:
+# - name: High School Diploma
+#   icon: fa-university
+#   timeframe: 2019-2022
+#   institution:
+#     name: Luxor STEM School
+#     url: "https://www.facebook.com/Luxor.STEM.School"
+#   grade: #(optional)
+#     scale: GPA
+#     achieved: 3.8
+#     outOf: 4.0
+#   takenCourses: #(optional)
+#     # if true, the courses will be rendered as a table otherwise it will render as a list and the grades will be hidden.
+#     # showGrades: true
+#     # courses:
+#     # - name: Arabic
+#     #   achieved: 3.7
+#     #   outOf: 4
+#     # - name: Arabic
+#     #   achieved: 
+#     #   outOf: 4
+#   publications: #(optional)
+#   - title: Building a Cable Floating Bridge
+#     url: "https://www.researchgate.net/project/Floating-Bridge-3"
+#   - title: Analyzing Hydropower, The Possibility of Increasing its Efficiency by Using Modern Technologies, The Development of its Properties and Recommendations for Applying Them in Egypt
+#     url: "http://dx.doi.org/10.13140/RG.2.2.19463.62889"
+#   - title: Water Reuse - Azotobacter C
+#     url: "https://www.researchgate.net/project/Water-Reuse-8"
+#   extracurricularActivities: #(optional)
+#   - Co-Founder of Fab Lab Club
+#   - The Head of Scientific Committee in School's Students' Union
+#     # for Two Consecutive Years
+#   - Former Head of Scientific Committee Branch 10A
+#   - Co-Founder of Luxor Computer Coding Club
+#   - Former Head of Web Development Branch in Biology Club
+#   - Member in the Math Club
+#   - Member in the Tennis Team
+#   - Member in the Darts Team
+#   - Participant in Qena and Luxor Schools' Running Marathon
 
-- name: Middle School Certificate
-  icon: fa-school
-  timeframe: 2016-2019
-  institution:
-    name: Salam Private School Aswan
-    url: "https://salamacademy.edu.eg/en/homepage-english/"
-  grade: #(optional)
-    scale: Percentage
-    achieved: 97.5%
-    # outOf: 100%
-  # takenCourses: #(optional)
-  #   # if true, the courses will be rendered as a table otherwise it will render as a list and the grades will be hidden.
-  #   showGrades: true
-  #   courses:
-  #   - name: Data Structures and Algorithm
-  #     achieved: 3.75
-  #     outOf: 4
-  extracurricularActivities: #(optional)
-  - Participated in English Day — Gave a Speech About the American Independence
-  - Elected the Class's Scientific Representative 3 Consecutive Years
-  - Participated in the Elite Students School Competition Representing My Class
-  - Chose by Teachers as the Best Student in Class
+# - name: Middle School Certificate
+#   icon: fa-school
+#   timeframe: 2016-2019
+#   institution:
+#     name: Salam Private School Aswan
+#     url: "https://salamacademy.edu.eg/en/homepage-english/"
+#   grade: #(optional)
+#     scale: Percentage
+#     achieved: 97.5%
+#     # outOf: 100%
+#   # takenCourses: #(optional)
+#   #   # if true, the courses will be rendered as a table otherwise it will render as a list and the grades will be hidden.
+#   #   showGrades: true
+#   #   courses:
+#   #   - name: Data Structures and Algorithm
+#   #     achieved: 3.75
+#   #     outOf: 4
+#   extracurricularActivities: #(optional)
+#   - Participated in English Day — Gave a Speech About the American Independence
+#   - Elected the Class's Scientific Representative 3 Consecutive Years
+#   - Participated in the Elite Students School Competition Representing My Class
+#   - Chose by Teachers as the Best Student in Class
