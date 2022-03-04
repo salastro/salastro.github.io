@@ -1,6 +1,6 @@
 <!doctype html><html>
 <head>
-<title>The Programming Language of Wizards</title><meta charset=utf-8>
+<title>The Programming of Wizards</title><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="ie=edge">
 <link rel=stylesheet href=/css/bootstrap.min.css>
@@ -11,7 +11,7 @@
 <link rel=stylesheet href=/css/katex.min.css>
 <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css>
-<meta property="og:title" content="The Programming Language of Wizards">
+<meta property="og:title" content="The Programming of Wizards">
 <meta property="og:description" content="An overview of APL.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://salastro.github.io/posts/programming/apl/"><meta property="article:section" content="posts">
@@ -61,7 +61,7 @@ SalahDin Ahmed</a>
 <div class="author-profile ml-auto align-self-lg-center">
 <img class=rounded-circle src=/images/site/logo_huc84e63f6dc77192f086a5c0ce1be1001_457039_120x120_fit_q75_box.jpg alt="Author Image">
 <h5 class=author-name></h5><p>Sunday, February 20, 2022</p></div><div class=title>
-<h1>The Programming Language of Wizards</h1></div><div class=taxonomy-terms>
+<h1>The Programming of Wizards</h1></div><div class=taxonomy-terms>
 <ul>
 <li class=rounded><a href=/tags/apl class="btn, btn-sm">APL</a></li><li class=rounded><a href=/tags/array-programming class="btn, btn-sm">Array Programming</a></li></ul></div><div class=post-content id=post-content>
 <p><strong>APL</strong> (<strong>A</strong> <strong>P</strong>rogramming <strong>L</strong>anguage) is an exceptionally unique language. It mainly follows an array paradigm, unlike the usual functional and object-oriented approaches; it depends heavily on weird mathematical glyphs; and it is surprisingly elegant.</p><p><img src=/posts/programming/images/the-council-of-apl-wizards.png alt="The Council of APL Wizards Welcoming You"></p><h2 id=history-of-old-wizardy>History of Old Wizardy</h2><p>APL is a quite old language. It started as a book (under the same name) written by Kenneth Eugene Iverson in 1962. The focus of the book was mathematical notation. Ken was dissatisfied with the inconsistency of mathematical notation and the lack of a sufficient tool to describe computer algorithms especially when it comes to matrices. Thus, he created what he later won a Turing Award for.</p><p>The notation was used inside IBM (his workplace) for describing some reports. However, the first interpreter was not built until a year later for limited use. On the other hand, the first commercially available one was introduced in 1968. After that, APL started gaining popularity from the late 1960s till the early 1980s.</p><p>In contrast, these days APL is not as popular as it used to be. Despite that, development is still going. The most popular implementation of APL is Dyalog, a commercial implementation started in 1983 (yes, even the most modern of implementations is on the old side) that in recent years added useful extensions like object-oriented and functional programming, nested arrays, lambda calculus, etc. Additionally, if you are not a fan of commercial restricted use, you may try GNU APL but with fewer extensions.</p><h2 id=scripts-of-magic>Scripts of Magic</h2><p>As mentioned before, APL uses a unique combination of mathematical symbols. These symbols represent polymorphic functions used to tackle a variety of problems. For example, the symbol <code>⌈</code> behaves as celling when a single integer is passed to it and as maximum when two numbers are passed to it. In addition, the symbol for the exact opposite behavior is <code>⌊</code> resulting in beautiful symmetry.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-apl data-lang=apl><span style=display:flex><span>	<span style=color:#f92672>⌈</span> <span style=color:#ae81ff>2.4</span> 
