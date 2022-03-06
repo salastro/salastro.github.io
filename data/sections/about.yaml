@@ -26,13 +26,13 @@ socialLinks:
 - name: Facebook                                       
   icon: "fab fa-facebook-square"                       
   url: "https://www.facebook.com/salah.dinahmed.39"    
-- name: Github
+- name: GitHub
   icon: "fab fa-github-square"
   url: "https://www.github.com/salastro"
 # - name: Youtube
 #   icon: "fab fa-youtube-square"
 #   url: "https://youtube.com/example"
-- name: Linkedin
+- name: LinkedIn
   icon: "fab fa-linkedin"
   url: "https://www.linkedin.com/in/salastro"
 - name: ResearchGate
