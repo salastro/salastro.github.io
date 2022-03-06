@@ -1,2 +1,11 @@
 html { filter: invert(1) hue-rotate(180deg); }
 html img { filter: invert(1) hue-rotate(180deg); }
+#homePageBackgroundImageDivStyled { filter: invert(1) hue-rotate(180deg) blur(3px) }
+.greeting { filter: invert(1) hue-rotate(180deg); }
+.typing-carousel { filter: invert(1) hue-rotate(180deg); }
+.arrow.bounce.fa.fa-chevron-down { filter: invert(1) hue-rotate(180deg); } */
+.rounded-circle.mx-auto.d-block.img-fluid { filter: invert(1) hue-rotate(180deg); }
+.navbar.navbar-expand-xl.top-navbar.initial-navbar { filter: invert(1) hue-rotate(180deg); }
+
+/* .navbar-toggler.navbar-dark { filter: invert(1) hue-rotate(180deg); } */
+/* .container-fluid.home { filter: invert(1) hue-rotate(180deg); } */
