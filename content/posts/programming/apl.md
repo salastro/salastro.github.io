@@ -1,7 +1,7 @@
 ---
 title: "The Programming of Wizards"
 date: 2022-02-20
-hero: /images/posts/writing-posts/apl-hero.png
+hero: /images/posts/writing-posts/apl-hero.jpg
 description: An overview of APL.
 tags: [ "APL", "Array Programming" ]
 menu:
