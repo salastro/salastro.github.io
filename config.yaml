@@ -62,13 +62,22 @@ params:
         repoID: MDEwOlJlcG9zaXRvcnkzODAwNDc0NDg=
         category: Announcements
         categoryID: DIC_kwDOFqcQWM4COLPr
-        theme: light
+        theme: dark
         map: title
         reaction: 1
         metadata: 0
         inputPosition: top
         # loading: lazy
         crossOrigin: anonymous
+
+    # Enable Support
+    # support:
+    #   enabled: true
+    #   kofi:
+    #     user: salastro
+    #     text: Buy me coffee
+    #     textColor: '#f9fafc'
+    #     backgroundColor: '#248aaa'
 
   # specify whether you want to show Table of Contents in reading page
   enableTOC: true

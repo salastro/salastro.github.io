@@ -10,5 +10,7 @@ pre { filter: invert(1) hue-rotate(180deg); }
 
 .text-justify { -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
 
+.giscus { filter: invert(1) hue-rotate(180deg); }
+
 /* .navbar-toggler.navbar-dark { filter: invert(1) hue-rotate(180deg); } */
 /* .container-fluid.home { filter: invert(1) hue-rotate(180deg); } */
