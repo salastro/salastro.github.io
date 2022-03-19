@@ -55,6 +55,16 @@ params:
         linkedin: true
         mastodon: true
 
+    # Enable Analytics
+    analytics:
+      enabled: true
+      # GoatCounter
+      goatCounter:
+        code: salastro
+      # # CounterDev
+      # counterDev:
+      #   id: <your counterdev id>
+
     comment:
       enable: true
       giscus:
