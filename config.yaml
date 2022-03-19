@@ -47,6 +47,13 @@ params:
     # Enable and configure blog posts
     blog:
       enable: true
+      # Share post on different social media
+      shareButtons:
+        facebook: true
+        twitter: true
+        reddit: true
+        linkedin: true
+        mastodon: true
 
   # specify whether you want to show Table of Contents in reading page
   enableTOC: true
