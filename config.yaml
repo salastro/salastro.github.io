@@ -39,12 +39,18 @@ params:
   # Background image of the landing page
   background: /images/site/background.jpg
 
-  # specify whether you want to write some blog posts or not
-  enableBlogPost: true
+  # Configure various features of this theme
+  features:
+    # Enable and configure portfolio
+    # portfolio:
+    #   enable: true
+    # Enable and configure blog posts
+    blog:
+      enable: true
 
   # specify whether you want to show Table of Contents in reading page
   enableTOC: true
   # enableTags: true
 
   footer:
-          enable: false
+    enable: false
