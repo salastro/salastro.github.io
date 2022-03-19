@@ -55,6 +55,21 @@ params:
         linkedin: true
         mastodon: true
 
+    comment:
+      enable: true
+      giscus:
+        repo: salastro/salastro.github.io
+        repoID: MDEwOlJlcG9zaXRvcnkzODAwNDc0NDg=
+        category: Announcements
+        categoryID: DIC_kwDOFqcQWM4COLPr
+        theme: light
+        map: title
+        reaction: 1
+        metadata: 0
+        inputPosition: top
+        # loading: lazy
+        crossOrigin: anonymous
+
   # specify whether you want to show Table of Contents in reading page
   enableTOC: true
   # enableTags: true
