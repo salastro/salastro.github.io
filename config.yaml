@@ -61,9 +61,9 @@ params:
       # GoatCounter
       goatCounter:
         code: salastro
-      # # CounterDev
-      # counterDev:
-      #   id: <your counterdev id>
+      # CounterDev
+      counterDev:
+        id: salastro
 
     comment:
       enable: true
