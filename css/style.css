@@ -25,4 +25,9 @@ pre { filter: invert(1) hue-rotate(180deg); }
 }
 @media ( min-width: 577px ) { .row.next-prev-navigator { flex-wrap: nowrap; } }
 
+.btn-improve-page {
+	display: grid;
+	align-content: center;
+}
+
 .text-justify { -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
