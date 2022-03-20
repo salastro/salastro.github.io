@@ -14,4 +14,15 @@ pre { filter: invert(1) hue-rotate(180deg); }
 }
 .initial-navbar .navbar-brand { filter: invert(1) hue-rotate(180deg); }
 
+.row.pl-3.pr-3 { flex-wrap: nowrap; }
+@media ( max-width: 425px ) {
+	.row.pl-3.pr-3 {
+		display: grid;
+		justify-content: center;
+		gap: 1rem;
+	}
+	.btn-improve-page { text-align: center; }
+}
+@media ( min-width: 577px ) { .row.next-prev-navigator { flex-wrap: nowrap; } }
+
 .text-justify { -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
