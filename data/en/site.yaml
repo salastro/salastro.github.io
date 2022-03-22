@@ -1,10 +1,10 @@
 # Meta description for your site.  This will help the search engines to find your site.
 copyright: © 2022 Copyright.
-description: My place for dumbing stuff.
+description: My place for dumping stuff.
 # Specify OpenGraph Headers
 openGraph:
   title: SalahDin Ahmed
   type: website
-  description: My place for dumbing stuff.
+  description: My place for dumping stuff.
   image: /images/site/logo_huc84e63f6dc77192f086a5c0ce1be1001_457039_148x148_fit_q75_box.jpg
   url: https://salastro.github.io

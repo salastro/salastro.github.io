@@ -31,7 +31,7 @@ enableEmoji: true
 
 # Site parameters
 params:
-  description: "My place for dumbing stuff."
+  description: "My place for dumping stuff."
   # GitHub repo URL and branch of your site
   gitRepo: https://github.com/salastro/salastro.github.io
   gitBranch: master
