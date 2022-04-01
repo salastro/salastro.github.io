@@ -33,3 +33,4 @@ pre { filter: invert(1) hue-rotate(180deg); }
 .text-justify { -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
 
 .taxonomy-terms ul { padding-inline-start: 0; }
+.taxonomy-terms ul li { margin-right: 5px; }
