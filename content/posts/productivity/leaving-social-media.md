@@ -3,13 +3,12 @@ title: "Leaving Social Media for Good"
 date: 2022-03-04
 hero: /images/posts/writing-posts/leaving-social-media-hero.jpg
 description: Stop using the most toxic thing man ever created.
-tags: [ "social media" ]
+tags: [ "Social Media" ]
 menu:
   sidebar:
     name: Leaving Social Media
     identifier: leaving-social-media
     parent: productivity
-    weight: 500
 ---
 
 In my humble opinion, the way modern social media is being used can't be more
