@@ -9,7 +9,6 @@ menu:
     name: APL
     identifier: apl
     parent: programming
-    weight: 500
 ---
 
 **APL** (**A** **P**rogramming **L**anguage) is an exceptionally unique language. It mainly follows an array paradigm, unlike the usual functional and object-oriented approaches; it depends heavily on weird mathematical glyphs; and it is surprisingly elegant.

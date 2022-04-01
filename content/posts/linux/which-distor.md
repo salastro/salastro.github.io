@@ -9,7 +9,6 @@ menu:
     name: Which Distro
     identifier: which-distro
     parent: linux
-    weight: 500
 ---
 
 # Introduction

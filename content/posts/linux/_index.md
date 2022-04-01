@@ -4,5 +4,4 @@ menu:
   sidebar:
     name: Linux
     identifier: linux
-    weight: 300
 ---
