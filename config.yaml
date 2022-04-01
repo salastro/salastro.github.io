@@ -64,6 +64,7 @@ params:
       # CounterDev
       counterDev:
         id: salastro
+        referrerPolicy: no-referrer-when-downgrade
 
     comment:
       enable: true
