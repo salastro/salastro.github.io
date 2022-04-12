@@ -71,5 +71,5 @@ in his certainty about his point. In his context, vectorized area means nothing,
 which is not a bad thing. We, as a society, should always recognize the
 difference in the correct points of view. It is possible, although hard, for us
 to accept the existence of different points of view. However, it is usually over
-one’s head to deeply release the contextual correctness of other ideas that you
+one’s head to deeply realize the contextual correctness of other ideas that you
 may — currently — disagree with.
