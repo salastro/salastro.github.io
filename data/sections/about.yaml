@@ -23,9 +23,6 @@ summary: "I am one of who think, invent, and seek the truth behind what is visib
 # your social links
 # give as many as you want. use font-awesome for the icons.
 socialLinks:
-- name: Facebook                                       
-  icon: "fab fa-facebook-square"                       
-  url: "https://www.facebook.com/salah.dinahmed.39"    
 - name: GitHub
   icon: "fab fa-github-square"
   url: "https://www.github.com/salastro"
