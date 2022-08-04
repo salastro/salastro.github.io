@@ -41,6 +41,9 @@ socialLinks:
 - name: RSS Feed
   icon: "fas fa-rss-square"
   url: "index.xml"
+- name: Keybase
+  icon: "fab fa-keybase"
+  url: "https://keybase.io/salastro"
 
 # your soft skills
 # give the percentage between 50 to 100 with 5 intervals.
