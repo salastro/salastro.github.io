@@ -35,7 +35,7 @@ are nothing but lame excuses to convince the weak human self that death is okay.
 In contrast, some will hate it and try to work against it. They will hate it
 from the deepest guts of their mortal bod. Their hatred will be the fuel to the
 seeking of death elimination, a goal too far to be reached. A great example is
-[The Fable of the Dragon-Tyrant](https://www.youtube.com/watch?v=sxXwiMTYPCo)
+[The Fable of the Dragon-Tyrant](https://en.wikipedia.org/wiki/The_Fable_of_the_Dragon-Tyrant)
 in which death is fought and won against. Nevertheless, it is not more than a
 mere story that represents the fatuous desires of mere humans. In reality the
 experiment against the death would fail and we will be doomed by the monster
