@@ -8,11 +8,11 @@ section:
   template: sections/about.html
 
 # your designation
-designation: High School Student
+designation: Engineering Student
 # your company information
 company:
-  name: STEM Luxor
-  url: "https://www.facebook.com/Luxor.STEM.School/"
+  name: Zewail City
+  url: "https://www.zewailcity.edu.eg/"
 
 # your resume. this file path should be relative to you "static" directory
 # resume: "files/resume.pdf"
