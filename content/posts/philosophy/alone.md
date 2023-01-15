@@ -1,7 +1,7 @@
 ---
 title: "Forever Alone"
 date: 2022-11-02
-hero: /images/posts/writing-posts/empty-hero.jpg
+hero: /images/posts/writing-posts/forever-alone.jpeg
 description: We will never be more than ourselves.
 enableTOC: false
 menu:
