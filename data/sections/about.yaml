@@ -18,7 +18,7 @@ company:
 # resume: "files/resume.pdf"
 
 # a summary about you
-summary: "I am one of whom think, invent, and seek the truth behind what is visible. The pursuit of what to be realized behind every existence corner is the goal of mine. Look into the dragon that of fear, and fight until every bone of one's mere conscious crumble into ashes."
+summary: "I am one of whom think, invent, and seek the truth behind what is visible. The pursuit of what to be realized behind every existence corner is the goal of mine. Look into the monster that of fear, and fight until every bone of one's mere conscious crumble into ashes."
 
 # your social links
 # give as many as you want. use font-awesome for the icons.
@@ -42,27 +42,25 @@ socialLinks:
   icon: "fas fa-rss-square"
   url: "index.xml"
 
-radar: true
-
 # your soft skills
 # give the percentage between 50 to 100 with 5 intervals.
 # currently supported colors: blue, yellow, pink, green, sky, orange
 # softSkills:
-# - name: H
+# - name: Leadership
 #   percentage: 60
 #   color: blue
-# - name: E
+# - name: Communication
 #   percentage: 75
 #   color: pink
-# - name: X
+# - name: Problem Solving
 #   percentage: 85
 #   color: orange
-# - name: A
+# - name: Team Work
 #   percentage: 90
 #   color: yellow
-# - name: C
+# - name: Hard Working
 #   percentage: 95
 #   color: sky
-# - name: O
+# - name: Willing to learn
 #   percentage: 100
 #   color: green
