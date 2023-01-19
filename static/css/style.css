@@ -1,3 +1,7 @@
+.home img, .author-profile img {
+  background-color: #11151e;
+}
+
 html { filter: invert(1) hue-rotate(180deg); }
 html img { filter: invert(1) hue-rotate(180deg); }
 #homePageBackgroundImageDivStyled { filter: invert(1) hue-rotate(180deg) blur(3px) }
