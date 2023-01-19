@@ -1,4 +1,5 @@
-baseURL: https://salastro.github.io
+baseURL: "https://salastro.github.io"
+relativeURLs: true
 
 languageCode: en-us
 title: "SalahDin Rezk"
