@@ -18,7 +18,14 @@ company:
 # resume: "files/resume.pdf"
 
 # a summary about you
-summary: "I am one of whom think, invent, and seek the truth behind what is visible. The pursuit of what to be realized behind every existence corner is the goal of mine. Look into the dragon that of fear, and fight until every bone of one's mere conscious crumble into ashes."
+summary:
+
+  "I am one of whom think, invent, and seek the truth behind what is visible.
+  The pursuit of what to be realized behind every existence corner is the goal
+  of mine. Destroy my thoughts, eradicate my ideals, and burn my paradigms as
+  you teach me. One does not learn until they die and arise from ashes—just
+  like a phoenix. Ergo, I will forever endure the hideous of evil; until my
+  evanescence, I should seek the purposefully unreachable perfection."
 
 # your social links
 # give as many as you want. use font-awesome for the icons.
@@ -42,7 +49,7 @@ socialLinks:
   icon: "fas fa-rss-square"
   url: "index.xml"
 
-radar: true
+radar: false
 
 # your soft skills
 # give the percentage between 50 to 100 with 5 intervals.
