@@ -2,7 +2,8 @@
 title: "The Profound Significance of Prayer"
 date: 2023-08-22
 hero: /images/posts/writing-posts/empty-hero.jpg
-description: 
+description: "Framework of Orientation, Transience of Existence, Meaning Amidst Chaos"
+summary: "Framework of Orientation, Transience of Existence, Meaning Amidst Chaos"
 enableTOC: true
 menu:
   sidebar:
