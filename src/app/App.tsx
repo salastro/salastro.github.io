@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Network, FileText, Filter, Search } from 'lucide-react';
+import { Network, FileText, Filter, Search, ArrowUpDown } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import GraphView from './components/GraphView';
@@ -17,6 +17,7 @@ export default function App() {
     const [filter, setFilter] = useState<string | null>(null);
     const [isPanelOpen, setIsPanelOpen] = useState(false);
     const [previousViewMode, setPreviousViewMode] = useState<ViewMode>('graph');
+    const [sortBy, setSortBy] = useState<'title' | 'group' | 'date'>('title');
     const { resolvedTheme } = useTheme();
 
     // Theme-aware colors for dot grid
@@ -64,12 +65,45 @@ export default function App() {
             }
         }
 
+        // Apply sorting
+        const sortedNodes = [...filteredNodes].sort((a, b) => {
+            if (sortBy === 'title') {
+                return (a.title || '').localeCompare(b.title || '');
+            } else if (sortBy === 'group') {
+                return a.group.localeCompare(b.group);
+            } else if (sortBy === 'date') {
+                // Sort by date descending (newest first)
+                const dateA = a.date ? new Date(a.date).getTime() : 0;
+                const dateB = b.date ? new Date(b.date).getTime() : 0;
+                return dateB - dateA;
+            }
+            return 0;
+        });
+
         return (
             <div className="min-h-screen bg-background text-foreground p-8 md:p-20 pt-24 overflow-y-auto">
                 <div className="max-w-4xl mx-auto">
-                    <h1 className="text-3xl font-light text-foreground mb-12">Index</h1>
+                    <div className="flex justify-between items-center mb-12">
+                        <h1 className="text-3xl font-light text-foreground">Index</h1>
+                        <div className="flex items-center gap-2">
+                            <ArrowUpDown size={14} className="text-muted-foreground" />
+                            <span className="text-xs text-muted-foreground mr-2">Sort by:</span>
+                            {(['title', 'group', 'date'] as const).map(option => (
+                                <button
+                                    key={option}
+                                    onClick={() => setSortBy(option)}
+                                    className={`text-xs px-2 py-1 rounded transition-colors cursor-pointer ${sortBy === option
+                                        ? 'bg-primary/10 text-foreground'
+                                        : 'text-muted-foreground hover:text-foreground'
+                                        }`}
+                                >
+                                    {option.charAt(0).toUpperCase() + option.slice(1)}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
                     <div className="grid gap-8">
-                        {filteredNodes.map(node => (
+                        {sortedNodes.map(node => (
                             <div
                                 key={node.id}
                                 onClick={() => { setPreviousViewMode('document'); setActiveNodeId(node.id); setViewMode('document'); }}
