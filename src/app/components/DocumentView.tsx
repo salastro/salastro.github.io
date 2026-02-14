@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { motion } from 'motion/react';
 import { nodeContent } from '../../data/graphData';
 import { LaTeXBlock } from '../../components/LaTeX';
+import { CodeBlock } from '../../components/CodeBlock';
 
 interface DocumentViewProps {
     nodeId: string;
@@ -83,18 +84,19 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
                                 The proposed architecture utilizes a distributed consensus mechanism to ensure data integrity.
                                 Below is a pseudocode representation of the core loop.
                             </p>
-                            <pre className="bg-secondary p-4 text-xs md:text-sm font-mono text-muted-foreground border border-border rounded-sm overflow-x-auto">
-                                {`function process_signal(input_vector):
-  // Initialize state
-  state = initialize_basis()
-  
-  for sample in input_vector:
-    noise = estimate_noise(sample)
-    filtered = sample - noise
-    state = update_kalman(state, filtered)
+                            <CodeBlock
+                                language="python"
+                                code={`function process_signal(input_vector):
+    # Initialize state
+    state = initialize_basis()
     
-  return state.optimal_estimate`}
-                            </pre>
+    for sample in input_vector:
+        noise = estimate_noise(sample)
+        filtered = sample - noise
+        state = update_kalman(state, filtered)
+    
+    return state.optimal_estimate`}
+                            />
                         </section>
 
                         <section>
