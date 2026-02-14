@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { motion } from 'motion/react';
 import { nodeContent } from '../../data/graphData';
+import { LaTeXBlock } from '../../components/LaTeX';
 
 interface DocumentViewProps {
     nodeId: string;
@@ -69,9 +70,7 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
                                 We assume a closed system with boundary conditions defined by the operational parameters.
                             </p>
                             {content.equations?.map((eq: string, i: number) => (
-                                <div key={i} className="my-8 p-6 bg-secondary border-l-2 border-primary/50 font-mono text-sm overflow-x-auto text-center">
-                                    {eq}
-                                </div>
+                                <LaTeXBlock key={i} equation={eq} />
                             ))}
                             <p>
                                 Where the operators represent the standard transformations in the respective Hilbert space.

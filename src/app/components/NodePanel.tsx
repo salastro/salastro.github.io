@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ExternalLink, Hash, BookOpen } from 'lucide-react';
 import { MyNode, nodeContent } from '../../data/graphData';
+import { LaTeX } from '../../components/LaTeX';
 
 interface NodePanelProps {
   isOpen: boolean;
@@ -11,9 +12,8 @@ interface NodePanelProps {
 }
 
 const LatexEquation: React.FC<{ eq: string }> = ({ eq }) => (
-  <div className="my-4 p-4 bg-secondary border border-border rounded font-mono text-sm text-muted-foreground overflow-x-auto flex justify-center">
-    {/* In a real app, use KaTeX here. For this demo, we assume the string is roughly readable or use a placeholder style */}
-    <span className="italic tracking-wide">{eq}</span>
+  <div className="my-4 p-4 bg-secondary border border-border rounded overflow-x-auto flex justify-center">
+    <LaTeX displayMode={true}>{eq}</LaTeX>
   </div>
 );
 
