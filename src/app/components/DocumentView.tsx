@@ -6,9 +6,10 @@ import { nodeContent } from '../../data/graphData';
 interface DocumentViewProps {
     nodeId: string;
     onBack: () => void;
+    backLabel?: string;
 }
 
-const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack }) => {
+const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel = 'Back' }) => {
     const content = nodeContent[nodeId] || nodeContent['default'];
 
     return (
@@ -23,9 +24,9 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack }) => {
                 {/* Navigation */}
                 <button
                     onClick={onBack}
-                    className="mb-12 flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+                    className="mb-12 flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group cursor-pointer"
                 >
-                    <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Back to Graph
+                    <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> {backLabel}
                 </button>
 
                 {/* Header */}

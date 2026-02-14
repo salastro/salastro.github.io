@@ -16,6 +16,7 @@ export default function App() {
     const [viewMode, setViewMode] = useState<ViewMode>('graph');
     const [filter, setFilter] = useState<string | null>(null);
     const [isPanelOpen, setIsPanelOpen] = useState(false);
+    const [previousViewMode, setPreviousViewMode] = useState<ViewMode>('graph');
     const { resolvedTheme } = useTheme();
 
     // Theme-aware colors for dot grid
@@ -38,6 +39,7 @@ export default function App() {
     };
 
     const switchToDocView = () => {
+        setPreviousViewMode(viewMode === 'document' && !activeNodeId ? 'document' : viewMode);
         setViewMode('document');
         setIsPanelOpen(false);
     };
@@ -47,28 +49,44 @@ export default function App() {
     };
 
     // If in document view and no node selected, show a simple index
-    const renderIndex = () => (
-        <div className="min-h-screen bg-background text-foreground p-8 md:p-20 overflow-y-auto">
-            <div className="max-w-4xl mx-auto">
-                <h1 className="text-3xl font-light text-foreground mb-12">Index</h1>
-                <div className="grid gap-8">
-                    {graphData.nodes.filter(n => n.group !== 'root').map(node => (
-                        <div
-                            key={node.id}
-                            onClick={() => { setActiveNodeId(node.id); setViewMode('document'); }}
-                            className="group cursor-pointer border-b border-border pb-8 hover:border-muted-foreground transition-colors"
-                        >
-                            <div className="flex justify-between items-baseline mb-2">
-                                <h2 className="text-xl font-medium text-foreground group-hover:text-primary transition-colors">{node.title}</h2>
-                                <span className="text-xs font-mono text-muted-foreground">{node.group.toUpperCase()}</span>
+    const renderIndex = () => {
+        // Apply the same filter logic as the graph
+        let filteredNodes = graphData.nodes.filter(n => n.group !== 'root');
+        if (filter) {
+            if (filter === 'Theory') {
+                filteredNodes = filteredNodes.filter(n => ['focus', 'concept'].includes(n.group));
+            } else if (filter === 'Applied Engineering') {
+                filteredNodes = filteredNodes.filter(n => ['focus', 'project'].includes(n.group));
+            } else if (filter === 'Mathematics') {
+                filteredNodes = filteredNodes.filter(n => ['focus', 'concept'].includes(n.group) && (n.tags?.includes('Math') || n.group === 'focus'));
+            } else if (filter === 'Philosophy') {
+                filteredNodes = filteredNodes.filter(n => ['focus', 'concept'].includes(n.group) && (n.tags?.includes('Philosophy') || n.group === 'focus'));
+            }
+        }
+
+        return (
+            <div className="min-h-screen bg-background text-foreground p-8 md:p-20 pt-24 overflow-y-auto">
+                <div className="max-w-4xl mx-auto">
+                    <h1 className="text-3xl font-light text-foreground mb-12">Index</h1>
+                    <div className="grid gap-8">
+                        {filteredNodes.map(node => (
+                            <div
+                                key={node.id}
+                                onClick={() => { setPreviousViewMode('document'); setActiveNodeId(node.id); setViewMode('document'); }}
+                                className="group cursor-pointer border-b border-border pb-8 hover:border-muted-foreground transition-colors"
+                            >
+                                <div className="flex justify-between items-baseline mb-2">
+                                    <h2 className="text-xl font-medium text-foreground group-hover:text-primary transition-colors">{node.title}</h2>
+                                    <span className="text-xs font-mono text-muted-foreground">{node.group.toUpperCase()}</span>
+                                </div>
+                                <p className="text-sm text-muted-foreground line-clamp-2">{node.description || "Research node awaiting classification."}</p>
                             </div>
-                            <p className="text-sm text-muted-foreground line-clamp-2">{node.description || "Research node awaiting classification."}</p>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    };
 
     return (
         <div className="relative w-full h-screen overflow-hidden bg-background font-sans text-foreground">
@@ -94,74 +112,66 @@ export default function App() {
                 />
             </div>
 
-            {/* Foreground UI Layer (Controls) - visible in Graph Mode */}
-            <AnimatePresence>
-                {viewMode === 'graph' && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="absolute inset-0 pointer-events-none"
+            {/* Foreground UI Layer (Controls) - always visible */}
+            <div className="absolute inset-0 pointer-events-none z-50">
+                {/* Top Left: Filters */}
+                <div className="absolute top-8 left-8 pointer-events-auto">
+                    <div className="flex flex-col items-start gap-2 mt-8">
+                        {['All', 'Theory', 'Applied Engineering', 'Mathematics', 'Philosophy'].map(f => (
+                            <button
+                                key={f}
+                                onClick={() => setFilter(f === 'All' ? null : f)}
+                                className={`text-xs uppercase tracking-widest transition-colors cursor-pointer ${(filter === f || (filter === null && f === 'All'))
+                                    ? 'text-primary font-semibold'
+                                    : 'text-muted-foreground hover:text-foreground'
+                                    }`}
+                            >
+                                {f}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Top Right: View Toggle and Theme Toggle */}
+                <div className="absolute top-8 right-8 pointer-events-auto flex items-center gap-4">
+                    <ThemeToggle />
+                    <button
+                        onClick={() => setViewMode('graph')}
+                        className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-all cursor-pointer ${viewMode === 'graph'
+                            ? 'bg-primary/10 border-primary/20 text-foreground'
+                            : 'bg-transparent border-transparent text-muted-foreground hover:text-foreground'
+                            }`}
                     >
-                        {/* Top Left: Filters */}
-                        <div className="absolute top-8 left-8 pointer-events-auto">
+                        <Network size={14} /> Graph
+                    </button>
+                    <button
+                        onClick={() => { setViewMode('document'); setActiveNodeId(null); }}
+                        className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-all cursor-pointer ${viewMode === 'document' && !activeNodeId
+                            ? 'bg-primary/10 border-primary/20 text-foreground'
+                            : 'bg-transparent border-transparent text-muted-foreground hover:text-foreground'
+                            }`}
+                    >
+                        <FileText size={14} /> Index
+                    </button>
+                </div>
 
-                            <div className="flex flex-col items-start gap-2 mt-8">
-                                {['All', 'Theory', 'Applied Engineering', 'Mathematics', 'Philosophy'].map(f => (
-                                    <button
-                                        key={f}
-                                        onClick={() => setFilter(f === 'All' ? null : f)}
-                                        className={`text-xs uppercase tracking-widest transition-colors ${(filter === f || (filter === null && f === 'All'))
-                                            ? 'text-primary font-semibold'
-                                            : 'text-muted-foreground hover:text-foreground'
-                                            }`}
-                                    >
-                                        {f}
-                                    </button>
-                                ))}
+                {/* Legend Bottom Left - only in graph mode */}
+                {viewMode === 'graph' && (
+                    <div className="absolute bottom-8 left-8 pointer-events-auto">
+                        <div className="flex gap-4 text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
+                            <div className="flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-foreground"></span> Root
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-muted-foreground"></span> Focus
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-muted"></span> Concept
                             </div>
                         </div>
-
-                        {/* Top Right: View Toggle and Theme Toggle */}
-                        <div className="absolute top-8 right-8 pointer-events-auto flex items-center gap-4">
-                            <ThemeToggle />
-                            <button
-                                onClick={() => setViewMode('graph')}
-                                className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-all ${viewMode === 'graph'
-                                    ? 'bg-primary/10 border-primary/20 text-foreground'
-                                    : 'bg-transparent border-transparent text-muted-foreground hover:text-foreground'
-                                    }`}
-                            >
-                                <Network size={14} /> Graph
-                            </button>
-                            <button
-                                onClick={() => setViewMode('document')}
-                                className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-all ${viewMode === 'document'
-                                    ? 'bg-primary/10 border-primary/20 text-foreground'
-                                    : 'bg-transparent border-transparent text-muted-foreground hover:text-foreground'
-                                    }`}
-                            >
-                                <FileText size={14} /> Index
-                            </button>
-                        </div>
-
-                        {/* Legend Bottom Left */}
-                        <div className="absolute bottom-8 left-8 pointer-events-auto">
-                            <div className="flex gap-4 text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
-                                <div className="flex items-center gap-2">
-                                    <span className="w-2 h-2 rounded-full bg-foreground"></span> Root
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <span className="w-2 h-2 rounded-full bg-muted-foreground"></span> Focus
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <span className="w-2 h-2 rounded-full bg-muted"></span> Concept
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
+                    </div>
                 )}
-            </AnimatePresence>
+            </div>
 
             {/* Side Panel */}
             <NodePanel
@@ -174,35 +184,23 @@ export default function App() {
             {/* Document View */}
             <AnimatePresence>
                 {viewMode === 'document' && (
-                    <div className="absolute inset-0 bg-background z-40 overflow-hidden">
+                    <div className="absolute inset-0 bg-background z-40 overflow-y-auto">
                         {activeNodeId ? (
-                            <DocumentView nodeId={activeNodeId} onBack={() => {
-                                // If we came from graph, maybe go back to graph?
-                                // Or go back to index?
-                                // The prompt implies Toggle Graph/Doc. 
-                                // Let's assume Back in Doc View goes to Graph if we have an active node, 
-                                // or maybe back to index. Let's go back to Graph for continuity.
-                                switchToGraphView();
-                            }} />
+                            <DocumentView
+                                nodeId={activeNodeId}
+                                backLabel={previousViewMode === 'graph' ? 'Back to Graph' : 'Back to Index'}
+                                onBack={() => {
+                                    // Go back to previous view mode
+                                    if (previousViewMode === 'graph') {
+                                        setViewMode('graph');
+                                        // setActiveNodeId(null);
+                                    } else {
+                                        setActiveNodeId(null);
+                                    }
+                                }}
+                            />
                         ) : (
                             renderIndex()
-                        )}
-
-                        {/* Floating Toggle even in Doc view? Maybe. 
-                     Let's add a close button or toggle in the corner if needed, 
-                     but DocumentView has a Back button.
-                     We also need to allow switching back to graph if in Index mode.
-                 */}
-                        {!activeNodeId && (
-                            <div className="absolute top-8 right-8 flex items-center gap-4">
-                                <ThemeToggle />
-                                <button
-                                    onClick={switchToGraphView}
-                                    className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-foreground text-xs font-medium hover:bg-primary/20 transition-all"
-                                >
-                                    <Network size={14} /> Back to Graph
-                                </button>
-                            </div>
                         )}
                     </div>
                 )}

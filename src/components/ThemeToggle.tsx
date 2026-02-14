@@ -35,7 +35,7 @@ export function ThemeToggle() {
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <button
-                    className="w-8 h-8 rounded-full flex items-center justify-center bg-white/5 dark:bg-white/5 bg-black/5 border border-white/10 dark:border-white/10 border-black/10 text-foreground hover:bg-white/10 dark:hover:bg-white/10 hover:bg-black/10 transition-colors"
+                    className="w-8 h-8 rounded-full flex items-center justify-center bg-white/5 dark:bg-white/5 bg-black/5 border border-white/10 dark:border-white/10 border-black/10 text-foreground hover:bg-white/10 dark:hover:bg-white/10 hover:bg-black/10 transition-colors cursor-pointer"
                     aria-label="Toggle theme"
                 >
                     {currentIcon()}
