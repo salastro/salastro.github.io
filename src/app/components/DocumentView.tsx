@@ -116,9 +116,11 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
                                     The core dynamics of the system are governed by the following relations.
                                     We assume a closed system with boundary conditions defined by the operational parameters.
                                 </p>
-                                {content.equations?.map((eq: string, i: number) => (
-                                    <LaTeXBlock key={i} equation={eq} />
-                                ))}
+                                <div className="space-y-6">
+                                    {content.equations?.map((eq: string, i: number) => (
+                                        <LaTeXBlock key={i} equation={eq} />
+                                    ))}
+                                </div>
                                 <p>
                                     Where the operators represent the standard transformations in the respective Hilbert space.
                                 </p>

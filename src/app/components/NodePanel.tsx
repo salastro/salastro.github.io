@@ -12,8 +12,10 @@ interface NodePanelProps {
 }
 
 const LatexEquation: React.FC<{ eq: string }> = ({ eq }) => (
-  <div className="my-4 p-4 bg-secondary border border-border rounded overflow-x-auto flex justify-center">
-    <LaTeX displayMode={true}>{eq}</LaTeX>
+  <div className="my-4 p-4 bg-secondary border border-border rounded overflow-x-auto text-center">
+    <div className="inline-block">
+      <LaTeX displayMode={true}>{eq}</LaTeX>
+    </div>
   </div>
 );
 

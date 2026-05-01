@@ -46,8 +46,10 @@ export const LaTeXBlock: React.FC<LaTeXBlockProps> = ({
     className = ''
 }) => {
     return (
-        <div className={`my-8 p-6 bg-secondary border-l-2 border-primary/50 overflow-x-auto flex justify-center ${className}`}>
-            <LaTeX displayMode={true}>{equation}</LaTeX>
+        <div className={`my-8 p-6 bg-secondary border-l-2 border-primary/50 overflow-x-auto text-center ${className}`}>
+            <div className="inline-block">
+                <LaTeX displayMode={true}>{equation}</LaTeX>
+            </div>
         </div>
     );
 };
