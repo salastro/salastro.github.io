@@ -18,6 +18,7 @@ export default function App() {
     const [isPanelOpen, setIsPanelOpen] = useState(false);
     const [previousViewMode, setPreviousViewMode] = useState<ViewMode>('graph');
     const [sortBy, setSortBy] = useState<'title' | 'group' | 'date'>('title');
+    const [searchQuery, setSearchQuery] = useState<string>('');
     const { resolvedTheme } = useTheme();
 
     // Theme-aware colors for dot grid
@@ -65,6 +66,18 @@ export default function App() {
             }
         }
 
+        // Apply search filter
+        if (searchQuery.trim()) {
+            const query = searchQuery.toLowerCase();
+            filteredNodes = filteredNodes.filter(n => {
+                const titleMatch = (n.title || '').toLowerCase().includes(query);
+                const descriptionMatch = (n.description || '').toLowerCase().includes(query);
+                const tagsMatch = (n.tags || []).some(tag => tag.toLowerCase().includes(query));
+                const idMatch = n.id.toLowerCase().includes(query);
+                return titleMatch || descriptionMatch || tagsMatch || idMatch;
+            });
+        }
+
         // Apply sorting
         const sortedNodes = [...filteredNodes].sort((a, b) => {
             if (sortBy === 'title') {
@@ -83,8 +96,28 @@ export default function App() {
         return (
             <div className="min-h-screen bg-background text-foreground p-8 md:p-20 pt-24 overflow-y-auto">
                 <div className="max-w-4xl mx-auto">
-                    <div className="flex justify-between items-center mb-12">
-                        <h1 className="text-3xl font-light text-foreground">Index</h1>
+                    <div className="mb-8">
+                        <div className="relative">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
+                            <input
+                                type="text"
+                                placeholder="Search by title, description, tags..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full pl-10 pr-4 py-2.5 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="flex justify-between items-center mb-8">
+                        <div>
+                            <h1 className="text-3xl font-light text-foreground">Index</h1>
+                            {searchQuery && (
+                                <p className="text-sm text-muted-foreground mt-2">
+                                    {sortedNodes.length} result{sortedNodes.length !== 1 ? 's' : ''} found
+                                </p>
+                            )}
+                        </div>
                         <div className="flex items-center gap-2">
                             <ArrowUpDown size={14} className="text-muted-foreground" />
                             <span className="text-xs text-muted-foreground mr-2">Sort by:</span>
@@ -102,6 +135,13 @@ export default function App() {
                             ))}
                         </div>
                     </div>
+
+                    {sortedNodes.length === 0 && searchQuery && (
+                        <div className="text-center py-12">
+                            <p className="text-muted-foreground">No results found for "{searchQuery}"</p>
+                        </div>
+                    )}
+
                     <div className="grid gap-8">
                         {sortedNodes.map(node => (
                             <div
@@ -113,7 +153,16 @@ export default function App() {
                                     <h2 className="text-xl font-medium text-foreground group-hover:text-primary transition-colors">{node.title}</h2>
                                     <span className="text-xs font-mono text-muted-foreground">{node.group.toUpperCase()}</span>
                                 </div>
-                                <p className="text-sm text-muted-foreground line-clamp-2">{node.description || "Research node awaiting classification."}</p>
+                                <p className="text-sm text-muted-foreground line-clamp-2 mb-2">{node.description || "Research node awaiting classification."}</p>
+                                {node.tags && node.tags.length > 0 && (
+                                    <div className="flex flex-wrap gap-2">
+                                        {node.tags.map(tag => (
+                                            <span key={tag} className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
                         ))}
                     </div>
