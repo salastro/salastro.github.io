@@ -1,7 +1,7 @@
 ---
 id: "alone"
 title: "Forever Alone"
-group: "concept"
+group: "essay"
 level: 2
 val: 4
 date: "2022-11-02"

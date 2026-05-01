@@ -1,7 +1,7 @@
 ---
 id: "is-area-vector-or-scalar"
 title: "Is Area a Vector or Scalar?"
-group: "concept"
+group: "essay"
 level: 2
 val: 4
 date: "2022-04-01"

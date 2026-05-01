@@ -1,7 +1,7 @@
 ---
 id: "leaving-social-media"
 title: "Leaving Social Media for Good"
-group: "concept"
+group: "essay"
 level: 2
 val: 4
 date: "2022-03-04"

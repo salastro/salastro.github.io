@@ -1,7 +1,7 @@
 ---
 id: "vimbrain"
 title: "VIM BRAIN"
-group: "concept"
+group: "essay"
 level: 2
 val: 4
 date: "2021-12-08"

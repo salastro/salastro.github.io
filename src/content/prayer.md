@@ -1,7 +1,7 @@
 ---
 id: "prayer"
 title: "The Profound Significance of Prayer"
-group: "concept"
+group: "essay"
 level: 2
 val: 4
 date: "2023-08-22"

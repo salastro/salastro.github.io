@@ -1,7 +1,7 @@
 ---
 id: "sorrows-of-the-inadequate-soul"
 title: "Sorrows of the Inadequate Soul"
-group: "concept"
+group: "essay"
 level: 2
 val: 4
 date: "2023-10-31"

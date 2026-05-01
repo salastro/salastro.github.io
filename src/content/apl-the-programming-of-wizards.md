@@ -1,7 +1,7 @@
 ---
 id: "apl-the-programming-of-wizards"
 title: "The Programming of Wizards"
-group: "concept"
+group: "essay"
 level: 2
 val: 4
 date: "2022-02-20"

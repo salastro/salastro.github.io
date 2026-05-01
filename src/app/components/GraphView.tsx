@@ -357,6 +357,7 @@ const GraphView: React.FC<GraphViewProps> = ({
       // Color
       if (isRoot) ctx.fillStyle = isDark ? '#ffffff' : '#030213';
       else if (node.group === 'focus') ctx.fillStyle = isDark ? '#e0e0e0' : '#4b5563';
+      else if (node.group === 'essay') ctx.fillStyle = isDark ? '#d896ff' : '#ab63fa';
       else if (isActive) ctx.fillStyle = isDark ? '#64d2ff' : '#3b82f6'; // Accent
       else ctx.fillStyle = isDark ? '#888888' : '#9ca3af';
 

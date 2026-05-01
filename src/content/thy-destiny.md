@@ -1,7 +1,7 @@
 ---
 id: "thy-destiny"
 title: "Thy Destiny"
-group: "concept"
+group: "essay"
 level: 2
 val: 4
 date: "2023-06-16"

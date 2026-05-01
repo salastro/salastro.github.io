@@ -1,7 +1,7 @@
 ---
 id: "which-distro"
 title: "A Linux dead simple guide!"
-group: "concept"
+group: "essay"
 level: 2
 val: 4
 date: "2021-11-11"

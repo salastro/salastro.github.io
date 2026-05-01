@@ -1,7 +1,7 @@
 ---
 id: "death"
 title: "Embrace Death"
-group: "concept"
+group: "essay"
 level: 2
 val: 4
 date: "2022-08-20"
