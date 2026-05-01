@@ -479,8 +479,22 @@ const GraphView: React.FC<GraphViewProps> = ({
         nodeLabel={() => ''} // Disable default tooltip
         nodeCanvasObject={paintNode as any}
         onRenderFramePre={(ctx, globalScale) => paintDotGrid(ctx, globalScale)}
-        linkColor={() => theme === 'light' || (theme === 'system' && !window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.15)'}
-        linkWidth={1}
+        linkColor={(link: any) => {
+          // Tag-based links in a distinct color (more transparent, dashed appearance via width)
+          if (link.type === 'tag') {
+            return theme === 'light' || (theme === 'system' && !window.matchMedia('(prefers-color-scheme: dark)').matches)
+              ? 'rgba(59, 130, 246, 0.1)' // Blue for tag links (light mode)
+              : 'rgba(96, 165, 250, 0.15)'; // Blue for tag links (dark mode)
+          }
+          // Explicit links in default color
+          return theme === 'light' || (theme === 'system' && !window.matchMedia('(prefers-color-scheme: dark)').matches)
+            ? 'rgba(0,0,0,0.15)'
+            : 'rgba(255,255,255,0.15)';
+        }}
+        linkWidth={(link: any) => {
+          // Tag-based links thinner to distinguish from explicit links
+          return link.type === 'tag' ? 0.5 : 1;
+        }}
         linkDistance={150}
         d3VelocityDecay={0.5}
         enableNodeDrag={true}

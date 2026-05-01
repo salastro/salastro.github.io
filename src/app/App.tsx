@@ -192,15 +192,27 @@ export default function App() {
                 {/* Legend Bottom Left - only in graph mode */}
                 {viewMode === 'graph' && (
                     <div className="absolute bottom-8 left-8 pointer-events-auto">
-                        <div className="flex gap-4 text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
-                            <div className="flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-foreground"></span> Root
+                        <div className="flex flex-col gap-2 text-[10px] text-muted-foreground font-mono uppercase tracking-wider">
+                            <div className="flex gap-4">
+                                <div className="flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-foreground"></span> Root
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-muted-foreground"></span> Focus
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-muted"></span> Concept
+                                </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-muted-foreground"></span> Focus
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-muted"></span> Concept
+                            <div className="flex gap-4">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-4 h-px bg-foreground/30"></div>
+                                    <span>Explicit</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-4 h-px bg-blue-400/30"></div>
+                                    <span>Shared Tags</span>
+                                </div>
                             </div>
                         </div>
                     </div>

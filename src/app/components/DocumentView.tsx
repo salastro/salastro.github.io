@@ -51,42 +51,88 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
                 </header>
 
                 {/* Content Body */}
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-12">
+                {content.htmlContent ? (
+                    // ── Markdown-sourced content ──────────────────────
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-12">
+                        <article
+                            className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-p:text-muted-foreground prose-p:leading-relaxed prose-code:text-sm"
+                            dangerouslySetInnerHTML={{ __html: content.htmlContent }}
+                        />
 
-                    {/* Main Text */}
-                    <article className="space-y-12 text-muted-foreground leading-relaxed font-light text-lg">
-                        <section>
-                            <h2 className="text-sm font-bold uppercase tracking-widest text-foreground mb-4">01. Abstract</h2>
-                            <p>{content.abstract}</p>
-                            <p className="mt-4">
-                                This document outlines the theoretical underpinnings and practical implementation strategies for {content.title}.
-                                The focus is placed on system resilience and information theoretic bounds.
-                            </p>
-                        </section>
+                        {/* Sidebar */}
+                        <aside className="hidden lg:block space-y-8">
+                            <div className="sticky top-24">
+                                {content.equations?.length > 0 && (
+                                    <>
+                                        <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Key Equations</h3>
+                                        <div className="space-y-3 mb-8">
+                                            {content.equations.map((eq: string, i: number) => (
+                                                <LaTeXBlock key={i} equation={eq} />
+                                            ))}
+                                        </div>
+                                    </>
+                                )}
 
-                        <section>
-                            <h2 className="text-sm font-bold uppercase tracking-widest text-foreground mb-4">02. Mathematical Model</h2>
-                            <p className="mb-6">
-                                The core dynamics of the system are governed by the following relations.
-                                We assume a closed system with boundary conditions defined by the operational parameters.
-                            </p>
-                            {content.equations?.map((eq: string, i: number) => (
-                                <LaTeXBlock key={i} equation={eq} />
-                            ))}
-                            <p>
-                                Where the operators represent the standard transformations in the respective Hilbert space.
-                            </p>
-                        </section>
+                                <div className="h-px bg-border my-8" />
 
-                        <section>
-                            <h2 className="text-sm font-bold uppercase tracking-widest text-foreground mb-4">03. Implementation</h2>
-                            <p className="mb-4">
-                                The proposed architecture utilizes a distributed consensus mechanism to ensure data integrity.
-                                Below is a pseudocode representation of the core loop.
-                            </p>
-                            <CodeBlock
-                                language="python"
-                                code={`function process_signal(input_vector):
+                                <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Metadata</h3>
+                                <div className="space-y-4 text-sm">
+                                    <div>
+                                        <span className="block text-muted-foreground mb-1">Status</span>
+                                        <span className="text-foreground">Active Research</span>
+                                    </div>
+                                    {content.tags?.length > 0 && (
+                                        <div>
+                                            <span className="block text-muted-foreground mb-1">Tags</span>
+                                            <div className="flex flex-wrap gap-1">
+                                                {content.tags.map((t: string) => (
+                                                    <span key={t} className="text-xs px-1.5 py-0.5 border border-border text-muted-foreground">{t}</span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                ) : (
+                    // ── Legacy hardcoded content layout ───────────────
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-12">
+
+                        {/* Main Text */}
+                        <article className="space-y-12 text-muted-foreground leading-relaxed font-light text-lg">
+                            <section>
+                                <h2 className="text-sm font-bold uppercase tracking-widest text-foreground mb-4">01. Abstract</h2>
+                                <p>{content.abstract}</p>
+                                <p className="mt-4">
+                                    This document outlines the theoretical underpinnings and practical implementation strategies for {content.title}.
+                                    The focus is placed on system resilience and information theoretic bounds.
+                                </p>
+                            </section>
+
+                            <section>
+                                <h2 className="text-sm font-bold uppercase tracking-widest text-foreground mb-4">02. Mathematical Model</h2>
+                                <p className="mb-6">
+                                    The core dynamics of the system are governed by the following relations.
+                                    We assume a closed system with boundary conditions defined by the operational parameters.
+                                </p>
+                                {content.equations?.map((eq: string, i: number) => (
+                                    <LaTeXBlock key={i} equation={eq} />
+                                ))}
+                                <p>
+                                    Where the operators represent the standard transformations in the respective Hilbert space.
+                                </p>
+                            </section>
+
+                            <section>
+                                <h2 className="text-sm font-bold uppercase tracking-widest text-foreground mb-4">03. Implementation</h2>
+                                <p className="mb-4">
+                                    The proposed architecture utilizes a distributed consensus mechanism to ensure data integrity.
+                                    Below is a pseudocode representation of the core loop.
+                                </p>
+                                <CodeBlock
+                                    language="python"
+                                    code={`function process_signal(input_vector):
     # Initialize state
     state = initialize_basis()
     
@@ -96,48 +142,49 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
         state = update_kalman(state, filtered)
     
     return state.optimal_estimate`}
-                            />
-                        </section>
+                                />
+                            </section>
 
-                        <section>
-                            <h2 className="text-sm font-bold uppercase tracking-widest text-foreground mb-4">04. Results & Extensions</h2>
-                            <p>
-                                Preliminary simulations indicate a 15% improvement in signal-to-noise ratio compared to classical methods.
-                                Future work will extend this framework to higher-dimensional manifolds and explore the implications for quantum-classical hybrid systems.
-                            </p>
-                        </section>
-                    </article>
+                            <section>
+                                <h2 className="text-sm font-bold uppercase tracking-widest text-foreground mb-4">04. Results & Extensions</h2>
+                                <p>
+                                    Preliminary simulations indicate a 15% improvement in signal-to-noise ratio compared to classical methods.
+                                    Future work will extend this framework to higher-dimensional manifolds and explore the implications for quantum-classical hybrid systems.
+                                </p>
+                            </section>
+                        </article>
 
-                    {/* Sidebar / Table of Contents / Metadata */}
-                    <aside className="hidden lg:block space-y-8">
-                        <div className="sticky top-24">
-                            <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Metadata</h3>
-                            <div className="space-y-4 text-sm">
-                                <div>
-                                    <span className="block text-muted-foreground mb-1">Status</span>
-                                    <span className="text-foreground">Active Research</span>
+                        {/* Sidebar / Table of Contents / Metadata */}
+                        <aside className="hidden lg:block space-y-8">
+                            <div className="sticky top-24">
+                                <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Metadata</h3>
+                                <div className="space-y-4 text-sm">
+                                    <div>
+                                        <span className="block text-muted-foreground mb-1">Status</span>
+                                        <span className="text-foreground">Active Research</span>
+                                    </div>
+                                    <div>
+                                        <span className="block text-muted-foreground mb-1">PI</span>
+                                        <span className="text-foreground">S. Rezk</span>
+                                    </div>
+                                    <div>
+                                        <span className="block text-muted-foreground mb-1">License</span>
+                                        <span className="text-foreground">MIT / Apache 2.0</span>
+                                    </div>
                                 </div>
-                                <div>
-                                    <span className="block text-muted-foreground mb-1">PI</span>
-                                    <span className="text-foreground">S. Rezk</span>
-                                </div>
-                                <div>
-                                    <span className="block text-muted-foreground mb-1">License</span>
-                                    <span className="text-foreground">MIT / Apache 2.0</span>
-                                </div>
+
+                                <div className="h-px bg-border my-8" />
+
+                                <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">References</h3>
+                                <ul className="space-y-2 text-xs text-muted-foreground">
+                                    <li>[1] Shannon, C. E. (1948). A Mathematical Theory of Communication.</li>
+                                    <li>[2] Feynman, R. P. (1982). Simulating Physics with Computers.</li>
+                                </ul>
                             </div>
+                        </aside>
 
-                            <div className="h-px bg-border my-8" />
-
-                            <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">References</h3>
-                            <ul className="space-y-2 text-xs text-muted-foreground">
-                                <li>[1] Shannon, C. E. (1948). A Mathematical Theory of Communication.</li>
-                                <li>[2] Feynman, R. P. (1982). Simulating Physics with Computers.</li>
-                            </ul>
-                        </div>
-                    </aside>
-
-                </div>
+                    </div>
+                )}
             </div>
         </motion.div>
     );

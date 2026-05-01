@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, ExternalLink, Hash, BookOpen } from 'lucide-react';
-import { MyNode, nodeContent } from '../../data/graphData';
+import { X, ExternalLink, Hash, BookOpen, Link2 } from 'lucide-react';
+import { MyNode, nodeContent, graphData } from '../../data/graphData';
 import { LaTeX } from '../../components/LaTeX';
 
 interface NodePanelProps {
@@ -19,6 +19,19 @@ const LatexEquation: React.FC<{ eq: string }> = ({ eq }) => (
 
 const NodePanel: React.FC<NodePanelProps> = ({ isOpen, nodeId, onClose, onOpenDocView }) => {
   const content = nodeId ? (nodeContent[nodeId] || nodeContent['default']) : null;
+
+  // Find tag-based related nodes
+  const getTagRelatedNodes = () => {
+    if (!nodeId) return [];
+    const relatedNodeIds = graphData.links
+      .filter((link: any) => link.type === 'tag' && (link.source === nodeId || link.target === nodeId))
+      .map((link: any) => link.source === nodeId ? link.target : link.source);
+
+    const uniqueIds = [...new Set(relatedNodeIds)] as string[];
+    return graphData.nodes.filter((node: MyNode) => uniqueIds.includes(node.id));
+  };
+
+  const tagRelatedNodes = getTagRelatedNodes();
 
   return (
     <AnimatePresence>
@@ -65,6 +78,31 @@ const NodePanel: React.FC<NodePanelProps> = ({ isOpen, nodeId, onClose, onOpenDo
                 <div className="space-y-2">
                   {content.equations.map((eq: string, i: number) => (
                     <LatexEquation key={i} eq={eq} />
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Related by Tags */}
+            {tagRelatedNodes.length > 0 && (
+              <section>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3 flex items-center gap-2">
+                  <Link2 size={12} /> Related by Tags
+                </h3>
+                <div className="space-y-2">
+                  {tagRelatedNodes.map((node: MyNode) => (
+                    <div key={node.id} className="text-sm p-2 rounded border border-border/50 bg-secondary/30 hover:bg-secondary/60 transition-colors cursor-pointer">
+                      <div className="font-medium text-foreground">{node.title}</div>
+                      {node.tags && node.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mt-1">
+                          {node.tags.map((tag: string) => (
+                            <span key={tag} className="text-[9px] uppercase tracking-wider px-1.5 py-0.5 border border-border rounded-full text-muted-foreground bg-background/50">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
               </section>
