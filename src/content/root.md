@@ -4,7 +4,7 @@ title: "SalahDin Rezk"
 group: "root"
 level: 0
 val: 20
-date: "2024-01-01"
+date: "2004-11-02"
 img: "/072d2fe6dcba0b4485129f2618be5d85ed8f7655.png"
 tags: ["Researcher", "Engineer", "Physicist"]
 links:

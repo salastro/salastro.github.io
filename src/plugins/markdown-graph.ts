@@ -83,6 +83,7 @@ export default function markdownGraph(): Plugin {
                 nodeContentMap[frontmatter.id] = {
                     title: frontmatter.title || frontmatter.id,
                     abstract: frontmatter.description || firstParagraph,
+                    date: frontmatter.date || null,
                     htmlContent,
                     equations: frontmatter.equations || [],
                     tags: frontmatter.tags || [],

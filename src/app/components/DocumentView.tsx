@@ -46,7 +46,9 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
                     <div className="flex items-center gap-4 text-sm text-muted-foreground font-mono">
                         <span>ID: {nodeId.toUpperCase().slice(0, 8)}</span>
                         <span>•</span>
-                        <span>Last Updated: 2024-10-14</span>
+                        <span>
+                            Last Updated: {content.date ? new Date(content.date).toLocaleDateString() : 'Unknown'}
+                        </span>
                     </div>
                 </header>
 
