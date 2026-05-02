@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Network, FileText, Filter, Search, ArrowUpDown } from 'lucide-react';
+import { Network, FileText, Filter, Search, ArrowUpDown, Rss } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import GraphView from './components/GraphView';
@@ -269,6 +269,19 @@ export default function App() {
                         </div>
                     </div>
                 )}
+
+                {/* Bottom Right: RSS Feed */}
+                <div className="absolute bottom-8 right-8 pointer-events-auto">
+                    <a
+                        href="/feed.xml"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-all cursor-pointer bg-primary/10 border-primary/20 text-foreground hover:bg-primary/20"
+                        aria-label="Open RSS Feed"
+                    >
+                        <Rss size={14} /> RSS Feed
+                    </a>
+                </div>
             </div>
 
             {/* Side Panel */}
