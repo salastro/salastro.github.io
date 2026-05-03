@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Network, FileText, Filter, Search, ArrowUpDown, Rss } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -7,7 +7,7 @@ import GraphView from './components/GraphView';
 import NodePanel from './components/NodePanel';
 import DocumentView from './components/DocumentView';
 import { ThemeToggle } from '../components/ThemeToggle';
-import { MyNode, graphData } from '../data/graphData';
+import { MyNode, graphData, nodeContent } from '../data/graphData';
 
 type ViewMode = 'graph' | 'document';
 
@@ -31,6 +31,26 @@ export default function App() {
     const handleNodeClick = (node: MyNode) => {
         setActiveNodeId(node.id);
         setIsPanelOpen(true);
+    };
+
+    // Sync URL and title with current view / active document
+    const setLocationForState = (mode: ViewMode, nodeId: string | null) => {
+        try {
+            if (mode === 'graph') {
+                window.history.pushState({}, '', '/graph');
+                document.title = 'SalahDin Rezk - Showcase of My Projects and Archive of My Writings';
+            } else if (mode === 'document' && nodeId) {
+                const encoded = encodeURIComponent(nodeId);
+                window.history.pushState({}, '', `/${encoded}`);
+                const title = nodeContent[nodeId]?.title || nodeId;
+                document.title = `SalahDin Rezk - ${title}`;
+            } else if (mode === 'document' && !nodeId) {
+                window.history.pushState({}, '', '/index');
+                document.title = 'SalahDin Rezk - Showcase of My Projects and Archive of My Writings';
+            }
+        } catch (e) {
+            // ignore history errors (e.g., testing env)
+        }
     };
 
     const handleClosePanel = () => {
@@ -170,6 +190,62 @@ export default function App() {
             </div>
         );
     };
+
+    // Initialize view from URL on first render
+    useEffect(() => {
+        const path = window.location.pathname || '/';
+        const segments = path.split('/').filter(Boolean);
+        if (segments.length === 0) {
+            setViewMode('graph');
+            document.title = 'SalahDin Rezk - Showcase of My Projects and Archive of My Writings';
+            return;
+        }
+        const first = segments[0];
+        if (first === 'graph') {
+            setViewMode('graph');
+        } else if (first === 'index') {
+            setViewMode('document');
+            setActiveNodeId(null);
+        } else {
+            // treat as document id
+            const id = decodeURIComponent(first);
+            setViewMode('document');
+            setActiveNodeId(id);
+        }
+    }, []);
+
+    // Update history/title when view or active node changes
+    useEffect(() => {
+        setLocationForState(viewMode, activeNodeId);
+        if (viewMode !== 'graph') setIsPanelOpen(false);
+    }, [viewMode, activeNodeId]);
+
+    // Handle back/forward
+    useEffect(() => {
+        const onPop = () => {
+            const path = window.location.pathname || '/';
+            const segments = path.split('/').filter(Boolean);
+            if (segments.length === 0) {
+                setViewMode('graph');
+                setActiveNodeId(null);
+                return;
+            }
+            const first = segments[0];
+            if (first === 'graph') {
+                setViewMode('graph');
+                setActiveNodeId(null);
+            } else if (first === 'index') {
+                setViewMode('document');
+                setActiveNodeId(null);
+            } else {
+                const id = decodeURIComponent(first);
+                setViewMode('document');
+                setActiveNodeId(id);
+            }
+        };
+        window.addEventListener('popstate', onPop);
+        return () => window.removeEventListener('popstate', onPop);
+    }, []);
 
     return (
         <div className="relative w-full h-screen overflow-hidden bg-background font-sans text-foreground">
