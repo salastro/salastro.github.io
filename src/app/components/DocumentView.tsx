@@ -24,16 +24,19 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
         >
             <div className="max-w-4xl mx-auto px-6 py-12 md:py-20">
 
-                {/* Navigation */}
-                <button
-                    onClick={onBack}
-                    className="mb-12 flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group cursor-pointer"
-                >
-                    <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> {backLabel}
-                </button>
+                {/* Sticky Top Section (mobile) */}
+                <div className="sticky top-0 bg-background/90 backdrop-blur-sm z-10 md:relative md:bg-transparent md:backdrop-blur-none -mx-6 px-6 py-4 md:py-0 md:mx-0 md:mb-0 mb-4">
+                    {/* Navigation */}
+                    <button
+                        onClick={onBack}
+                        className="mb-0 md:mb-12 flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group cursor-pointer"
+                    >
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> {backLabel}
+                    </button>
+                </div>
 
                 {/* Header */}
-                <header className="mb-16 border-b border-border pb-12">
+                <header className="mb-16 border-b border-border pb-12 md:pb-12 pb-8">
                     <div className="flex flex-wrap gap-2 mb-6">
                         {content.tags?.map((tag: string) => (
                             <span key={tag} className="text-xs uppercase tracking-widest px-2 py-1 border border-border text-muted-foreground">

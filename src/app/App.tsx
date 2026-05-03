@@ -70,6 +70,9 @@ export default function App() {
         setViewMode('graph');
     };
 
+    const isDocumentOpen = viewMode === 'document' && !!activeNodeId;
+    const isIndexMode = viewMode === 'document' && !activeNodeId;
+
     // If in document view and no node selected, show a simple index
     const renderIndex = () => {
         // Apply the same filter logic as the graph
@@ -77,7 +80,7 @@ export default function App() {
         if (filter) {
             if (filter === 'Theory') {
                 filteredNodes = filteredNodes.filter(n => ['focus', 'concept'].includes(n.group));
-            } else if (filter === 'Applied Engineering') {
+            } else if (filter === 'Engineering') {
                 filteredNodes = filteredNodes.filter(n => ['focus', 'project'].includes(n.group));
             } else if (filter === 'Mathematics') {
                 filteredNodes = filteredNodes.filter(n => ['focus', 'concept'].includes(n.group) && (n.tags?.includes('Math') || n.group === 'focus'));
@@ -294,26 +297,35 @@ export default function App() {
 
             {/* Foreground UI Layer (Controls) - always visible */}
             <div className="absolute inset-0 pointer-events-none z-50">
-                {/* Top Left: Filters */}
-                <div className="absolute top-8 left-8 pointer-events-auto">
-                    <div className="flex flex-col items-start gap-2 mt-8">
-                        {['All', 'Theory', 'Applied Engineering', 'Mathematics', 'Philosophy'].map(f => (
-                            <button
-                                key={f}
-                                onClick={() => setFilter(f === 'All' ? null : f)}
-                                className={`text-xs uppercase tracking-widest transition-colors cursor-pointer ${(filter === f || (filter === null && f === 'All'))
-                                    ? 'text-primary font-semibold'
-                                    : 'text-muted-foreground hover:text-foreground'
-                                    }`}
-                            >
-                                {f}
-                            </button>
-                        ))}
+                {/* Top Left: Filters - hidden when document is open */}
+                {viewMode === 'graph' && (
+                    <div className="absolute top-8 left-8 pointer-events-auto">
+                        <div className="flex flex-col items-start gap-2 mt-8">
+                            {['All', 'Theory', 'Engineering', 'Mathematics', 'Philosophy'].map(f => (
+                                <button
+                                    key={f}
+                                    onClick={() => setFilter(f === 'All' ? null : f)}
+                                    className={`text-xs uppercase tracking-widest transition-colors cursor-pointer ${(filter === f || (filter === null && f === 'All'))
+                                        ? 'text-primary font-semibold'
+                                        : 'text-muted-foreground hover:text-foreground'
+                                        }`}
+                                >
+                                    {f}
+                                </button>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                )}
 
                 {/* Top Right: View Toggle and Theme Toggle */}
-                <div className="absolute top-8 right-8 pointer-events-auto flex items-center gap-4">
+                <div
+                    className={`pointer-events-auto items-center gap-4 ${isDocumentOpen
+                            ? 'hidden md:flex md:absolute md:top-8 md:right-8'
+                            : isIndexMode
+                                ? 'fixed top-0 inset-x-0 z-[60] flex justify-end px-4 py-3 bg-background/90 backdrop-blur-sm border-b border-border'
+                                : 'absolute top-8 right-8 flex'
+                        }`}
+                >
                     <ThemeToggle />
                     <button
                         onClick={() => setViewMode('graph')}
@@ -367,13 +379,13 @@ export default function App() {
                     </div>
                 )}
 
-                {/* Bottom Right: RSS Feed */}
-                <div className="absolute bottom-8 right-8 pointer-events-auto">
+                {/* RSS Feed: desktop only */}
+                <div className="hidden md:block md:absolute md:bottom-8 md:right-8 md:pointer-events-auto">
                     <a
                         href="/feed.xml"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-all cursor-pointer bg-primary/10 border-primary/20 text-foreground hover:bg-primary/20"
+                        className="flex w-full md:w-auto justify-center items-center gap-2 px-3 py-2 md:py-1.5 rounded-lg md:rounded-full border text-xs font-medium transition-all cursor-pointer bg-primary/10 border-primary/20 text-foreground hover:bg-primary/20"
                         aria-label="Open RSS Feed"
                     >
                         <Rss size={14} /> RSS Feed
