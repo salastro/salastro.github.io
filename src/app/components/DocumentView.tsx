@@ -45,8 +45,6 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
                         {content.title}
                     </h1>
                     <div className="flex items-center gap-4 text-sm text-muted-foreground font-mono">
-                        <span>ID: {nodeId.toUpperCase().slice(0, 8)}</span>
-                        <span>•</span>
                         <span>
                             Last Updated: {content.date ? formatDateDDMMYYYY(content.date) : 'Unknown'}
                         </span>
