@@ -16,7 +16,7 @@ equations:
   - "\\mathcal{L}_{\\text{SM}} = -\\frac{1}{4} G^a_{\\mu\\nu} G^{a,\\mu\\nu} - \\frac{1}{4} W^i_{\\mu\\nu} W^{i,\\mu\\nu} - \\frac{1}{4} B_{\\mu\\nu} B^{\\mu\\nu} + \\sum_{\\text{fermions}} \\bar{\\psi} i \\gamma^\\mu D_\\mu \\psi + (D_\\mu \\phi)^\\dagger (D^\\mu \\phi) - V(\\phi) - \\left( y_{ij} \\bar{\\psi}_i \\phi \\psi_j + \\text{h.c.} \\right)"
 ---
 
-I am simply a magician who is in love with mathematics, physics, science, philosophy, and all intellectual endeavors. My favorite game is chess, which I do not consider a sport. Throughout my few years of life, it has taught me to accept humans as they are and enjoy the fleeting moments we have before they are gone. This place is made both as a showcase of my projects and an archive of my writings. Thanks for reading, and I hope you have a delightful journey in this corner.
+I am simply a magician who is in love with mathematics, physics, science, philosophy, and all intellectual endeavors. My favorite game is chess, which I do not consider a sport, that would be swimming. Throughout my few years of life, it has taught me to accept humans as they are and enjoy the fleeting moments we have before they are gone. This place is made both as a showcase of my projects and an archive of my writings. Thanks for reading, and I hope you have a delightful journey in this corner of the internet.
 
 > Any sufficiently advanced technology is indistinguishable from magic.
 
