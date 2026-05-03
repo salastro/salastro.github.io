@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { nodeContent } from '../../data/graphData';
 import { LaTeXBlock } from '../../components/LaTeX';
 import { CodeBlock } from '../../components/CodeBlock';
+import { formatDateDDMMYYYY } from '../../lib/utils';
 
 interface DocumentViewProps {
     nodeId: string;
@@ -47,7 +48,7 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
                         <span>ID: {nodeId.toUpperCase().slice(0, 8)}</span>
                         <span>•</span>
                         <span>
-                            Last Updated: {content.date ? new Date(content.date).toLocaleDateString() : 'Unknown'}
+                            Last Updated: {content.date ? formatDateDDMMYYYY(content.date) : 'Unknown'}
                         </span>
                     </div>
                 </header>
