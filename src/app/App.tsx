@@ -193,6 +193,14 @@ export default function App() {
 
     // Initialize view from URL on first render
     useEffect(() => {
+        // Prefer hash-based routing if present (e.g. https://.../#thy-destiny)
+        const hash = (window.location.hash || '').replace(/^#\/?/, '');
+        if (hash) {
+            setViewMode('document');
+            setActiveNodeId(decodeURIComponent(hash));
+            return;
+        }
+
         const path = window.location.pathname || '/';
         const segments = path.split('/').filter(Boolean);
         if (segments.length === 0) {
@@ -222,7 +230,15 @@ export default function App() {
 
     // Handle back/forward
     useEffect(() => {
-        const onPop = () => {
+        const handleLocationChange = () => {
+            // Check hash first
+            const hash = (window.location.hash || '').replace(/^#\/?/, '');
+            if (hash) {
+                setViewMode('document');
+                setActiveNodeId(decodeURIComponent(hash));
+                return;
+            }
+
             const path = window.location.pathname || '/';
             const segments = path.split('/').filter(Boolean);
             if (segments.length === 0) {
@@ -243,8 +259,13 @@ export default function App() {
                 setActiveNodeId(id);
             }
         };
-        window.addEventListener('popstate', onPop);
-        return () => window.removeEventListener('popstate', onPop);
+
+        window.addEventListener('popstate', handleLocationChange);
+        window.addEventListener('hashchange', handleLocationChange);
+        return () => {
+            window.removeEventListener('popstate', handleLocationChange);
+            window.removeEventListener('hashchange', handleLocationChange);
+        };
     }, []);
 
     return (
