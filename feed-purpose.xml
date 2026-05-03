@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SalahDin Rezk Blog</title>
+    <link>https://salastro.github.io</link>
+    <description>Essays and technical writing from SalahDin Rezk.</description>
+    <lastBuildDate>Sun, 03 May 2026 07:56:04 GMT</lastBuildDate>
+    <atom:link href="https://salastro.github.io/feed-purpose.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Thy Destiny</title>
+      <link>https://salastro.github.io/#thy-destiny</link>
+      <guid isPermaLink="true">https://salastro.github.io/#thy-destiny</guid>
+      <pubDate>Fri, 16 Jun 2023 00:00:00 GMT</pubDate>
+      <category>Philosophy</category>
+      <category>Purpose</category>
+      <category>Self-Actualization</category>
+      <description>Envision thyself as the person thou desirest to become, painting a vivid and intricate portrait of thy future self within the realm of thy mind&apos;s eye. Contemplate not only the accomplishments and accolades thou seeketh, but also the qualities and virtues that shall define thee as an individual. Reflect upon the noble goals thou shalt pursue, the profound impact thou shalt have upon the world, and the legacy thou aspirest to leave behind.</description>
+    </item>
+  </channel>
+</rss>
