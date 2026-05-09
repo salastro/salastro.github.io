@@ -167,7 +167,7 @@ export default function App() {
                                             <span>{node.date ? new Date(node.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : 'Undated'}</span>
                                             <span>{formatReadingTime(node.readingTime)}</span>
                                         </div>
-                                        <div className="mt-3 text-xs text-primary group-hover:translate-x-0.5 transition-transform">Open</div>
+                                        {/* <div className="mt-3 text-xs text-primary group-hover:translate-x-0.5 transition-transform">Open</div> */}
                                     </button>
                                 ))}
                             </div>
