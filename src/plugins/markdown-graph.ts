@@ -1,7 +1,10 @@
 import { Plugin } from 'vite';
 import matter from 'gray-matter';
 import { remark } from 'remark';
-import html from 'remark-html';
+import remarkMath from 'remark-math';
+import remarkRehype from 'remark-rehype';
+import rehypeKatex from 'rehype-katex';
+import rehypeStringify from 'rehype-stringify';
 import { globSync } from 'glob';
 import fs from 'fs';
 import path from 'path';
@@ -83,7 +86,12 @@ async function parseMarkdownContent(contentDir: string): Promise<ParsedContent> 
             continue;
         }
 
-        const htmlContent = (await remark().use(html).process(content)).toString();
+        const htmlContent = (await remark()
+            .use(remarkMath)
+            .use(remarkRehype)
+            .use(rehypeKatex)
+            .use(rehypeStringify)
+            .process(content)).toString();
 
         // Extract first paragraph as description if not provided
         const firstParagraph = content.trim().split('\n\n')[0]?.replace(/[#*_`]/g, '').trim() || '';
