@@ -19,6 +19,11 @@ const LatexEquation: React.FC<{ eq: string }> = ({ eq }) => (
   </div>
 );
 
+function formatReadingTime(minutes?: number) {
+  if (!minutes) return null;
+  return `${minutes} min read`;
+}
+
 const NodePanel: React.FC<NodePanelProps> = ({ isOpen, nodeId, onClose, onOpenDocView }) => {
   const content = nodeId ? (nodeContent[nodeId] || nodeContent['default']) : null;
 
@@ -49,6 +54,11 @@ const NodePanel: React.FC<NodePanelProps> = ({ isOpen, nodeId, onClose, onOpenDo
           <div className="sticky top-0 bg-background/90 backdrop-blur-sm p-6 border-b border-border flex justify-between items-start z-10">
             <div>
               <h2 className="text-xl font-medium text-foreground tracking-tight">{content.title}</h2>
+              {formatReadingTime(content.readingTime) && (
+                <p className="mt-1 text-xs text-muted-foreground font-mono uppercase tracking-wider">
+                  {formatReadingTime(content.readingTime)}
+                </p>
+              )}
               <div className="flex gap-2 mt-2 flex-wrap">
                 {content.tags?.map((tag: string) => (
                   <span key={tag} className="text-[10px] uppercase tracking-wider px-2 py-0.5 border border-border rounded-full text-muted-foreground">

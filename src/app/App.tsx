@@ -11,6 +11,11 @@ import { MyNode, graphData, nodeContent } from '../data/graphData';
 
 type ViewMode = 'graph' | 'document';
 
+function formatReadingTime(minutes?: number) {
+    if (!minutes) return null;
+    return `${minutes} min read`;
+}
+
 export default function App() {
     const [activeNodeId, setActiveNodeId] = useState<string | null>(null);
     const [viewMode, setViewMode] = useState<ViewMode>('graph');
@@ -160,8 +165,9 @@ export default function App() {
                                         </p>
                                         <div className="flex items-center justify-between gap-3 text-xs text-muted-foreground">
                                             <span>{node.date ? new Date(node.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : 'Undated'}</span>
-                                            <span className="text-primary group-hover:translate-x-0.5 transition-transform">Open</span>
+                                            <span>{formatReadingTime(node.readingTime)}</span>
                                         </div>
+                                        <div className="mt-3 text-xs text-primary group-hover:translate-x-0.5 transition-transform">Open</div>
                                     </button>
                                 ))}
                             </div>
@@ -226,6 +232,10 @@ export default function App() {
                                     <span className="text-xs font-mono text-muted-foreground">{node.group.toUpperCase()}</span>
                                 </div>
                                 <p className="text-sm text-muted-foreground line-clamp-2 mb-2">{node.description || "Research node awaiting classification."}</p>
+                                <div className="flex items-center justify-between gap-3 text-xs text-muted-foreground mb-2">
+                                    <span>{node.date ? new Date(node.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : 'Undated'}</span>
+                                    <span>{formatReadingTime(node.readingTime)}</span>
+                                </div>
                                 {node.tags && node.tags.length > 0 && (
                                     <div className="flex flex-wrap gap-2">
                                         {node.tags.map(tag => (

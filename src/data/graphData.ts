@@ -11,6 +11,7 @@ export interface MyNode extends NodeObject {
   val?: number; // Size
   img?: string; // Image URL
   date?: string; // Date added/updated (ISO format)
+  readingTime?: number;
 }
 
 export interface MyLink extends LinkObject {

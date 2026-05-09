@@ -12,6 +12,11 @@ interface DocumentViewProps {
     backLabel?: string;
 }
 
+function formatReadingTime(minutes?: number) {
+    if (!minutes) return null;
+    return `${minutes} min read`;
+}
+
 const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel = 'Back' }) => {
     const content = nodeContent[nodeId] || nodeContent['default'];
 
@@ -51,6 +56,9 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
                         <span>
                             Last Updated: {content.date ? formatDateDDMMYYYY(content.date) : 'Unknown'}
                         </span>
+                        {formatReadingTime(content.readingTime) && (
+                            <span>{formatReadingTime(content.readingTime)}</span>
+                        )}
                     </div>
                 </header>
 

@@ -68,6 +68,23 @@ function toRfc822Date(value: string | null): string {
     return date.toUTCString();
 }
 
+function estimateReadingTime(markdownContent: string): number {
+    const cleanedContent = markdownContent
+        .replace(/```[\s\S]*?```/g, ' ')
+        .replace(/`[^`]*`/g, ' ')
+        .replace(/\$\$[\s\S]*?\$\$/g, ' ')
+        .replace(/\$[^$]*\$/g, ' ')
+        .replace(/!\[[^\]]*\]\([^\)]*\)/g, ' ')
+        .replace(/\[([^\]]*)\]\([^\)]*\)/g, '$1')
+        .replace(/^#{1,6}\s+/gm, ' ')
+        .replace(/[>*_~#+=-]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    const words = cleanedContent ? cleanedContent.split(' ').length : 0;
+    return Math.max(1, Math.ceil(words / 200));
+}
+
 async function parseMarkdownContent(contentDir: string): Promise<ParsedContent> {
     const files = globSync('**/*.md', { cwd: contentDir });
 
@@ -92,6 +109,7 @@ async function parseMarkdownContent(contentDir: string): Promise<ParsedContent> 
             .use(rehypeKatex)
             .use(rehypeStringify)
             .process(content)).toString();
+        const readingTime = estimateReadingTime(content);
 
         // Extract first paragraph as description if not provided
         const firstParagraph = content.trim().split('\n\n')[0]?.replace(/[#*_`]/g, '').trim() || '';
@@ -105,6 +123,7 @@ async function parseMarkdownContent(contentDir: string): Promise<ParsedContent> 
             val: frontmatter.val ?? 5,
             date: frontmatter.date,
             img: frontmatter.img,
+            readingTime,
             description,
             tags: frontmatter.tags,
         });
@@ -113,6 +132,7 @@ async function parseMarkdownContent(contentDir: string): Promise<ParsedContent> 
             title: frontmatter.title || frontmatter.id,
             abstract: description,
             date: frontmatter.date || null,
+            readingTime,
             htmlContent,
             equations: frontmatter.equations || [],
             tags: frontmatter.tags || [],
