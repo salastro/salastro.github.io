@@ -75,6 +75,15 @@ export default function App() {
 
     // If in document view and no node selected, show a simple index
     const renderIndex = () => {
+        const recentWritings = graphData.nodes
+            .filter(n => n.group !== 'root' && n.date)
+            .sort((a, b) => {
+                const dateA = a.date ? new Date(a.date).getTime() : 0;
+                const dateB = b.date ? new Date(b.date).getTime() : 0;
+                return dateB - dateA;
+            })
+            .slice(0, 5);
+
         // Apply the same filter logic as the graph
         let filteredNodes = graphData.nodes.filter(n => n.group !== 'root');
         if (filter) {
@@ -119,6 +128,46 @@ export default function App() {
         return (
             <div className="min-h-screen bg-background text-foreground p-8 md:p-20 pt-24 overflow-y-auto">
                 <div className="max-w-4xl mx-auto">
+                    {recentWritings.length > 0 && (
+                        <section className="mb-12 rounded-2xl border border-border/70 bg-secondary/30 p-6 md:p-8 shadow-sm">
+                            <div className="flex items-center justify-between gap-4 mb-6">
+                                <div>
+                                    <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">Featured</p>
+                                    <h2 className="text-2xl md:text-3xl font-semibold text-foreground">Recent Writings</h2>
+                                </div>
+                                <p className="text-sm text-muted-foreground max-w-xs text-right">
+                                    The latest dated notes and essays.
+                                </p>
+                            </div>
+
+                            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                                {recentWritings.map(node => (
+                                    <button
+                                        key={node.id}
+                                        onClick={() => { setPreviousViewMode('document'); setActiveNodeId(node.id); setViewMode('document'); }}
+                                        className="group text-left rounded-xl border border-border bg-background/80 p-4 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md cursor-pointer"
+                                    >
+                                        <div className="flex items-start justify-between gap-3 mb-3">
+                                            <h3 className="text-base font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                                                {node.title}
+                                            </h3>
+                                            <span className="text-[10px] uppercase tracking-widest text-muted-foreground shrink-0">
+                                                {node.group}
+                                            </span>
+                                        </div>
+                                        <p className="text-sm text-muted-foreground line-clamp-3 mb-4">
+                                            {node.description || 'Research node awaiting classification.'}
+                                        </p>
+                                        <div className="flex items-center justify-between gap-3 text-xs text-muted-foreground">
+                                            <span>{node.date ? new Date(node.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : 'Undated'}</span>
+                                            <span className="text-primary group-hover:translate-x-0.5 transition-transform">Open</span>
+                                        </div>
+                                    </button>
+                                ))}
+                            </div>
+                        </section>
+                    )}
+
                     <div className="mb-8">
                         <div className="relative">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
