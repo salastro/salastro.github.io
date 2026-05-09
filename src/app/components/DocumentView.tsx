@@ -52,12 +52,12 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
                     <h1 className="text-4xl md:text-5xl font-semibold text-foreground mb-6 tracking-tight leading-tight">
                         {content.title}
                     </h1>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground font-mono">
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground font-mono w-full">
                         <span>
                             Last Updated: {content.date ? formatDateDDMMYYYY(content.date) : 'Unknown'}
                         </span>
                         {formatReadingTime(content.readingTime) && (
-                            <span>{formatReadingTime(content.readingTime)}</span>
+                            <span className="ml-auto text-right whitespace-nowrap">{formatReadingTime(content.readingTime)}</span>
                         )}
                     </div>
                 </header>
