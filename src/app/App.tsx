@@ -196,6 +196,13 @@ export default function App() {
 
     // Initialize view from URL on first render
     useEffect(() => {
+        // Check if we're being redirected from 404.html (GitHub Pages SPA routing)
+        const redirect = sessionStorage.redirect;
+        if (redirect) {
+            delete sessionStorage.redirect;
+            window.history.replaceState({}, '', redirect);
+        }
+
         // Prefer hash-based routing if present (e.g. https://.../#thy-destiny)
         const hash = (window.location.hash || '').replace(/^#\/?/, '');
         if (hash) {
@@ -320,10 +327,10 @@ export default function App() {
                 {/* Top Right: View Toggle and Theme Toggle */}
                 <div
                     className={`pointer-events-auto items-center gap-4 ${isDocumentOpen
-                            ? 'hidden md:flex md:absolute md:top-8 md:right-8'
-                            : isIndexMode
-                                ? 'fixed top-0 inset-x-0 z-[60] flex justify-end px-4 py-3 bg-background/90 backdrop-blur-sm border-b border-border'
-                                : 'absolute top-8 right-8 flex'
+                        ? 'hidden md:flex md:absolute md:top-8 md:right-8'
+                        : isIndexMode
+                            ? 'fixed top-0 inset-x-0 z-[60] flex justify-end px-4 py-3 bg-background/90 backdrop-blur-sm border-b border-border'
+                            : 'absolute top-8 right-8 flex'
                         }`}
                 >
                     <ThemeToggle />
