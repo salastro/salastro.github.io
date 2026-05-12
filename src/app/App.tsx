@@ -461,7 +461,7 @@ export default function App() {
                 {/* RSS Feed: desktop only */}
                 <div className="hidden md:block md:absolute md:bottom-8 md:right-8 md:pointer-events-auto">
                     <a
-                        href="/feed.xml"
+                        href="/feed/index.xml"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex w-full md:w-auto justify-center items-center gap-2 px-3 py-2 md:py-1.5 rounded-lg md:rounded-full border text-xs font-medium transition-all cursor-pointer bg-primary/10 border-primary/20 text-foreground hover:bg-primary/20"

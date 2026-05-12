@@ -12,8 +12,8 @@ import path from 'path';
 const VIRTUAL_MODULE_ID = 'virtual:graph-content';
 const RESOLVED_ID = '\0' + VIRTUAL_MODULE_ID;
 
-const RSS_FEED_PATH = 'feed.xml';
-const JSON_FEED_PATH = 'feed.json';
+const RSS_FEED_PATH = 'feed/index.xml';
+const JSON_FEED_PATH = 'feed/index.json';
 const DEFAULT_SITE_URL = process.env.SITE_URL || process.env.VITE_SITE_URL || 'https://example.com';
 const FEED_TITLE = 'SalahDin Rezk Blog';
 const FEED_DESCRIPTION = 'Essays and technical writing from SalahDin Rezk.';
@@ -288,12 +288,12 @@ export default function markdownGraph(): Plugin {
             for (let p = 1; p <= pageCount; p++) {
                 const start = (p - 1) * PAGE_SIZE;
                 const pagePosts = posts.slice(start, start + PAGE_SIZE);
-                const xmlFileName = p === 1 ? RSS_FEED_PATH : `feed-page-${p}.xml`;
-                const jsonFileName = p === 1 ? JSON_FEED_PATH : `feed-page-${p}.json`;
+                const xmlFileName = p === 1 ? RSS_FEED_PATH : `feed/index.${p}.xml`;
+                const jsonFileName = p === 1 ? JSON_FEED_PATH : `feed/index.${p}.json`;
                 const pageHref = `${siteUrl}/${xmlFileName}`;
                 const pageJsonHref = `${siteUrl}/${jsonFileName}`;
-                const nextXml = p < pageCount ? `${siteUrl}/${p + 1 === 1 ? RSS_FEED_PATH : `feed-page-${p + 1}.xml`}` : undefined;
-                const nextJson = p < pageCount ? `${siteUrl}/${p + 1 === 1 ? JSON_FEED_PATH : `feed-page-${p + 1}.json`}` : undefined;
+                const nextXml = p < pageCount ? `${siteUrl}/${p + 1 === 1 ? RSS_FEED_PATH : `feed/index.${p + 1}.xml`}` : undefined;
+                const nextJson = p < pageCount ? `${siteUrl}/${p + 1 === 1 ? JSON_FEED_PATH : `feed/index.${p + 1}.json`}` : undefined;
 
                 const rssXml = buildRssXml(pagePosts, pageHref, nextXml);
                 this.emitFile({
@@ -326,12 +326,12 @@ export default function markdownGraph(): Plugin {
                 for (let p = 1; p <= tagPageCount; p++) {
                     const start = (p - 1) * PAGE_SIZE;
                     const pagePosts = taggedPosts.slice(start, start + PAGE_SIZE);
-                    const xmlFileName = p === 1 ? `feed-${tagSafeFileName}.xml` : `feed-${tagSafeFileName}-page-${p}.xml`;
-                    const jsonFileName = p === 1 ? `feed-${tagSafeFileName}.json` : `feed-${tagSafeFileName}-page-${p}.json`;
+                    const xmlFileName = p === 1 ? `feed/${tagSafeFileName}.xml` : `feed/${tagSafeFileName}.${p}.xml`;
+                    const jsonFileName = p === 1 ? `feed/${tagSafeFileName}.json` : `feed/${tagSafeFileName}.${p}.json`;
                     const pageHref = `${siteUrl}/${xmlFileName}`;
                     const pageJsonHref = `${siteUrl}/${jsonFileName}`;
-                    const nextXml = p < tagPageCount ? `${siteUrl}/${p + 1 === 1 ? `feed-${tagSafeFileName}.xml` : `feed-${tagSafeFileName}-page-${p + 1}.xml`}` : undefined;
-                    const nextJson = p < tagPageCount ? `${siteUrl}/${p + 1 === 1 ? `feed-${tagSafeFileName}.json` : `feed-${tagSafeFileName}-page-${p + 1}.json`}` : undefined;
+                    const nextXml = p < tagPageCount ? `${siteUrl}/${p + 1 === 1 ? `feed/${tagSafeFileName}.xml` : `feed/${tagSafeFileName}.${p + 1}.xml`}` : undefined;
+                    const nextJson = p < tagPageCount ? `${siteUrl}/${p + 1 === 1 ? `feed/${tagSafeFileName}.json` : `feed/${tagSafeFileName}.${p + 1}.json`}` : undefined;
 
                     const rssXml = buildRssXml(pagePosts, pageHref, nextXml);
                     this.emitFile({
@@ -361,18 +361,18 @@ export default function markdownGraph(): Plugin {
         },
 
         configureServer(server) {
-            // Serve RSS and JSON feeds in dev mode (main and tag-filtered feeds with pagination)
+            // Serve RSS and JSON feeds in dev mode (main and tag-filtered feed with pagination)
             server.middlewares.use(async (req, res, next) => {
                 try {
                     if (!req.url) return next();
                     const url = req.url.split('?')[0].replace(/^\//, '');
 
-                    // Match main feeds: /feed.xml, /feed-page-2.xml, /feed.json, /feed-page-2.json
-                    const mainRssMatch = url.match(/^feed(?:-page-(\d+))?\.xml$/);
-                    const mainJsonMatch = url.match(/^feed(?:-page-(\d+))?\.json$/);
+                    // Match main feeds: /index.xml, /index.2.xml, /index.json, /index.2.json, etc.
+                    const mainRssMatch = url.match(/^feed\/index(?:\.(\d+))?\.xml$/);
+                    const mainJsonMatch = url.match(/^feed\/index(?:\.(\d+))?\.json$/);
 
-                    // Match tag feeds: /feed-{tag}.xml, /feed-{tag}-page-2.xml, etc.
-                    const tagFeedMatch = url.match(/^feed-(.+?)(?:-page-(\d+))?\.(?:xml|json)$/);
+                    // Match tag feeds: /feed/tag-name.xml, /feed/tag-name.2.xml, /feed/tag-name.json, /feed/tag-name.2.json, etc.
+                    const tagFeedMatch = url.match(/^feed\/(.+?)(?:\.(\d+))?\.(?:xml|json)$/);
 
                     if (!(mainRssMatch || mainJsonMatch || tagFeedMatch) || !fs.existsSync(contentDir)) {
                         return next();
@@ -387,10 +387,10 @@ export default function markdownGraph(): Plugin {
                         if (pageIndex >= 1 && pageIndex <= pageCount) {
                             const start = (pageIndex - 1) * PAGE_SIZE;
                             const pagePosts = posts.slice(start, start + PAGE_SIZE);
-                            const xmlFileName = pageIndex === 1 ? RSS_FEED_PATH : `feed-page-${pageIndex}.xml`;
+                            const xmlFileName = pageIndex === 1 ? RSS_FEED_PATH : `feed/index.${pageIndex}.xml`;
                             const pageHref = `${siteUrl}/${xmlFileName}`;
                             const nextXml =
-                                pageIndex < pageCount ? `${siteUrl}/${pageIndex + 1 === 1 ? RSS_FEED_PATH : `feed-page-${pageIndex + 1}.xml`}` : undefined;
+                                pageIndex < pageCount ? `${siteUrl}/${pageIndex + 1 === 1 ? RSS_FEED_PATH : `feed/index.${pageIndex + 1}.xml`}` : undefined;
                             const xml = buildRssXml(pagePosts, pageHref, nextXml);
                             res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');
                             res.end(xml);
@@ -403,10 +403,10 @@ export default function markdownGraph(): Plugin {
                         if (pageIndex >= 1 && pageIndex <= pageCount) {
                             const start = (pageIndex - 1) * PAGE_SIZE;
                             const pagePosts = posts.slice(start, start + PAGE_SIZE);
-                            const jsonFileName = pageIndex === 1 ? JSON_FEED_PATH : `feed-page-${pageIndex}.json`;
+                            const jsonFileName = pageIndex === 1 ? JSON_FEED_PATH : `feed/index.${pageIndex}.json`;
                             const pageHref = `${siteUrl}/${jsonFileName}`;
                             const nextJson =
-                                pageIndex < pageCount ? `${siteUrl}/${pageIndex + 1 === 1 ? JSON_FEED_PATH : `feed-page-${pageIndex + 1}.json`}` : undefined;
+                                pageIndex < pageCount ? `${siteUrl}/${pageIndex + 1 === 1 ? JSON_FEED_PATH : `feed/index.${pageIndex + 1}.json`}` : undefined;
                             const json = buildJsonFeed(pagePosts, pageHref, nextJson);
                             res.setHeader('Content-Type', 'application/json; charset=utf-8');
                             res.end(json);
@@ -441,21 +441,21 @@ export default function markdownGraph(): Plugin {
                                 const pagePosts = taggedPosts.slice(start, start + PAGE_SIZE);
 
                                 if (isXml) {
-                                    const xmlFileName = pageIndex === 1 ? `feed-${tagSafeFileName}.xml` : `feed-${tagSafeFileName}-page-${pageIndex}.xml`;
+                                    const xmlFileName = pageIndex === 1 ? `feed/${tagSafeFileName}.xml` : `feed/${tagSafeFileName}.${pageIndex}.xml`;
                                     const pageHref = `${siteUrl}/${xmlFileName}`;
                                     const nextXml =
                                         pageIndex < tagPageCount
-                                            ? `${siteUrl}/${pageIndex + 1 === 1 ? `feed-${tagSafeFileName}.xml` : `feed-${tagSafeFileName}-page-${pageIndex + 1}.xml`}`
+                                            ? `${siteUrl}/${pageIndex + 1 === 1 ? `feed/${tagSafeFileName}.xml` : `feed/${tagSafeFileName}.${pageIndex + 1}.xml`}`
                                             : undefined;
                                     const xml = buildRssXml(pagePosts, pageHref, nextXml);
                                     res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');
                                     res.end(xml);
                                 } else {
-                                    const jsonFileName = pageIndex === 1 ? `feed-${tagSafeFileName}.json` : `feed-${tagSafeFileName}-page-${pageIndex}.json`;
+                                    const jsonFileName = pageIndex === 1 ? `feed/${tagSafeFileName}.json` : `feed/${tagSafeFileName}.${pageIndex}.json`;
                                     const pageHref = `${siteUrl}/${jsonFileName}`;
                                     const nextJson =
                                         pageIndex < tagPageCount
-                                            ? `${siteUrl}/${pageIndex + 1 === 1 ? `feed-${tagSafeFileName}.json` : `feed-${tagSafeFileName}-page-${pageIndex + 1}.json`}`
+                                            ? `${siteUrl}/${pageIndex + 1 === 1 ? `feed/${tagSafeFileName}.json` : `feed/${tagSafeFileName}.${pageIndex + 1}.json`}`
                                             : undefined;
                                     const json = buildJsonFeed(pagePosts, pageHref, nextJson);
                                     res.setHeader('Content-Type', 'application/json; charset=utf-8');
