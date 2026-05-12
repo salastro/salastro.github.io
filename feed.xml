@@ -4,9 +4,21 @@
     <title>SalahDin Rezk Blog</title>
     <link>https://salastro.github.io</link>
     <description>Essays and technical writing from SalahDin Rezk.</description>
-    <lastBuildDate>Sat, 09 May 2026 09:24:17 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2026 07:09:54 GMT</lastBuildDate>
     <atom:link href="https://salastro.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-
+    <atom:link rel="next" href="https://salastro.github.io/feed-page-2.xml" type="application/rss+xml"/>
+    <item>
+      <title>How I started Google Summer of Code with SymPy</title>
+      <link>https://salastro.github.io/#how-i-started-with-gsoc</link>
+      <guid isPermaLink="true">https://salastro.github.io/#how-i-started-with-gsoc</guid>
+      <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>open-source</category>
+      <category>contribution</category>
+      <category>community</category>
+      <description>Sometime during 2025, on what seemed like just another ordinary day, fate decided to intervene in its mysterious way. During a casual conversation, a friend of mine mentioned GSoC to me. Until that moment, I had never heard of it before, nor did I know about the opportunities it offered. Curious, I started looking into it, and the more I learned, the more interested I became. The idea of contributing to open-source projects and collaborating with experienced developers felt both exciting and inspiring. So, naturally, I decided to take a chance and apply.</description>
+    </item>
     <item>
       <title>Sorrows of the Inadequate Soul</title>
       <link>https://salastro.github.io/#sorrows-of-the-inadequate-soul</link>
@@ -97,18 +109,6 @@ Within the chaotic and unpredictable nature of human existence, the act of praye
       <category>Esoteric Languages</category>
       <category>Programming</category>
       <description>[An obscure little project](https://github.com/salastro/vimBrain) that I finished recently was to create an esoteric programming language. My goal was to achieve the smallest possible set of vim-like instructions while being Turing-complete.</description>
-    </item>
-    <item>
-      <title>A Linux dead simple guide!</title>
-      <link>https://salastro.github.io/#which-distro</link>
-      <guid isPermaLink="true">https://salastro.github.io/#which-distro</guid>
-      <pubDate>Thu, 11 Nov 2021 00:00:00 GMT</pubDate>
-      <category>Distributions</category>
-      <category>Linux</category>
-      <category>Guide</category>
-      <description>Introduction
- What is a Linux distribution 
-Linux distributions usually refers to a family of operating systems that uses the Linux kernel and are similar in some design aspects. For the most part, Linux distributions follows the Unix philosophy and are Unix-like operating systems.</description>
     </item>
   </channel>
 </rss>

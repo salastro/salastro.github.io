@@ -6,6 +6,20 @@
   "description": "Essays and technical writing from SalahDin Rezk.",
   "items": [
     {
+      "id": "https://salastro.github.io/#how-i-started-with-gsoc",
+      "url": "https://salastro.github.io/#how-i-started-with-gsoc",
+      "title": "How I started Google Summer of Code with SymPy",
+      "content_text": "Sometime during 2025, on what seemed like just another ordinary day, fate decided to intervene in its mysterious way. During a casual conversation, a friend of mine mentioned GSoC to me. Until that moment, I had never heard of it before, nor did I know about the opportunities it offered. Curious, I started looking into it, and the more I learned, the more interested I became. The idea of contributing to open-source projects and collaborating with experienced developers felt both exciting and inspiring. So, naturally, I decided to take a chance and apply.",
+      "date_published": "2026-05-12",
+      "tags": [
+        "gsoc",
+        "sympy",
+        "open-source",
+        "contribution",
+        "community"
+      ]
+    },
+    {
       "id": "https://salastro.github.io/#sorrows-of-the-inadequate-soul",
       "url": "https://salastro.github.io/#sorrows-of-the-inadequate-soul",
       "title": "Sorrows of the Inadequate Soul",
@@ -112,18 +126,7 @@
         "Esoteric Languages",
         "Programming"
       ]
-    },
-    {
-      "id": "https://salastro.github.io/#which-distro",
-      "url": "https://salastro.github.io/#which-distro",
-      "title": "A Linux dead simple guide!",
-      "content_text": "Introduction\n What is a Linux distribution \nLinux distributions usually refers to a family of operating systems that uses the Linux kernel and are similar in some design aspects. For the most part, Linux distributions follows the Unix philosophy and are Unix-like operating systems.",
-      "date_published": "2021-11-11",
-      "tags": [
-        "Distributions",
-        "Linux",
-        "Guide"
-      ]
     }
-  ]
+  ],
+  "next_url": "https://salastro.github.io/feed-page-2.json"
 }
