@@ -3,7 +3,7 @@ id: "how-i-started-with-gsoc"
 title: "How I started Google Summer of Code with SymPy"
 group: "essay"
 level: 2
-val: 4
+val: 10
 date: "2026-05-12"
 tags: ["gsoc", "sympy", "open-source", "contribution", "community"]
 projects: ["sympy"]
@@ -12,7 +12,7 @@ links:
   - "sympy"
 ---
 
-Sometime during 2025, on what seemed like just another ordinary day, fate decided to intervene in its mysterious way. During a casual conversation, a friend of mine mentioned GSoC to me. Until that moment, I had never heard of it before, nor did I know about the opportunities it offered. Curious, I started looking into it, and the more I learned, the more interested I became. The idea of contributing to open-source projects and collaborating with experienced developers felt both exciting and inspiring. So, naturally, I decided to take a chance and apply.
+Sometime during 2025, on what seemed like just another ordinary day, fate decided to intervene in its mysterious way. During a casual conversation, a friend of mine mentioned GSoC to me. Until that moment, I had never heard of it before, nor did I know about the opportunities it offered. Curious, I started looking into it, and the more I learned, the more interested I became. I have already tried contributing to open-source projects, yet the idea of collaborating with experienced developers felt exciting. So, naturally, I decided to take a chance and apply.
 
 Back then, I was interested in two organizations: [neovim](https://neovim.io/) and [sympy](https://www.sympy.org/). I have been using NeoVIM for years at this point, and even though I did not feel confident at the least in contributing to the codebase, after all all that I have done was tinkering with my configuration, I decided to give it a shot. On the other hand, I have been using SymPy extensively for the last couple of months; it had helped me with coursework, projects, and most importantly my internship at the time. I felt more confident in contributing to SymPy as their codebase is in Python, which I am very experienced at.
 

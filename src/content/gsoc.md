@@ -3,7 +3,7 @@ id: "gsoc"
 title: "Google Summer of Code"
 group: "focus"
 level: 1
-val: 8
+val: 20
 date: "2026-05-11"
 img: "focus/gsoc.svg"
 tags: ["open-source", "mentorship", "community", "summer-program", "software-contribution"]

@@ -3,9 +3,9 @@ id: "sympy"
 title: "SymPy"
 group: "GSoC Projects"
 level: 2
-val: 5
+val: 15
 date: "2026-05-12"
-img: "projects/sympy.svg"
+img: "focus/sympy.svg"
 summary: "SymPy is a Python library for symbolic mathematics. This node represents projects contributing to its development."
 concepts: ["symbolic mathematics", "Python library", "open-source"]
 tags: ["Python", "math", "symbolic computation"]
