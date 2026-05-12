@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SalahDin Rezk Blog</title>
+    <link>https://salastro.github.io</link>
+    <description>Essays and technical writing from SalahDin Rezk.</description>
+    <lastBuildDate>Tue, 12 May 2026 07:50:47 GMT</lastBuildDate>
+    <atom:link href="https://salastro.github.io/feeds/languages.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>The Programming of Wizards</title>
+      <link>https://salastro.github.io/#apl-the-programming-of-wizards</link>
+      <guid isPermaLink="true">https://salastro.github.io/#apl-the-programming-of-wizards</guid>
+      <pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate>
+      <category>APL</category>
+      <category>Array Programming</category>
+      <category>Languages</category>
+      <description>APL (A Programming Language) is an exceptionally unique language. It mainly follows an array paradigm, unlike the usual functional and object-oriented approaches; it depends heavily on weird mathematical glyphs; and it is surprisingly elegant.</description>
+    </item>
+  </channel>
+</rss>

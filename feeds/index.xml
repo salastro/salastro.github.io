@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SalahDin Rezk Blog</title>
+    <link>https://salastro.github.io</link>
+    <description>Essays and technical writing from SalahDin Rezk.</description>
+    <lastBuildDate>Tue, 12 May 2026 07:50:47 GMT</lastBuildDate>
+    <atom:link href="https://salastro.github.io/feeds/index.xml" rel="self" type="application/rss+xml"/>
+    <atom:link rel="next" href="https://salastro.github.io/feeds/index.2.xml" type="application/rss+xml"/>
+    <item>
+      <title>How I started Google Summer of Code with SymPy</title>
+      <link>https://salastro.github.io/#how-i-started-with-gsoc</link>
+      <guid isPermaLink="true">https://salastro.github.io/#how-i-started-with-gsoc</guid>
+      <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>open-source</category>
+      <category>contribution</category>
+      <category>community</category>
+      <description>Sometime during 2025, on what seemed like just another ordinary day, fate decided to intervene in its mysterious way. During a casual conversation, a friend of mine mentioned GSoC to me. Until that moment, I had never heard of it before, nor did I know about the opportunities it offered. Curious, I started looking into it, and the more I learned, the more interested I became. I have already tried contributing to open-source projects, yet the idea of collaborating with experienced developers felt exciting. So, naturally, I decided to take a chance and apply.</description>
+    </item>
+    <item>
+      <title>Sorrows of the Inadequate Soul</title>
+      <link>https://salastro.github.io/#sorrows-of-the-inadequate-soul</link>
+      <guid isPermaLink="true">https://salastro.github.io/#sorrows-of-the-inadequate-soul</guid>
+      <pubDate>Tue, 31 Oct 2023 00:00:00 GMT</pubDate>
+      <category>Philosophy</category>
+      <category>Inadequacy</category>
+      <category>Struggle</category>
+      <description>I find myself engulfed in a profound disorientation, borne from the acute realization of my own inadequacy. Every fiber of my being resonates with a palpable sense of limitation, leaving me bereft of any semblance of fulfillment. I harbor naught but a fervent desire for the release of death upon my humble soul, for it struggles to grasp the boundless potential within, a potential thwarted not by external circumstances, but rather by my own inability to rise to the standards I have set. Obstacles, once perceived as mere trials, now assume the guise of transformative crucibles, intended to refine my essence into the epitome of what it ought to be. Yet, in this lamentable state, I find myself so profoundly wretched that the very essence of my humanity is called into question.</description>
+    </item>
+    <item>
+      <title>The Profound Significance of Prayer</title>
+      <link>https://salastro.github.io/#prayer</link>
+      <guid isPermaLink="true">https://salastro.github.io/#prayer</guid>
+      <pubDate>Tue, 22 Aug 2023 00:00:00 GMT</pubDate>
+      <category>Philosophy</category>
+      <category>Spirituality</category>
+      <category>Prayer</category>
+      <description>Introduction
+Within the chaotic and unpredictable nature of human existence, the act of prayer emerges as a profound source of order and stability. It provides individuals with a framework to orient themselves, find meaning in their actions, and make sense of the bewildering world around them. Through regular engagement in prayer, individuals establish a structured routine that permeates their lives, offering a sanctuary of stability and purpose. Thus it becomes necessary to delve into the depths of prayer, exploring its physical, spiritual, and philosophical dimensions, unveiling the profound connection between the remembrance of death and this sacred act.</description>
+    </item>
+    <item>
+      <title>Thy Destiny</title>
+      <link>https://salastro.github.io/#thy-destiny</link>
+      <guid isPermaLink="true">https://salastro.github.io/#thy-destiny</guid>
+      <pubDate>Fri, 16 Jun 2023 00:00:00 GMT</pubDate>
+      <category>Philosophy</category>
+      <category>Purpose</category>
+      <category>Self-Actualization</category>
+      <description>Envision thyself as the person thou desirest to become, painting a vivid and intricate portrait of thy future self within the realm of thy mind&apos;s eye. Contemplate not only the accomplishments and accolades thou seeketh, but also the qualities and virtues that shall define thee as an individual. Reflect upon the noble goals thou shalt pursue, the profound impact thou shalt have upon the world, and the legacy thou aspirest to leave behind.</description>
+    </item>
+    <item>
+      <title>Forever Alone</title>
+      <link>https://salastro.github.io/#alone</link>
+      <guid isPermaLink="true">https://salastro.github.io/#alone</guid>
+      <pubDate>Wed, 02 Nov 2022 00:00:00 GMT</pubDate>
+      <category>Philosophy</category>
+      <category>Existentialism</category>
+      <category>Self</category>
+      <description>The thought that hunts those who think of us the most is being of a something greater than ours. It is the search for the meaning that we crave for to fulfil our existence in life. We aim for something other than the manifestation that we acquire because of our realization of its incompleteness. Even the most narcissistic of us seek in similar vain. I may even argue that the only difference between who were deemed sane and those who are not is a corruption in the essence of meaning. For example, narcissists think that they can be of everything without paying pain and guts.</description>
+    </item>
+    <item>
+      <title>Embrace Death</title>
+      <link>https://salastro.github.io/#death</link>
+      <guid isPermaLink="true">https://salastro.github.io/#death</guid>
+      <pubDate>Sat, 20 Aug 2022 00:00:00 GMT</pubDate>
+      <category>Philosophy</category>
+      <category>Mortality</category>
+      <category>Acceptance</category>
+      <description>Death, the most detested of the experience (i.e. life) from the majority of whom endure. People hate, avoid, and even fight it, but no matter the struggle with that edifice, it will devour you and everyone close to your heart. You will have—even if you hate to—accept it.</description>
+    </item>
+    <item>
+      <title>Is Area a Vector or Scalar?</title>
+      <link>https://salastro.github.io/#is-area-vector-or-scalar</link>
+      <guid isPermaLink="true">https://salastro.github.io/#is-area-vector-or-scalar</guid>
+      <pubDate>Fri, 01 Apr 2022 00:00:00 GMT</pubDate>
+      <category>Physics</category>
+      <category>Physical Models</category>
+      <category>Vectors</category>
+      <description>In grade 10 we had a discussion with our mechanics and mathematics teacher about how should area be described. He insisted that area is a scalar, while some of us were totally convinced that it should be a vector. I, personally, was on the scalar side since vectors always have a direction, and area can not have such a characteristic. The only vector related to area is the normal to its surface, which is looked to me as a completely separate thing from area itself. It may be attached to it, but it is not what defines it.</description>
+    </item>
+    <item>
+      <title>Leaving Social Media for Good</title>
+      <link>https://salastro.github.io/#leaving-social-media</link>
+      <guid isPermaLink="true">https://salastro.github.io/#leaving-social-media</guid>
+      <pubDate>Fri, 04 Mar 2022 00:00:00 GMT</pubDate>
+      <category>Productivity</category>
+      <category>Digital</category>
+      <category>Habits</category>
+      <description>In my humble opinion, the way modern social media is being used can&apos;t be more toxic. We don&apos;t really engage, have fun, or learn. You waste hours of your life doing nothing but scroll through an endless stream of meaningless content. Human lives should be wasted on nothing like this. I won&apos;t be talking about why to leave, you are here because you already want to leave.</description>
+    </item>
+    <item>
+      <title>The Programming of Wizards</title>
+      <link>https://salastro.github.io/#apl-the-programming-of-wizards</link>
+      <guid isPermaLink="true">https://salastro.github.io/#apl-the-programming-of-wizards</guid>
+      <pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate>
+      <category>APL</category>
+      <category>Array Programming</category>
+      <category>Languages</category>
+      <description>APL (A Programming Language) is an exceptionally unique language. It mainly follows an array paradigm, unlike the usual functional and object-oriented approaches; it depends heavily on weird mathematical glyphs; and it is surprisingly elegant.</description>
+    </item>
+    <item>
+      <title>VIM BRAIN</title>
+      <link>https://salastro.github.io/#vimbrain</link>
+      <guid isPermaLink="true">https://salastro.github.io/#vimbrain</guid>
+      <pubDate>Wed, 08 Dec 2021 00:00:00 GMT</pubDate>
+      <category>Vim</category>
+      <category>Esoteric Languages</category>
+      <category>Programming</category>
+      <description>[An obscure little project](https://github.com/salastro/vimBrain) that I finished recently was to create an esoteric programming language. My goal was to achieve the smallest possible set of vim-like instructions while being Turing-complete.</description>
+    </item>
+  </channel>
+</rss>

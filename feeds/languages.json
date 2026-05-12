@@ -1,0 +1,21 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "SalahDin Rezk Blog",
+  "home_page_url": "https://salastro.github.io",
+  "feed_url": "https://salastro.github.io/feeds/languages.json",
+  "description": "Essays and technical writing from SalahDin Rezk.",
+  "items": [
+    {
+      "id": "https://salastro.github.io/#apl-the-programming-of-wizards",
+      "url": "https://salastro.github.io/#apl-the-programming-of-wizards",
+      "title": "The Programming of Wizards",
+      "content_text": "APL (A Programming Language) is an exceptionally unique language. It mainly follows an array paradigm, unlike the usual functional and object-oriented approaches; it depends heavily on weird mathematical glyphs; and it is surprisingly elegant.",
+      "date_published": "2022-02-20",
+      "tags": [
+        "APL",
+        "Array Programming",
+        "Languages"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "SalahDin Rezk Blog",
+  "home_page_url": "https://salastro.github.io",
+  "feed_url": "https://salastro.github.io/feeds/guide.json",
+  "description": "Essays and technical writing from SalahDin Rezk.",
+  "items": [
+    {
+      "id": "https://salastro.github.io/#which-distro",
+      "url": "https://salastro.github.io/#which-distro",
+      "title": "A Linux dead simple guide!",
+      "content_text": "Introduction\n What is a Linux distribution \nLinux distributions usually refers to a family of operating systems that uses the Linux kernel and are similar in some design aspects. For the most part, Linux distributions follows the Unix philosophy and are Unix-like operating systems.",
+      "date_published": "2021-11-11",
+      "tags": [
+        "Distributions",
+        "Linux",
+        "Guide"
+      ]
+    }
+  ]
+}
