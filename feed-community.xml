@@ -4,7 +4,7 @@
     <title>SalahDin Rezk Blog</title>
     <link>https://salastro.github.io</link>
     <description>Essays and technical writing from SalahDin Rezk.</description>
-    <lastBuildDate>Tue, 12 May 2026 07:09:54 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2026 07:14:33 GMT</lastBuildDate>
     <atom:link href="https://salastro.github.io/feed-community.xml" rel="self" type="application/rss+xml"/>
 
     <item>
@@ -17,7 +17,7 @@
       <category>open-source</category>
       <category>contribution</category>
       <category>community</category>
-      <description>Sometime during 2025, on what seemed like just another ordinary day, fate decided to intervene in its mysterious way. During a casual conversation, a friend of mine mentioned GSoC to me. Until that moment, I had never heard of it before, nor did I know about the opportunities it offered. Curious, I started looking into it, and the more I learned, the more interested I became. The idea of contributing to open-source projects and collaborating with experienced developers felt both exciting and inspiring. So, naturally, I decided to take a chance and apply.</description>
+      <description>Sometime during 2025, on what seemed like just another ordinary day, fate decided to intervene in its mysterious way. During a casual conversation, a friend of mine mentioned GSoC to me. Until that moment, I had never heard of it before, nor did I know about the opportunities it offered. Curious, I started looking into it, and the more I learned, the more interested I became. I have already tried contributing to open-source projects, yet the idea of collaborating with experienced developers felt exciting. So, naturally, I decided to take a chance and apply.</description>
     </item>
   </channel>
 </rss>
