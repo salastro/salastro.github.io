@@ -1,7 +1,7 @@
 ---
 id: "sympy"
 title: "SymPy"
-group: "GSoC Projects"
+group: "project"
 level: 2
 val: 15
 date: "2026-05-12"

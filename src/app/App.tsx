@@ -45,16 +45,29 @@ export default function App() {
                 window.history.pushState({}, '', '/graph');
                 document.title = 'SalahDin Rezk - Showcase of My Projects and Archive of My Writings';
             } else if (mode === 'document' && nodeId) {
-                const encoded = encodeURIComponent(nodeId);
-                window.history.pushState({}, '', `/${encoded}`);
-                const title = nodeContent[nodeId]?.title || nodeId;
-                document.title = `SalahDin Rezk - ${title}`;
+                const node = graphData.nodes.find(n => n.id === nodeId);
+
+                if (node) {
+                    const encodedGroup = encodeURIComponent(node.group);
+                    const encodedId = encodeURIComponent(node.id);
+
+                    // root nodes stay at /title
+                    const path =
+                        node.group === 'root'
+                            ? `/${encodedId}`
+                            : `/${encodedGroup}/${encodedId}`;
+
+                            window.history.pushState({}, '', path);
+
+                            const title = nodeContent[nodeId]?.title || nodeId;
+                            document.title = `SalahDin Rezk - ${title}`;
+                }
             } else if (mode === 'document' && !nodeId) {
                 window.history.pushState({}, '', '/index');
                 document.title = 'SalahDin Rezk - Showcase of My Projects and Archive of My Writings';
             }
         } catch (e) {
-            // ignore history errors (e.g., testing env)
+            // ignore history errors
         }
     };
 
