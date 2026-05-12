@@ -1,6 +1,6 @@
 ---
 id: "how-i-started-with-gsoc"
-title: "How I started with Google Summer of Code"
+title: "How I started Google Summer of Code with SymPy"
 group: "essay"
 level: 2
 val: 4
