@@ -87,7 +87,7 @@ export default function App() {
                 const dateB = b.date ? new Date(b.date).getTime() : 0;
                 return dateB - dateA;
             })
-            .slice(0, 5);
+            .slice(0, 4);
 
         // Apply the same filter logic as the graph
         let filteredNodes = graphData.nodes.filter(n => n.group !== 'root');
