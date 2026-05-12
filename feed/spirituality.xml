@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SalahDin Rezk Blog</title>
+    <link>https://salastro.github.io</link>
+    <description>Essays and technical writing from SalahDin Rezk.</description>
+    <lastBuildDate>Tue, 12 May 2026 07:58:43 GMT</lastBuildDate>
+    <atom:link href="https://salastro.github.io/feed/spirituality.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>The Profound Significance of Prayer</title>
+      <link>https://salastro.github.io/#prayer</link>
+      <guid isPermaLink="true">https://salastro.github.io/#prayer</guid>
+      <pubDate>Tue, 22 Aug 2023 00:00:00 GMT</pubDate>
+      <category>Philosophy</category>
+      <category>Spirituality</category>
+      <category>Prayer</category>
+      <description>Introduction
+Within the chaotic and unpredictable nature of human existence, the act of prayer emerges as a profound source of order and stability. It provides individuals with a framework to orient themselves, find meaning in their actions, and make sense of the bewildering world around them. Through regular engagement in prayer, individuals establish a structured routine that permeates their lives, offering a sanctuary of stability and purpose. Thus it becomes necessary to delve into the depths of prayer, exploring its physical, spiritual, and philosophical dimensions, unveiling the profound connection between the remembrance of death and this sacred act.</description>
+    </item>
+  </channel>
+</rss>

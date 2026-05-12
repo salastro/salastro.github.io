@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SalahDin Rezk Blog</title>
+    <link>https://salastro.github.io</link>
+    <description>Essays and technical writing from SalahDin Rezk.</description>
+    <lastBuildDate>Tue, 12 May 2026 07:58:43 GMT</lastBuildDate>
+    <atom:link href="https://salastro.github.io/feed/digital.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Leaving Social Media for Good</title>
+      <link>https://salastro.github.io/#leaving-social-media</link>
+      <guid isPermaLink="true">https://salastro.github.io/#leaving-social-media</guid>
+      <pubDate>Fri, 04 Mar 2022 00:00:00 GMT</pubDate>
+      <category>Productivity</category>
+      <category>Digital</category>
+      <category>Habits</category>
+      <description>In my humble opinion, the way modern social media is being used can&apos;t be more toxic. We don&apos;t really engage, have fun, or learn. You waste hours of your life doing nothing but scroll through an endless stream of meaningless content. Human lives should be wasted on nothing like this. I won&apos;t be talking about why to leave, you are here because you already want to leave.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,21 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "SalahDin Rezk Blog",
+  "home_page_url": "https://salastro.github.io",
+  "feed_url": "https://salastro.github.io/feed/self-actualization.json",
+  "description": "Essays and technical writing from SalahDin Rezk.",
+  "items": [
+    {
+      "id": "https://salastro.github.io/#thy-destiny",
+      "url": "https://salastro.github.io/#thy-destiny",
+      "title": "Thy Destiny",
+      "content_text": "Envision thyself as the person thou desirest to become, painting a vivid and intricate portrait of thy future self within the realm of thy mind's eye. Contemplate not only the accomplishments and accolades thou seeketh, but also the qualities and virtues that shall define thee as an individual. Reflect upon the noble goals thou shalt pursue, the profound impact thou shalt have upon the world, and the legacy thou aspirest to leave behind.",
+      "date_published": "2023-06-16",
+      "tags": [
+        "Philosophy",
+        "Purpose",
+        "Self-Actualization"
+      ]
+    }
+  ]
+}

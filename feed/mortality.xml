@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SalahDin Rezk Blog</title>
+    <link>https://salastro.github.io</link>
+    <description>Essays and technical writing from SalahDin Rezk.</description>
+    <lastBuildDate>Tue, 12 May 2026 07:58:43 GMT</lastBuildDate>
+    <atom:link href="https://salastro.github.io/feed/mortality.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Embrace Death</title>
+      <link>https://salastro.github.io/#death</link>
+      <guid isPermaLink="true">https://salastro.github.io/#death</guid>
+      <pubDate>Sat, 20 Aug 2022 00:00:00 GMT</pubDate>
+      <category>Philosophy</category>
+      <category>Mortality</category>
+      <category>Acceptance</category>
+      <description>Death, the most detested of the experience (i.e. life) from the majority of whom endure. People hate, avoid, and even fight it, but no matter the struggle with that edifice, it will devour you and everyone close to your heart. You will have—even if you hate to—accept it.</description>
+    </item>
+  </channel>
+</rss>

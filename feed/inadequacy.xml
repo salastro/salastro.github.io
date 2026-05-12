@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SalahDin Rezk Blog</title>
+    <link>https://salastro.github.io</link>
+    <description>Essays and technical writing from SalahDin Rezk.</description>
+    <lastBuildDate>Tue, 12 May 2026 07:58:43 GMT</lastBuildDate>
+    <atom:link href="https://salastro.github.io/feed/inadequacy.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Sorrows of the Inadequate Soul</title>
+      <link>https://salastro.github.io/#sorrows-of-the-inadequate-soul</link>
+      <guid isPermaLink="true">https://salastro.github.io/#sorrows-of-the-inadequate-soul</guid>
+      <pubDate>Tue, 31 Oct 2023 00:00:00 GMT</pubDate>
+      <category>Philosophy</category>
+      <category>Inadequacy</category>
+      <category>Struggle</category>
+      <description>I find myself engulfed in a profound disorientation, borne from the acute realization of my own inadequacy. Every fiber of my being resonates with a palpable sense of limitation, leaving me bereft of any semblance of fulfillment. I harbor naught but a fervent desire for the release of death upon my humble soul, for it struggles to grasp the boundless potential within, a potential thwarted not by external circumstances, but rather by my own inability to rise to the standards I have set. Obstacles, once perceived as mere trials, now assume the guise of transformative crucibles, intended to refine my essence into the epitome of what it ought to be. Yet, in this lamentable state, I find myself so profoundly wretched that the very essence of my humanity is called into question.</description>
+    </item>
+  </channel>
+</rss>
