@@ -5,6 +5,7 @@ group: "focus"
 level: 1
 val: 8
 date: "2021-11-01"
+img: "focus/Tux.svg"
 tags: ["Operating Systems", "Linux", "Distributions"]
 links:
   - "root"

@@ -367,7 +367,7 @@ export default function App() {
                 {viewMode === 'graph' && (
                     <div className="absolute top-8 left-8 pointer-events-auto">
                         <div className="flex flex-col items-start gap-2 mt-8">
-                            {['All', 'Theory', 'Engineering', 'Mathematics', 'Philosophy'].map(f => (
+                            {['All', 'Engineering', 'Mathematics', 'Physics', 'Philosophy'].map(f => (
                                 <button
                                     key={f}
                                     onClick={() => setFilter(f === 'All' ? null : f)}
