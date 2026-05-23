@@ -9,6 +9,7 @@ tags: ["Programming", "Languages", "Code"]
 links:
   - "root"
   - "apl-the-programming-of-wizards"
+  - "embedded-systems"
   - "vimbrain"
 ---
 
