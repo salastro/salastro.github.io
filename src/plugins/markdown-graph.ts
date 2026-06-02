@@ -182,7 +182,7 @@ async function parseMarkdownContent(contentDir: string): Promise<ParsedContent> 
     return { nodes, nodeContentMap, links, posts };
 }
 
-function buildRssXml(posts: ParsedContent['posts'], pageHref: string, nextHref?: string): string {
+function buildRssXml(posts: ParsedContent['posts'], pageHref: string, nextHref?: string, tagName?: string): string {
     const siteUrl = normalizeSiteUrl(DEFAULT_SITE_URL);
     const now = new Date().toUTCString();
 
@@ -208,9 +208,9 @@ function buildRssXml(posts: ParsedContent['posts'], pageHref: string, nextHref?:
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
         '  <channel>',
-        `    <title>${escapeXml(FEED_TITLE)}</title>`,
+        `    <title>${escapeXml(tagName ? `${FEED_TITLE}: ${tagName}` : FEED_TITLE)}</title>`,
         `    <link>${escapeXml(siteUrl)}</link>`,
-        `    <description>${escapeXml(FEED_DESCRIPTION)}</description>`,
+        `    <description>${escapeXml(tagName ? `Posts tagged with "${tagName}"` : FEED_DESCRIPTION)}</description>`,
         `    <lastBuildDate>${now}</lastBuildDate>`,
         `    <atom:link href="${escapeXml(pageHref)}" rel="self" type="application/rss+xml"/>`,
         nextAtom,
@@ -221,7 +221,7 @@ function buildRssXml(posts: ParsedContent['posts'], pageHref: string, nextHref?:
     ].join('\n');
 }
 
-function buildJsonFeed(posts: ParsedContent['posts'], pageHref: string, nextHref?: string) {
+function buildJsonFeed(posts: ParsedContent['posts'], pageHref: string, nextHref?: string, tagName?: string) {
     const siteUrl = normalizeSiteUrl(DEFAULT_SITE_URL);
     const items = posts.map((post) => {
         const link = `${siteUrl}/#${encodeURIComponent(post.id)}`;
@@ -237,10 +237,10 @@ function buildJsonFeed(posts: ParsedContent['posts'], pageHref: string, nextHref
 
     const feed: any = {
         version: 'https://jsonfeed.org/version/1',
-        title: FEED_TITLE,
+        title: tagName ? `${FEED_TITLE}: ${tagName}` : FEED_TITLE,
         home_page_url: siteUrl,
         feed_url: pageHref,
-        description: FEED_DESCRIPTION,
+        description: tagName ? `Posts tagged with "${tagName}"` : FEED_DESCRIPTION,
         items,
     };
     if (nextHref) feed.next_url = nextHref;
@@ -338,6 +338,7 @@ export default function markdownGraph(): Plugin {
                         type: 'asset',
                         fileName: xmlFileName,
                         source: rssXml,
+                        tagName: tag,
                     });
 
                     const jsonFeed = buildJsonFeed(pagePosts, pageJsonHref, nextJson);
@@ -345,6 +346,7 @@ export default function markdownGraph(): Plugin {
                         type: 'asset',
                         fileName: jsonFileName,
                         source: jsonFeed,
+                        tagName: tag,
                     });
                 }
             }
@@ -447,7 +449,7 @@ export default function markdownGraph(): Plugin {
                                         pageIndex < tagPageCount
                                             ? `${siteUrl}/${pageIndex + 1 === 1 ? `feed/${tagSafeFileName}.xml` : `feed/${tagSafeFileName}.${pageIndex + 1}.xml`}`
                                             : undefined;
-                                    const xml = buildRssXml(pagePosts, pageHref, nextXml);
+                                    const xml = buildRssXml(pagePosts, pageHref, nextXml, tag);
                                     res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');
                                     res.end(xml);
                                 } else {
@@ -457,7 +459,7 @@ export default function markdownGraph(): Plugin {
                                         pageIndex < tagPageCount
                                             ? `${siteUrl}/${pageIndex + 1 === 1 ? `feed/${tagSafeFileName}.json` : `feed/${tagSafeFileName}.${pageIndex + 1}.json`}`
                                             : undefined;
-                                    const json = buildJsonFeed(pagePosts, pageHref, nextJson);
+                                    const json = buildJsonFeed(pagePosts, pageHref, nextJson, tag);
                                     res.setHeader('Content-Type', 'application/json; charset=utf-8');
                                     res.end(json);
                                 }
