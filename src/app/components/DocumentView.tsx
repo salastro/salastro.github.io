@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { motion } from 'motion/react';
 import { nodeContent } from '../../data/graphData';
@@ -17,8 +17,102 @@ function formatReadingTime(minutes?: number) {
     return `${minutes} min read`;
 }
 
+let isMermaidInitialized = false;
+const MERMAID_MIN_ZOOM = 0.5;
+const MERMAID_MAX_ZOOM = 20;
+
 const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel = 'Back' }) => {
     const content = nodeContent[nodeId] || nodeContent['default'];
+    const articleRef = useRef<HTMLElement | null>(null);
+
+    useEffect(() => {
+        if (!content.htmlContent || !articleRef.current) return;
+        const codeBlocks = Array.from(articleRef.current.querySelectorAll('pre > code.language-mermaid'));
+        if (codeBlocks.length === 0) return;
+
+        let isCancelled = false;
+
+        const setDiagramZoom = (diagram: HTMLElement, nextZoom: number) => {
+            const zoom = Math.min(MERMAID_MAX_ZOOM, Math.max(MERMAID_MIN_ZOOM, nextZoom));
+            diagram.dataset.zoom = String(zoom);
+            diagram.style.transform = `scale(${zoom})`;
+        };
+
+        const createControlButton = (label: string, ariaLabel: string, onClick: () => void) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'inline-flex h-8 min-w-8 items-center justify-center rounded-full border border-border px-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground';
+            button.textContent = label;
+            button.setAttribute('aria-label', ariaLabel);
+            button.title = ariaLabel;
+            button.addEventListener('click', onClick);
+            return button;
+        };
+
+        const renderMermaid = async () => {
+            const { default: mermaid } = await import('mermaid');
+            if (isCancelled || !articleRef.current) return;
+
+            if (!isMermaidInitialized) {
+                mermaid.initialize({
+                    startOnLoad: false,
+                    securityLevel: 'strict',
+                });
+                isMermaidInitialized = true;
+            }
+
+            for (const block of codeBlocks) {
+                const pre = block.parentElement;
+                if (!pre) continue;
+
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'my-8 overflow-hidden rounded-xl border border-border bg-secondary/20 shadow-sm';
+
+                const toolbar = document.createElement('div');
+                toolbar.className = 'flex items-center justify-end gap-2 border-b border-border/70 bg-background/80 px-3 py-2';
+
+                const diagramShell = document.createElement('div');
+                diagramShell.className = 'overflow-auto p-4 md:p-6 max-h-[80vh]';
+
+                const diagram = document.createElement('div');
+                diagram.className = 'mermaid';
+                diagram.style.display = 'inline-block';
+                diagram.style.transformOrigin = 'top left';
+                diagram.style.willChange = 'transform';
+                setDiagramZoom(diagram, 1);
+                diagram.textContent = block.textContent || '';
+
+                const zoomOut = createControlButton('−', 'Zoom out diagram', () => {
+                    setDiagramZoom(diagram, Number(diagram.dataset.zoom || '1') / 1.2);
+                });
+                const zoomIn = createControlButton('+', 'Zoom in diagram', () => {
+                    setDiagramZoom(diagram, Number(diagram.dataset.zoom || '1') * 1.2);
+                });
+                const reset = createControlButton('Reset', 'Reset diagram zoom', () => {
+                    setDiagramZoom(diagram, 1);
+                });
+                reset.textContent = '↺';
+                reset.className = 'inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground';
+
+                toolbar.append(zoomOut, zoomIn, reset);
+                diagramShell.append(diagram);
+                wrapper.append(toolbar, diagramShell);
+                pre.replaceWith(wrapper);
+            }
+
+            mermaid.run({ nodes: articleRef.current.querySelectorAll('.mermaid') }).catch((error) => {
+                console.error('Failed to render Mermaid diagram:', error);
+            });
+        };
+
+        renderMermaid().catch((error) => {
+            console.error('Failed to load Mermaid:', error);
+        });
+
+        return () => {
+            isCancelled = true;
+        };
+    }, [content.htmlContent]);
 
     return (
         <motion.div
@@ -67,6 +161,7 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
                     // ── Markdown-sourced content ──────────────────────
                     <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-12">
                         <article
+                            ref={articleRef}
                             className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-p:text-muted-foreground prose-p:leading-relaxed prose-code:text-sm"
                             dangerouslySetInnerHTML={{ __html: content.htmlContent }}
                         />
