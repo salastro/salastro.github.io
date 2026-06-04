@@ -57,10 +57,10 @@ export default function App() {
                             ? `/${encodedId}`
                             : `/${encodedGroup}/${encodedId}`;
 
-                            window.history.pushState({}, '', path);
+                    window.history.pushState({}, '', path);
 
-                            const title = nodeContent[nodeId]?.title || nodeId;
-                            document.title = `SalahDin Rezk - ${title}`;
+                    const title = nodeContent[nodeId]?.title || nodeId;
+                    document.title = `SalahDin Rezk - ${title}`;
                 }
             } else if (mode === 'document' && !nodeId) {
                 window.history.pushState({}, '', '/index');
@@ -297,8 +297,9 @@ export default function App() {
             setViewMode('document');
             setActiveNodeId(null);
         } else {
-            // treat as document id
-            const id = decodeURIComponent(first);
+            // If the path is /group/id or /id, use the last segment as the document id
+            const last = segments[segments.length - 1];
+            const id = decodeURIComponent(last);
             setViewMode('document');
             setActiveNodeId(id);
         }
@@ -336,7 +337,9 @@ export default function App() {
                 setViewMode('document');
                 setActiveNodeId(null);
             } else {
-                const id = decodeURIComponent(first);
+                // If the path is /group/id or /id, use the last segment as the document id
+                const last = segments[segments.length - 1];
+                const id = decodeURIComponent(last);
                 setViewMode('document');
                 setActiveNodeId(id);
             }
