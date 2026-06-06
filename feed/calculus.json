@@ -1,0 +1,25 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "SalahDin Rezk Blog",
+  "home_page_url": "https://salastro.github.io",
+  "feed_url": "https://salastro.github.io/feed/calculus.json",
+  "description": "Essays and technical writing from SalahDin Rezk.",
+  "items": [
+    {
+      "id": "https://salastro.github.io/#understanding-sympy-integral-module",
+      "url": "https://salastro.github.io/#understanding-sympy-integral-module",
+      "title": "GSoC Week 1: The SymPy Integrals Module",
+      "content_text": "Understanding\n Top-level Integration Module",
+      "date_published": "2026-06-01",
+      "tags": [
+        "gsoc",
+        "sympy",
+        "open-source",
+        "python",
+        "integral",
+        "calculus",
+        "symbolic-computation"
+      ]
+    }
+  ]
+}

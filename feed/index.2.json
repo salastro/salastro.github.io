@@ -6,6 +6,18 @@
   "description": "Essays and technical writing from SalahDin Rezk.",
   "items": [
     {
+      "id": "https://salastro.github.io/#vimbrain",
+      "url": "https://salastro.github.io/#vimbrain",
+      "title": "VIM BRAIN",
+      "content_text": "[An obscure little project](https://github.com/salastro/vimBrain) that I finished recently was to create an esoteric programming language. My goal was to achieve the smallest possible set of vim-like instructions while being Turing-complete.",
+      "date_published": "2021-12-08",
+      "tags": [
+        "Vim",
+        "Esoteric Languages",
+        "Programming"
+      ]
+    },
+    {
       "id": "https://salastro.github.io/#which-distro",
       "url": "https://salastro.github.io/#which-distro",
       "title": "A Linux dead simple guide!",

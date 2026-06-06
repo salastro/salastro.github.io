@@ -4,9 +4,24 @@
     <title>SalahDin Rezk Blog</title>
     <link>https://salastro.github.io</link>
     <description>Essays and technical writing from SalahDin Rezk.</description>
-    <lastBuildDate>Tue, 12 May 2026 07:58:43 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2026 18:08:47 GMT</lastBuildDate>
     <atom:link href="https://salastro.github.io/feed/index.xml" rel="self" type="application/rss+xml"/>
     <atom:link rel="next" href="https://salastro.github.io/feed/index.2.xml" type="application/rss+xml"/>
+    <item>
+      <title>GSoC Week 1: The SymPy Integrals Module</title>
+      <link>https://salastro.github.io/#understanding-sympy-integral-module</link>
+      <guid isPermaLink="true">https://salastro.github.io/#understanding-sympy-integral-module</guid>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>open-source</category>
+      <category>python</category>
+      <category>integral</category>
+      <category>calculus</category>
+      <category>symbolic-computation</category>
+      <description>Understanding
+ Top-level Integration Module</description>
+    </item>
     <item>
       <title>How I started Google Summer of Code with SymPy</title>
       <link>https://salastro.github.io/#how-i-started-with-gsoc</link>
@@ -99,16 +114,6 @@ Within the chaotic and unpredictable nature of human existence, the act of praye
       <category>Array Programming</category>
       <category>Languages</category>
       <description>APL (A Programming Language) is an exceptionally unique language. It mainly follows an array paradigm, unlike the usual functional and object-oriented approaches; it depends heavily on weird mathematical glyphs; and it is surprisingly elegant.</description>
-    </item>
-    <item>
-      <title>VIM BRAIN</title>
-      <link>https://salastro.github.io/#vimbrain</link>
-      <guid isPermaLink="true">https://salastro.github.io/#vimbrain</guid>
-      <pubDate>Wed, 08 Dec 2021 00:00:00 GMT</pubDate>
-      <category>Vim</category>
-      <category>Esoteric Languages</category>
-      <category>Programming</category>
-      <description>[An obscure little project](https://github.com/salastro/vimBrain) that I finished recently was to create an esoteric programming language. My goal was to achieve the smallest possible set of vim-like instructions while being Turing-complete.</description>
     </item>
   </channel>
 </rss>
