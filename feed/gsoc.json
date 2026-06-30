@@ -6,6 +6,20 @@
   "description": "Essays and technical writing from SalahDin Rezk.",
   "items": [
     {
+      "id": "https://salastro.github.io/#gsoc-week-2",
+      "url": "https://salastro.github.io/#gsoc-week-2",
+      "title": "GSoC Week 2: Looking for Patterns",
+      "content_text": "During the second week of Google Summer of Code, I still had not written a single feature that was intended to be merged into SymPy. Instead, I spent most of my time trying to understand why manualintegrate behaves the way it does and, more importantly, what its limitations are. Looking back, this was probably the most valuable decision I could have made.",
+      "date_published": "2026-06-08",
+      "tags": [
+        "gsoc",
+        "sympy",
+        "symbolic-integration",
+        "manualintegrate",
+        "pattern-matching"
+      ]
+    },
+    {
       "id": "https://salastro.github.io/#understanding-sympy-integral-module",
       "url": "https://salastro.github.io/#understanding-sympy-integral-module",
       "title": "GSoC Week 1: The SymPy Integrals Module",

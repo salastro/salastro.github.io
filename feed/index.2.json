@@ -6,6 +6,18 @@
   "description": "Essays and technical writing from SalahDin Rezk.",
   "items": [
     {
+      "id": "https://salastro.github.io/#apl-the-programming-of-wizards",
+      "url": "https://salastro.github.io/#apl-the-programming-of-wizards",
+      "title": "The Programming of Wizards",
+      "content_text": "APL (A Programming Language) is an exceptionally unique language. It mainly follows an array paradigm, unlike the usual functional and object-oriented approaches; it depends heavily on weird mathematical glyphs; and it is surprisingly elegant.",
+      "date_published": "2022-02-20",
+      "tags": [
+        "APL",
+        "Array Programming",
+        "Languages"
+      ]
+    },
+    {
       "id": "https://salastro.github.io/#vimbrain",
       "url": "https://salastro.github.io/#vimbrain",
       "title": "VIM BRAIN",
