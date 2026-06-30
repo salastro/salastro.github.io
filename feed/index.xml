@@ -4,9 +4,20 @@
     <title>SalahDin Rezk Blog</title>
     <link>https://salastro.github.io</link>
     <description>Essays and technical writing from SalahDin Rezk.</description>
-    <lastBuildDate>Tue, 30 Jun 2026 20:22:05 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 20:54:36 GMT</lastBuildDate>
     <atom:link href="https://salastro.github.io/feed/index.xml" rel="self" type="application/rss+xml"/>
     <atom:link rel="next" href="https://salastro.github.io/feed/index.2.xml" type="application/rss+xml"/>
+    <item>
+      <title>GSoC Week 3: Consolidating Manual Integration</title>
+      <link>https://salastro.github.io/#gsoc-week-3</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-3</guid>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <description>After spending the previous week understanding how manualintegrate searched for solutions, I finally started making changes to the integrator itself. Rather than adding completely new capabilities, I decided to focus on something that had bothered me ever since I began reading the integration code: SymPy&apos;s symbolic integrators were surprisingly fragmented.</description>
+    </item>
     <item>
       <title>GSoC Week 2: Looking for Patterns</title>
       <link>https://salastro.github.io/#gsoc-week-2</link>
@@ -106,16 +117,6 @@ Within the chaotic and unpredictable nature of human existence, the act of praye
       <category>Physical Models</category>
       <category>Vectors</category>
       <description>In grade 10 we had a discussion with our mechanics and mathematics teacher about how should area be described. He insisted that area is a scalar, while some of us were totally convinced that it should be a vector. I, personally, was on the scalar side since vectors always have a direction, and area can not have such a characteristic. The only vector related to area is the normal to its surface, which is looked to me as a completely separate thing from area itself. It may be attached to it, but it is not what defines it.</description>
-    </item>
-    <item>
-      <title>Leaving Social Media for Good</title>
-      <link>https://salastro.github.io/#leaving-social-media</link>
-      <guid isPermaLink="true">https://salastro.github.io/#leaving-social-media</guid>
-      <pubDate>Fri, 04 Mar 2022 00:00:00 GMT</pubDate>
-      <category>Productivity</category>
-      <category>Digital</category>
-      <category>Habits</category>
-      <description>In my humble opinion, the way modern social media is being used can&apos;t be more toxic. We don&apos;t really engage, have fun, or learn. You waste hours of your life doing nothing but scroll through an endless stream of meaningless content. Human lives should be wasted on nothing like this. I won&apos;t be talking about why to leave, you are here because you already want to leave.</description>
     </item>
   </channel>
 </rss>

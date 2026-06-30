@@ -4,9 +4,20 @@
     <title>SalahDin Rezk Blog</title>
     <link>https://salastro.github.io</link>
     <description>Essays and technical writing from SalahDin Rezk.</description>
-    <lastBuildDate>Tue, 30 Jun 2026 20:22:05 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 20:54:36 GMT</lastBuildDate>
     <atom:link href="https://salastro.github.io/feed/symbolic-integration.xml" rel="self" type="application/rss+xml"/>
 
+    <item>
+      <title>GSoC Week 3: Consolidating Manual Integration</title>
+      <link>https://salastro.github.io/#gsoc-week-3</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-3</guid>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <description>After spending the previous week understanding how manualintegrate searched for solutions, I finally started making changes to the integrator itself. Rather than adding completely new capabilities, I decided to focus on something that had bothered me ever since I began reading the integration code: SymPy&apos;s symbolic integrators were surprisingly fragmented.</description>
+    </item>
     <item>
       <title>GSoC Week 2: Looking for Patterns</title>
       <link>https://salastro.github.io/#gsoc-week-2</link>

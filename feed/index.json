@@ -6,6 +6,19 @@
   "description": "Essays and technical writing from SalahDin Rezk.",
   "items": [
     {
+      "id": "https://salastro.github.io/#gsoc-week-3",
+      "url": "https://salastro.github.io/#gsoc-week-3",
+      "title": "GSoC Week 3: Consolidating Manual Integration",
+      "content_text": "After spending the previous week understanding how manualintegrate searched for solutions, I finally started making changes to the integrator itself. Rather than adding completely new capabilities, I decided to focus on something that had bothered me ever since I began reading the integration code: SymPy's symbolic integrators were surprisingly fragmented.",
+      "date_published": "2026-06-15",
+      "tags": [
+        "gsoc",
+        "sympy",
+        "manualintegrate",
+        "symbolic-integration"
+      ]
+    },
+    {
       "id": "https://salastro.github.io/#gsoc-week-2",
       "url": "https://salastro.github.io/#gsoc-week-2",
       "title": "GSoC Week 2: Looking for Patterns",
@@ -119,18 +132,6 @@
         "Physics",
         "Physical Models",
         "Vectors"
-      ]
-    },
-    {
-      "id": "https://salastro.github.io/#leaving-social-media",
-      "url": "https://salastro.github.io/#leaving-social-media",
-      "title": "Leaving Social Media for Good",
-      "content_text": "In my humble opinion, the way modern social media is being used can't be more toxic. We don't really engage, have fun, or learn. You waste hours of your life doing nothing but scroll through an endless stream of meaningless content. Human lives should be wasted on nothing like this. I won't be talking about why to leave, you are here because you already want to leave.",
-      "date_published": "2022-03-04",
-      "tags": [
-        "Productivity",
-        "Digital",
-        "Habits"
       ]
     }
   ],
