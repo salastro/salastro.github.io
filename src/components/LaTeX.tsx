@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import katex from 'katex';
 import 'katex/dist/katex.min.css';
 
 interface LaTeXProps {
@@ -16,7 +15,10 @@ export const LaTeX: React.FC<LaTeXProps> = ({
     const containerRef = useRef<HTMLSpanElement>(null);
 
     useEffect(() => {
-        if (containerRef.current) {
+        let cancelled = false;
+        (async () => {
+            const { default: katex } = await import('katex');
+            if (cancelled || !containerRef.current) return;
             try {
                 katex.render(children, containerRef.current, {
                     displayMode,
@@ -30,7 +32,8 @@ export const LaTeX: React.FC<LaTeXProps> = ({
                     containerRef.current.textContent = children;
                 }
             }
-        }
+        })();
+        return () => { cancelled = true; };
     }, [children, displayMode]);
 
     return <span ref={containerRef} className={className} />;
