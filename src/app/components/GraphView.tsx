@@ -133,20 +133,6 @@ const GraphView: React.FC<GraphViewProps> = ({
   // Tracks which cached images have transparent pixels, so we know which ones need a white backing
   const imgsHasAlpha = useRef<Record<string, boolean>>({});
 
-  // Continuous rendering loop to keep dot animations visible
-  useEffect(() => {
-    let rafId: number;
-    const tick = () => {
-      // Force the graph to re-render each frame for smooth dot animations
-      if (graphRef.current) {
-        graphRef.current.d3ReheatSimulation();
-      }
-      rafId = requestAnimationFrame(tick);
-    };
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, []);
-
   // Resize handler
   useEffect(() => {
     const updateDimensions = () => {
@@ -586,9 +572,9 @@ const GraphView: React.FC<GraphViewProps> = ({
           }
         }}
         onNodeDragEnd={node => {
-          // Optional: Pin node on drag end so it stays where the user put it
-          node.fx = node.x;
-          node.fy = node.y;
+          // Release the fixed position so the node rejoins the simulation instead of staying frozen
+          node.fx = undefined;
+          node.fy = undefined;
         }}
         onNodeClick={(node) => {
           // Zoom to node?
@@ -600,6 +586,7 @@ const GraphView: React.FC<GraphViewProps> = ({
         }}
         backgroundColor="transparent"
         cooldownTicks={Infinity}
+        cooldownTime={Infinity}
       />
     </div>
   );
