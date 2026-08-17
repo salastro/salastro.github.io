@@ -14,6 +14,7 @@ links:
   - "programming"
   - "math"
   - "open-source"
+  - "math-expert"
 ---
 
 SymPy is an open-source Python library for symbolic mathematics. It can do algebraic simplification, equation solving, calculus, and plotting. Think of it as the open-source Mathematica or Maple, but in Python. It's used in academia for research, education, and engineering applications. The library is built on top of Python’s core data structures and provides a powerful interface for symbolic computation.
