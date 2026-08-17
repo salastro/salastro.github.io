@@ -33,6 +33,7 @@ interface MarkdownFrontmatter {
     concepts?: string[];
     equations?: string[];
     links?: string[];
+    status?: string;
 }
 
 interface ParsedContent {
@@ -138,6 +139,7 @@ async function parseMarkdownContent(contentDir: string): Promise<ParsedContent> 
             tags: frontmatter.tags || [],
             projects: frontmatter.projects || [],
             concepts: frontmatter.concepts || [],
+            status: frontmatter.status || null,
         };
 
         // Generate links from frontmatter

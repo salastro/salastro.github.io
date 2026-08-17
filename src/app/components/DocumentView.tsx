@@ -186,7 +186,7 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
                                 <div className="space-y-4 text-sm">
                                     <div>
                                         <span className="block text-muted-foreground mb-1">Status</span>
-                                        <span className="text-foreground">Active Research</span>
+                                        <span className="text-foreground">{content.status || 'Active Research'}</span>
                                     </div>
                                     {content.tags?.length > 0 && (
                                         <div>

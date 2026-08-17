@@ -5,6 +5,7 @@ group: "project"
 level: 2
 val: 8
 date: "2022-05-15"
+status: "Archived Project"
 tags: ["Symbolic Math", "GUI", "LaTeX", "Python"]
 concepts: ["math", "sympy"]
 links:
