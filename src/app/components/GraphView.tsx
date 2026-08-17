@@ -34,6 +34,26 @@ interface GraphViewProps {
   };
 }
 
+// Samples a loaded image's pixels to detect any transparency. Cross-origin images
+// that taint the canvas are treated as opaque (they're always JPEGs here anyway).
+function imageHasTransparency(img: HTMLImageElement): boolean {
+  try {
+    const canvas = document.createElement('canvas');
+    const w = canvas.width = Math.min(img.naturalWidth || 32, 64);
+    const h = canvas.height = Math.min(img.naturalHeight || 32, 64);
+    const ctx = canvas.getContext('2d');
+    if (!ctx || w === 0 || h === 0) return false;
+    ctx.drawImage(img, 0, 0, w, h);
+    const { data } = ctx.getImageData(0, 0, w, h);
+    for (let i = 3; i < data.length; i += 4) {
+      if (data[i] < 255) return true;
+    }
+    return false;
+  } catch {
+    return false;
+  }
+}
+
 function hexToRgb(hex: string) {
   const m = hex.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
   if (!m) return { r: 0, g: 0, b: 0 };
@@ -110,6 +130,8 @@ const GraphView: React.FC<GraphViewProps> = ({
 
   // Image Cache
   const imgs = useRef<Record<string, HTMLImageElement>>({});
+  // Tracks which cached images have transparent pixels, so we know which ones need a white backing
+  const imgsHasAlpha = useRef<Record<string, boolean>>({});
 
   // Continuous rendering loop to keep dot animations visible
   useEffect(() => {
@@ -273,9 +295,11 @@ const GraphView: React.FC<GraphViewProps> = ({
     graphData.nodes.forEach(node => {
       if (node.img && !imgs.current[node.id]) {
         const img = new Image();
+        img.crossOrigin = 'anonymous';
         img.src = node.img;
         img.onload = () => {
           imgs.current[node.id] = img;
+          imgsHasAlpha.current[node.id] = imageHasTransparency(img);
           // Force re-render to show loaded image
           // Using a functional update to ensure reference change
           setDimensions(prev => ({ ...prev }));
@@ -344,6 +368,10 @@ const GraphView: React.FC<GraphViewProps> = ({
     if (img) {
       ctx.save();
       ctx.clip();
+      if (imgsHasAlpha.current[node.id]) {
+        ctx.fillStyle = '#ffffff';
+        ctx.fill();
+      }
       ctx.drawImage(img, node.x! - size, node.y! - size, size * 2, size * 2);
       ctx.restore();
 
