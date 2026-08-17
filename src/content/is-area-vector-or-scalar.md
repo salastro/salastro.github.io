@@ -8,6 +8,7 @@ date: "2022-04-01"
 tags: ["Physics", "Physical Models", "Vectors"]
 links:
   - "physics"
+  - "math"
 ---
 
 In grade 10 we had a discussion with our mechanics and mathematics teacher about how should area be described. He insisted that area is a scalar, while some of us were totally convinced that it should be a vector. I, personally, was on the scalar side since vectors always have a direction, and area can not have such a characteristic. The only vector related to area is the normal to its surface, which is looked to me as a completely separate thing from area itself. It may be attached to it, but it is not what defines it.

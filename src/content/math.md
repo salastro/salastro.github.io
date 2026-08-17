@@ -7,9 +7,15 @@ val: 10
 date: "2026-05-20"
 tags: ["Mathematics", "Abstraction", "Structure"]
 projects: ["sympy"]
+concepts: ["ecc", "stochastic", "wavelets"]
 links:
   - "root"
   - "sympy"
+  - "ecc"
+  - "stochastic"
+  - "wavelets"
+  - "is-area-vector-or-scalar"
+  - "understanding-sympy-integral-module"
 ---
 
 The language underneath every other node in this graph, whether it admits it or not. My particular interest sits in symbolic computation, where formal manipulation stops being notation on paper and becomes an algorithm that has to actually terminate.

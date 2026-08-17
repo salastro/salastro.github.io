@@ -8,6 +8,7 @@ date: "2024-02-28"
 tags: ["Cryptography", "Number Theory", "Public-Key"]
 links:
   - "cryptography"
+  - "math"
 ---
 
 Public-key cryptography based on the algebraic structure of elliptic curves over finite fields. ECC provides equivalent security to RSA with significantly smaller key sizes.

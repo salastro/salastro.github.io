@@ -8,6 +8,7 @@ date: "2024-03-25"
 tags: ["Probability", "Random", "Estimation"]
 links:
   - "signal-processing"
+  - "math"
 ---
 
 Mathematical framework for analyzing sequences of random variables with dependencies over time. Stochastic processes model uncertainty in signals, noise, and system dynamics.
