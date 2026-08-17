@@ -13,7 +13,7 @@ equations:
   - 'i\hbar \frac{\partial}{\partial t} \Psi = \hat{H} \Psi'
   - '\rho = \sum_i p_i |\psi_i\rangle \langle\psi_i|'
 links:
-  - "root"
+  - "physics"
   - "entanglement"
   - "q-error"
   - "hamiltonian"

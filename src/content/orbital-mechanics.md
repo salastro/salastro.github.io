@@ -13,7 +13,7 @@ equations:
   - '\mathbf{r}'' + \frac{\mu}{r^3}\mathbf{r} = \mathbf{a}_p'
   - '\Delta v = v_e \ln\frac{m_0}{m_f}'
 links:
-  - "root"
+  - "physics"
   - "trajectory"
   - "propulsion"
 ---

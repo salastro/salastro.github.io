@@ -13,7 +13,8 @@ equations:
   - 'P(A(g^a, g^b) = g^{ab}) \approx \frac{1}{|G|}'
   - '\text{Enc}_{pk}(m) \rightarrow c'
 links:
-  - "root"
+  - "projects"
+  - "math"
   - "zkp"
   - "pq-crypto"
   - "ecc"

@@ -15,7 +15,6 @@ links:
   - "stochastic"
   - "wavelets"
   - "is-area-vector-or-scalar"
-  - "understanding-sympy-integral-module"
 ---
 
 The language underneath every other node in this graph, whether it admits it or not. My particular interest sits in symbolic computation, where formal manipulation stops being notation on paper and becomes an algorithm that has to actually terminate.

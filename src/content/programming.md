@@ -3,7 +3,7 @@ id: "programming"
 title: "Programming"
 group: "focus"
 level: 1
-val: 8
+val: 25
 date: "2021-12-08"
 tags: ["Programming", "Languages", "Code"]
 links:

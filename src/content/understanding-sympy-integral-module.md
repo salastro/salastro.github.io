@@ -10,7 +10,6 @@ projects: ["sympy"]
 links:
   - "gsoc"
   - "sympy"
-  - "math"
 ---
 
 # Understanding

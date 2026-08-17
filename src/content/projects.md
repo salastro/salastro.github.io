@@ -1,9 +1,9 @@
 ---
 id: "projects"
-title: "Engineering Projects"
+title: "Engineering"
 group: "focus"
-level: 1
-val: 12
+level: 3
+val: 20
 date: "2024-01-15"
 tags: ["Implementation", "Hardware", "Software"]
 projects: ["proj-satellite", "proj-qkey", "proj-dsp-fpga"]

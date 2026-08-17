@@ -9,9 +9,6 @@ img: "/072d2fe6dcba0b4485129f2618be5d85ed8f7655.webp"
 tags: ["Researcher", "Engineer", "Physicist"]
 links:
   - "signal-processing"
-  - "systems-modeling"
-  - "proj-satellite"
-  - "proj-qkey"
 equations:
   - "\\mathcal{L}_{\\text{SM}} = -\\frac{1}{4} G^a_{\\mu\\nu} G^{a,\\mu\\nu} - \\frac{1}{4} W^i_{\\mu\\nu} W^{i,\\mu\\nu} - \\frac{1}{4} B_{\\mu\\nu} B^{\\mu\\nu} + \\sum_{\\text{fermions}} \\bar{\\psi} i \\gamma^\\mu D_\\mu \\psi + (D_\\mu \\phi)^\\dagger (D^\\mu \\phi) - V(\\phi) - \\left( y_{ij} \\bar{\\psi}_i \\phi \\psi_j + \\text{h.c.} \\right)"
 ---

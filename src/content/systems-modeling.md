@@ -9,7 +9,7 @@ tags: ["Dynamics", "Control", "Complexity"]
 projects: []
 concepts: ["agent-based", "cybernetics", "control-theory"]
 links:
-  - "root"
+  - "projects"
   - "agent-based"
   - "cybernetics"
   - "control-theory"
