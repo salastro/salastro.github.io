@@ -199,6 +199,33 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
                                         </div>
                                     )}
                                 </div>
+
+                                {content.references?.length > 0 && (
+                                    <>
+                                        <div className="h-px bg-border my-8" />
+
+                                        <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">References</h3>
+                                        <ul className="space-y-2 text-xs text-muted-foreground">
+                                            {content.references.map((ref: { label: string; url?: string }, i: number) => (
+                                                <li key={i}>
+                                                    [{i + 1}]{' '}
+                                                    {ref.url ? (
+                                                        <a
+                                                            href={ref.url}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="underline underline-offset-2 hover:text-foreground"
+                                                        >
+                                                            {ref.label}
+                                                        </a>
+                                                    ) : (
+                                                        ref.label
+                                                    )}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </>
+                                )}
                             </div>
                         </aside>
                     </div>

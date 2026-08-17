@@ -8,6 +8,9 @@ date: "2022-05-15"
 status: "Archived Project"
 tags: ["Symbolic Math", "GUI", "LaTeX", "Python"]
 concepts: ["math", "sympy"]
+references:
+  - label: "Math Expert on GitHub"
+    url: "https://github.com/salastro/math-expert"
 links:
   - "math"
   - "sympy"
@@ -26,7 +29,3 @@ The code leans object-oriented, mostly because PyLaTeX's document model all but 
 ## Tradeoffs
 
 It is fast, accurate, and easy enough to hand to someone with no LaTeX experience. It is also narrow: limited input syntax, no preview before committing an operation, no undo. Those are the honest tradeoffs of shipping a graduation project instead of a product.
-
-## References
-
-- [Math Expert on GitHub](https://github.com/salastro/math-expert)
