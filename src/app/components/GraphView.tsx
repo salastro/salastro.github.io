@@ -13,11 +13,17 @@ interface GridDot {
   xOffset: number;
   yOffset: number;
   _inertiaApplied: boolean;
-  opacity: number;
-  _fadingOut: boolean;
+  fadeStart: number; // performance.now() timestamp when this dot appeared
 }
 
-const DOT_FADE_DURATION = 0.3;
+const DOT_FADE_DURATION_MS = 300;
+
+// Cheap ease-out, no allocation — avoids per-dot GSAP tweens, which get very
+// expensive right at a LOD boundary crossing (hundreds of dots become "new"
+// in the same frame, since their cache key changes with the LOD level).
+function easeOutQuad(t: number): number {
+  return 1 - (1 - t) * (1 - t);
+}
 
 interface GraphViewProps {
   onNodeClick: (node: MyNode) => void;
@@ -440,6 +446,7 @@ const GraphView: React.FC<GraphViewProps> = ({
     // Ensure dots exist for visible area and update them
     const currentDots = dotsRef.current;
     const visibleDotKeys = new Set<string>();
+    const now = performance.now();
 
     // Draw dots
     for (let x = startX; x <= endX; x += spacing) {
@@ -450,15 +457,15 @@ const GraphView: React.FC<GraphViewProps> = ({
         // Get or create dot object
         let dot = currentDots.get(key);
         if (!dot) {
-          dot = { cx: x, cy: y, xOffset: 0, yOffset: 0, _inertiaApplied: false, opacity: 0, _fadingOut: false };
+          dot = { cx: x, cy: y, xOffset: 0, yOffset: 0, _inertiaApplied: false, fadeStart: now };
           currentDots.set(key, dot);
-          gsap.to(dot, { opacity: 1, duration: DOT_FADE_DURATION, ease: 'power1.out' });
-        } else if (dot._fadingOut) {
-          // Dot re-entered view mid fade-out: cancel the fade and bring it back
-          dot._fadingOut = false;
-          gsap.killTweensOf(dot);
-          gsap.to(dot, { opacity: 1, duration: DOT_FADE_DURATION, ease: 'power1.out' });
         }
+
+        // Fade in over DOT_FADE_DURATION_MS since creation — plain arithmetic,
+        // no per-dot tween object, since a LOD boundary crossing can make
+        // hundreds of dots "new" in the same frame.
+        const fadeAge = now - dot.fadeStart;
+        const opacity = fadeAge >= DOT_FADE_DURATION_MS ? 1 : easeOutQuad(fadeAge / DOT_FADE_DURATION_MS);
 
         // Calculate actual position with offset
         const drawX = dot.cx + dot.xOffset;
@@ -482,7 +489,7 @@ const GraphView: React.FC<GraphViewProps> = ({
           }
         }
 
-        ctx.globalAlpha = dot.opacity;
+        ctx.globalAlpha = opacity;
         ctx.fillStyle = fillColor;
         ctx.beginPath();
         ctx.arc(drawX, drawY, dotSize / 2, 0, Math.PI * 2);
@@ -491,21 +498,12 @@ const GraphView: React.FC<GraphViewProps> = ({
     }
     ctx.globalAlpha = 1; // don't leak into the nodes/links drawn right after this
 
-    // Fade out dots that are no longer visible instead of popping them away,
-    // then remove them once the fade completes (unless they re-entered view
-    // in the meantime, or they're mid inertia-push animation).
+    // Drop dots that are no longer visible. They're never drawn once outside
+    // visibleDotKeys, so there's nothing to fade out on removal — just evict
+    // immediately (unless mid inertia-push animation) to keep the cache bounded.
     currentDots.forEach((dot, key) => {
-      if (!visibleDotKeys.has(key) && !dot._inertiaApplied && !dot._fadingOut) {
-        dot._fadingOut = true;
-        gsap.killTweensOf(dot);
-        gsap.to(dot, {
-          opacity: 0,
-          duration: DOT_FADE_DURATION,
-          ease: 'power1.in',
-          onComplete: () => {
-            if (dot._fadingOut) currentDots.delete(key);
-          }
-        });
+      if (!visibleDotKeys.has(key) && !dot._inertiaApplied) {
+        currentDots.delete(key);
       }
     });
   }, [dimensions, dotSize, gap, baseColor, proximity, baseRgb, activeRgb]);
