@@ -13,7 +13,11 @@ interface GridDot {
   xOffset: number;
   yOffset: number;
   _inertiaApplied: boolean;
+  opacity: number;
+  _fadingOut: boolean;
 }
+
+const DOT_FADE_DURATION = 0.3;
 
 interface GraphViewProps {
   onNodeClick: (node: MyNode) => void;
@@ -415,7 +419,7 @@ const GraphView: React.FC<GraphViewProps> = ({
     // two so on-screen spacing never drops below MIN_SCREEN_SPACING, keeping
     // the number of dots drawn roughly constant at any zoom level.
     const baseSpacing = gap + dotSize;
-    const MIN_SCREEN_SPACING = 24;
+    const MIN_SCREEN_SPACING = 12;
     let lod = 1;
     while (baseSpacing * zoom * lod < MIN_SCREEN_SPACING && lod < 1 << 20) {
       lod *= 2;
@@ -446,8 +450,14 @@ const GraphView: React.FC<GraphViewProps> = ({
         // Get or create dot object
         let dot = currentDots.get(key);
         if (!dot) {
-          dot = { cx: x, cy: y, xOffset: 0, yOffset: 0, _inertiaApplied: false };
+          dot = { cx: x, cy: y, xOffset: 0, yOffset: 0, _inertiaApplied: false, opacity: 0, _fadingOut: false };
           currentDots.set(key, dot);
+          gsap.to(dot, { opacity: 1, duration: DOT_FADE_DURATION, ease: 'power1.out' });
+        } else if (dot._fadingOut) {
+          // Dot re-entered view mid fade-out: cancel the fade and bring it back
+          dot._fadingOut = false;
+          gsap.killTweensOf(dot);
+          gsap.to(dot, { opacity: 1, duration: DOT_FADE_DURATION, ease: 'power1.out' });
         }
 
         // Calculate actual position with offset
@@ -472,20 +482,30 @@ const GraphView: React.FC<GraphViewProps> = ({
           }
         }
 
+        ctx.globalAlpha = dot.opacity;
         ctx.fillStyle = fillColor;
         ctx.beginPath();
         ctx.arc(drawX, drawY, dotSize / 2, 0, Math.PI * 2);
         ctx.fill();
       }
     }
+    ctx.globalAlpha = 1; // don't leak into the nodes/links drawn right after this
 
-    // Clean up dots that are no longer visible, unless they're mid-animation.
-    // Keeps the map bounded to "currently visible + currently animating" so it
-    // can't grow unbounded over a session (previously the eviction radius scaled
-    // with visibleWidth/Height, which meant it barely ever fired once zoomed out).
+    // Fade out dots that are no longer visible instead of popping them away,
+    // then remove them once the fade completes (unless they re-entered view
+    // in the meantime, or they're mid inertia-push animation).
     currentDots.forEach((dot, key) => {
-      if (!visibleDotKeys.has(key) && !dot._inertiaApplied) {
-        currentDots.delete(key);
+      if (!visibleDotKeys.has(key) && !dot._inertiaApplied && !dot._fadingOut) {
+        dot._fadingOut = true;
+        gsap.killTweensOf(dot);
+        gsap.to(dot, {
+          opacity: 0,
+          duration: DOT_FADE_DURATION,
+          ease: 'power1.in',
+          onComplete: () => {
+            if (dot._fadingOut) currentDots.delete(key);
+          }
+        });
       }
     });
   }, [dimensions, dotSize, gap, baseColor, proximity, baseRgb, activeRgb]);
