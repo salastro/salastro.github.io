@@ -25,6 +25,14 @@ function easeOutQuad(t: number): number {
   return 1 - (1 - t) * (1 - t);
 }
 
+// Matches force-graph's own zoom bounds (minZoom/maxZoom defaults).
+const ZOOM_MIN = 0.01;
+const ZOOM_MAX = 1000;
+// Fraction of the remaining (log-space) distance to the target zoom closed per frame.
+const ZOOM_LERP_FACTOR = 0.2;
+// Relative log-space threshold below which the zoom is considered "arrived".
+const ZOOM_LOG_SNAP_EPSILON = 0.001;
+
 interface GraphViewProps {
   onNodeClick: (node: MyNode) => void;
   activeNodeId: string | null;
@@ -142,6 +150,11 @@ const GraphView: React.FC<GraphViewProps> = ({
   const imgs = useRef<Record<string, HTMLImageElement>>({});
   // Tracks which cached images have transparent pixels, so we know which ones need a white backing
   const imgsHasAlpha = useRef<Record<string, boolean>>({});
+
+  // Smooth wheel-zoom state: the zoom level we're easing toward, and the
+  // screen/graph point that should stay fixed under the cursor while doing so.
+  const wheelTargetZoomRef = useRef<number | null>(null);
+  const wheelAnchorRef = useRef<{ screenX: number; screenY: number; graphX: number; graphY: number } | null>(null);
 
   // Resize handler
   useEffect(() => {
@@ -285,6 +298,73 @@ const GraphView: React.FC<GraphViewProps> = ({
       container.removeEventListener('click', handleClick);
     };
   }, [maxSpeed, speedTrigger, proximity, resistance, returnDuration, shockRadius, shockStrength]);
+
+  // Smooth wheel/trackpad zoom. force-graph's native wheel handling (disabled
+  // below via enableZoomInteraction) applies each wheel tick's scale change
+  // instantly, which feels stepped/jagged, especially from a physical mouse
+  // wheel. Instead, accumulate a target zoom here and ease toward it every
+  // frame in stepZoomSmoothing, anchored on the point under the cursor so
+  // zooming still feels centered on where the user is pointing.
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      const graph = graphRef.current;
+      if (!graph) return;
+      e.preventDefault();
+
+      const rect = container.getBoundingClientRect();
+      const screenX = e.clientX - rect.left;
+      const screenY = e.clientY - rect.top;
+
+      // Mirrors d3-zoom's own default wheelDelta formula, for a familiar feel.
+      const wheelDelta = -e.deltaY * (e.deltaMode === 1 ? 0.05 : e.deltaMode ? 1 : 0.002) * (e.ctrlKey ? 10 : 1);
+      const factor = Math.pow(2, wheelDelta);
+
+      const baseK = wheelTargetZoomRef.current ?? graph.zoom();
+      wheelTargetZoomRef.current = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, baseK * factor));
+
+      const graphPt = graph.screen2GraphCoords(screenX, screenY);
+      wheelAnchorRef.current = { screenX, screenY, graphX: graphPt.x, graphY: graphPt.y };
+    };
+
+    container.addEventListener('wheel', handleWheel, { passive: false });
+    return () => container.removeEventListener('wheel', handleWheel);
+  }, []);
+
+  // Eases the live zoom toward wheelTargetZoomRef, called once per animation
+  // frame from onRenderFramePre (which already runs every frame). Interpolates
+  // in log-space since zoom is a multiplicative quantity, and re-centers each
+  // step so the graph point under the cursor when the wheel gesture started
+  // stays fixed on screen instead of the view zooming toward its own center.
+  const stepZoomSmoothing = useCallback(() => {
+    const graph = graphRef.current;
+    const target = wheelTargetZoomRef.current;
+    if (!graph || target === null) return;
+
+    const current = graph.zoom();
+    const logCurrent = Math.log(current);
+    const logTarget = Math.log(target);
+    const reachedTarget = Math.abs(logTarget - logCurrent) < ZOOM_LOG_SNAP_EPSILON;
+    const next = reachedTarget ? target : Math.exp(logCurrent + (logTarget - logCurrent) * ZOOM_LERP_FACTOR);
+
+    graph.zoom(next);
+
+    const anchor = wheelAnchorRef.current;
+    if (anchor) {
+      const { width, height } = dimensions;
+      graph.centerAt(
+        anchor.graphX - (anchor.screenX - width / 2) / next,
+        anchor.graphY - (anchor.screenY - height / 2) / next
+      );
+    }
+
+    if (reachedTarget) {
+      wheelTargetZoomRef.current = null;
+      wheelAnchorRef.current = null;
+    }
+  }, [dimensions]);
 
   // Preload Images
   useEffect(() => {
@@ -517,7 +597,11 @@ const GraphView: React.FC<GraphViewProps> = ({
         graphData={data as any}
         nodeLabel={() => ''} // Disable default tooltip
         nodeCanvasObject={paintNode as any}
-        onRenderFramePre={(ctx, globalScale) => paintDotGrid(ctx, globalScale)}
+        onRenderFramePre={(ctx, globalScale) => {
+          stepZoomSmoothing();
+          paintDotGrid(ctx, globalScale);
+        }}
+        enableZoomInteraction={false}
         linkColor={(link: any) => {
           // Tag-based links in a distinct color (more transparent, dashed appearance via width)
           if (link.type === 'tag') {
