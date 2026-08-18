@@ -410,8 +410,17 @@ const GraphView: React.FC<GraphViewProps> = ({
     const right = left + visibleWidth;
     const bottom = top + visibleHeight;
 
-    // Calculate spacing in graph coordinates
-    const spacing = gap + dotSize;
+    // Level-of-detail: as zoom shrinks, the visible area (and naively, the dot
+    // count) grows with 1/zoom^2. Step up the graph-space spacing by powers of
+    // two so on-screen spacing never drops below MIN_SCREEN_SPACING, keeping
+    // the number of dots drawn roughly constant at any zoom level.
+    const baseSpacing = gap + dotSize;
+    const MIN_SCREEN_SPACING = 24;
+    let lod = 1;
+    while (baseSpacing * zoom * lod < MIN_SCREEN_SPACING && lod < 1 << 20) {
+      lod *= 2;
+    }
+    const spacing = baseSpacing * lod;
 
     // Determine which dots are visible (with some padding)
     const padding = spacing * 2;
@@ -431,7 +440,7 @@ const GraphView: React.FC<GraphViewProps> = ({
     // Draw dots
     for (let x = startX; x <= endX; x += spacing) {
       for (let y = startY; y <= endY; y += spacing) {
-        const key = `${x},${y}`;
+        const key = `${lod}:${x},${y}`;
         visibleDotKeys.add(key);
 
         // Get or create dot object
@@ -470,16 +479,13 @@ const GraphView: React.FC<GraphViewProps> = ({
       }
     }
 
-    // Clean up dots that are no longer visible (with some buffer to keep animated ones)
+    // Clean up dots that are no longer visible, unless they're mid-animation.
+    // Keeps the map bounded to "currently visible + currently animating" so it
+    // can't grow unbounded over a session (previously the eviction radius scaled
+    // with visibleWidth/Height, which meant it barely ever fired once zoomed out).
     currentDots.forEach((dot, key) => {
       if (!visibleDotKeys.has(key) && !dot._inertiaApplied) {
-        const dx = dot.cx - (center?.x ?? 0);
-        const dy = dot.cy - (center?.y ?? 0);
-        const distFromCenter = Math.hypot(dx, dy);
-        // Remove if very far from center (more than 2x visible area)
-        if (distFromCenter > Math.max(visibleWidth, visibleHeight) * 2) {
-          currentDots.delete(key);
-        }
+        currentDots.delete(key);
       }
     });
   }, [dimensions, dotSize, gap, baseColor, proximity, baseRgb, activeRgb]);
