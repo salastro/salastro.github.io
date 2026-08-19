@@ -2,7 +2,7 @@
 id: "systems-modeling"
 title: "Systems Modeling"
 group: "focus"
-level: 1
+level: 2
 val: 10
 date: "2024-06-18"
 tags: ["Dynamics", "Control", "Complexity"]

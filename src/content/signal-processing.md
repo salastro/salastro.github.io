@@ -13,7 +13,7 @@ equations:
   - 'y[n] = \sum_{k=-\infty}^{\infty} x[k]h[n-k]'
   - 'S_{xx}(\omega) = \int_{-\infty}^{\infty} R_{xx}(\tau)e^{-j\omega\tau} d\tau'
 links:
-  - "root"
+  - "projects"
   - "dsp"
   - "stochastic"
   - "wavelets"

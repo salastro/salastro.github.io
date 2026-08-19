@@ -3,7 +3,7 @@ id: "physics"
 title: "Physics"
 group: "focus"
 level: 1
-val: 8
+val: 12
 date: "2022-04-01"
 tags: ["Physics", "Physical Models", "Conceptual Physics"]
 links:

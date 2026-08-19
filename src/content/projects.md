@@ -2,7 +2,7 @@
 id: "projects"
 title: "Engineering"
 group: "focus"
-level: 3
+level: 1
 val: 20
 date: "2024-01-15"
 tags: ["Implementation", "Hardware", "Software"]
