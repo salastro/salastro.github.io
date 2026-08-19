@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import ForceGraph2D, { type GraphData, type LinkObject, type NodeObject } from 'react-force-graph-2d';
 import { useTheme } from 'next-themes';
 import { gsap } from 'gsap';
@@ -82,29 +82,49 @@ function hexToRgb(hex: string) {
   };
 }
 
+// Hoisted so the default isn't reallocated on every render when the caller
+// omits the prop (JS default parameters are re-evaluated on each call).
+const DEFAULT_DOT_GRID = {
+  dotSize: 4,
+  gap: 24,
+  baseColor: '#333333',
+  activeColor: '#64d2ff',
+  proximity: 120,
+  speedTrigger: 100,
+  shockRadius: 250,
+  shockStrength: 5,
+  maxSpeed: 5000,
+  resistance: 750,
+  returnDuration: 1.5
+};
+
 const GraphView: React.FC<GraphViewProps> = ({
   onNodeClick,
   activeNodeId,
   filter,
-  dotGrid = {
-    dotSize: 4,
-    gap: 24,
-    baseColor: '#333333',
-    activeColor: '#64d2ff',
-    proximity: 120,
-    speedTrigger: 100,
-    shockRadius: 250,
-    shockStrength: 5,
-    maxSpeed: 5000,
-    resistance: 750,
-    returnDuration: 1.5
-  }
+  dotGrid = DEFAULT_DOT_GRID
 }) => {
   const graphRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
   const [data, setData] = useState<{ nodes: MyNode[]; links: MyLink[] }>({ nodes: [], links: [] });
   const { theme } = useTheme();
+
+  // Cache the OS/browser dark-mode preference instead of calling
+  // window.matchMedia(...) fresh inside paintNode/linkColor — those run once
+  // per node/link every single animation frame, so a raw matchMedia() call
+  // in there means constructing a new MediaQueryList thousands of times a
+  // second for an answer that only changes when the system preference does.
+  const [systemPrefersDark, setSystemPrefersDark] = useState(
+    () => window.matchMedia('(prefers-color-scheme: dark)').matches
+  );
+  useEffect(() => {
+    const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => setSystemPrefersDark(e.matches);
+    mql.addEventListener('change', handleChange);
+    return () => mql.removeEventListener('change', handleChange);
+  }, []);
+  const isDark = theme === 'dark' || (theme === 'system' && systemPrefersDark);
 
   // Dot grid settings
   const {
@@ -121,9 +141,12 @@ const GraphView: React.FC<GraphViewProps> = ({
     returnDuration = 1.5
   } = dotGrid;
 
-  // Pre-compute RGB values for color interpolation
-  const baseRgb = hexToRgb(baseColor);
-  const activeRgb = hexToRgb(activeColor);
+  // Pre-compute RGB values for color interpolation. Memoized on the color
+  // strings (not the dotGrid object) so this stays stable across renders
+  // that don't actually change the colors, even if the caller passes a new
+  // dotGrid object reference every render.
+  const baseRgb = useMemo(() => hexToRgb(baseColor), [baseColor]);
+  const activeRgb = useMemo(() => hexToRgb(activeColor), [activeColor]);
 
   // Mouse position in graph coordinates
   const mouseGraphPos = useRef<{ x: number; y: number } | null>(null);
@@ -143,6 +166,11 @@ const GraphView: React.FC<GraphViewProps> = ({
   // Persistent dot objects with offsets for GSAP animations
   const dotsRef = useRef<Map<string, GridDot>>(new Map());
 
+  // The LOD-adjusted grid spacing paintDotGrid last computed, so the pointer
+  // handlers below can look up nearby dots by grid key instead of scanning
+  // every cached dot on every mousemove.
+  const currentSpacingRef = useRef({ spacing: gap + dotSize, lod: 1 });
+
   // Track last known visible area to manage dots
   const lastVisibleArea = useRef<{ startX: number; startY: number; endX: number; endY: number } | null>(null);
 
@@ -155,6 +183,25 @@ const GraphView: React.FC<GraphViewProps> = ({
   // screen/graph point that should stay fixed under the cursor while doing so.
   const wheelTargetZoomRef = useRef<number | null>(null);
   const wheelAnchorRef = useRef<{ screenX: number; screenY: number; graphX: number; graphY: number } | null>(null);
+
+  // Iterates only the dots whose grid cell could fall within `radius` of
+  // (targetX, targetY), instead of scanning every cached dot on every
+  // mousemove/click/drag — dots sit on an exact grid, so the candidate set
+  // can be found directly by key arithmetic using the LOD-adjusted spacing
+  // paintDotGrid last computed (currentSpacingRef).
+  const forEachNearbyDot = useCallback((targetX: number, targetY: number, radius: number, cb: (dot: GridDot) => void) => {
+    const { spacing, lod } = currentSpacingRef.current;
+    const minGX = Math.floor((targetX - radius) / spacing) * spacing;
+    const maxGX = Math.ceil((targetX + radius) / spacing) * spacing;
+    const minGY = Math.floor((targetY - radius) / spacing) * spacing;
+    const maxGY = Math.ceil((targetY + radius) / spacing) * spacing;
+    for (let gx = minGX; gx <= maxGX; gx += spacing) {
+      for (let gy = minGY; gy <= maxGY; gy += spacing) {
+        const dot = dotsRef.current.get(`${lod}:${gx},${gy}`);
+        if (dot) cb(dot);
+      }
+    }
+  }, []);
 
   // Resize handler
   useEffect(() => {
@@ -224,7 +271,7 @@ const GraphView: React.FC<GraphViewProps> = ({
 
       // Apply speed-triggered inertia push to nearby dots
       if (speed > speedTrigger) {
-        dotsRef.current.forEach((dot) => {
+        forEachNearbyDot(graphCoords.x, graphCoords.y, proximity, (dot) => {
           const dist = Math.hypot(dot.cx - graphCoords.x, dot.cy - graphCoords.y);
           if (dist < proximity && !dot._inertiaApplied) {
             dot._inertiaApplied = true;
@@ -263,7 +310,7 @@ const GraphView: React.FC<GraphViewProps> = ({
       const graphCoords = graph.screen2GraphCoords(screenX, screenY);
 
       // Apply shock wave to nearby dots
-      dotsRef.current.forEach((dot) => {
+      forEachNearbyDot(graphCoords.x, graphCoords.y, shockRadius, (dot) => {
         const dist = Math.hypot(dot.cx - graphCoords.x, dot.cy - graphCoords.y);
         if (dist < shockRadius && !dot._inertiaApplied) {
           dot._inertiaApplied = true;
@@ -297,7 +344,7 @@ const GraphView: React.FC<GraphViewProps> = ({
       container.removeEventListener('mouseleave', handleMouseLeave);
       container.removeEventListener('click', handleClick);
     };
-  }, [maxSpeed, speedTrigger, proximity, resistance, returnDuration, shockRadius, shockStrength]);
+  }, [maxSpeed, speedTrigger, proximity, resistance, returnDuration, shockRadius, shockStrength, forEachNearbyDot]);
 
   // Smooth wheel/trackpad zoom. force-graph's native wheel handling (disabled
   // below via enableZoomInteraction) applies each wheel tick's scale change
@@ -422,7 +469,6 @@ const GraphView: React.FC<GraphViewProps> = ({
   const paintNode = useCallback((node: MyNode, ctx: CanvasRenderingContext2D, globalScale: number) => {
     const isActive = node.id === activeNodeId;
     const isRoot = node.group === 'root';
-    const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
     const size = node.val || 4;
 
@@ -480,7 +526,18 @@ const GraphView: React.FC<GraphViewProps> = ({
         : (isDark ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.8)');
       ctx.fillText(label, node.x!, node.y! + size + fontSize + 2);
     }
-  }, [activeNodeId, theme]);
+  }, [activeNodeId, isDark]);
+
+  // Link coloring — memoized on isDark instead of a fresh inline arrow
+  // function (and its own matchMedia calls) recreated every render.
+  const linkColor = useCallback((link: any) => {
+    // Tag-based links in a distinct color (more transparent, dashed appearance via width)
+    if (link.type === 'tag') {
+      return isDark ? 'rgba(96, 165, 250, 0.15)' : 'rgba(59, 130, 246, 0.1)';
+    }
+    // Explicit links in default color
+    return isDark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.15)';
+  }, [isDark]);
 
   // Draw dot grid background - renders in graph coordinate space
   const paintDotGrid = useCallback((ctx: CanvasRenderingContext2D, globalScale: number) => {
@@ -511,6 +568,7 @@ const GraphView: React.FC<GraphViewProps> = ({
       lod *= 2;
     }
     const spacing = baseSpacing * lod;
+    currentSpacingRef.current = { spacing, lod };
 
     // Determine which dots are visible (with some padding)
     const padding = spacing * 2;
@@ -602,18 +660,7 @@ const GraphView: React.FC<GraphViewProps> = ({
           paintDotGrid(ctx, globalScale);
         }}
         enableZoomInteraction={false}
-        linkColor={(link: any) => {
-          // Tag-based links in a distinct color (more transparent, dashed appearance via width)
-          if (link.type === 'tag') {
-            return theme === 'light' || (theme === 'system' && !window.matchMedia('(prefers-color-scheme: dark)').matches)
-              ? 'rgba(59, 130, 246, 0.1)' // Blue for tag links (light mode)
-              : 'rgba(96, 165, 250, 0.15)'; // Blue for tag links (dark mode)
-          }
-          // Explicit links in default color
-          return theme === 'light' || (theme === 'system' && !window.matchMedia('(prefers-color-scheme: dark)').matches)
-            ? 'rgba(0,0,0,0.15)'
-            : 'rgba(255,255,255,0.15)';
-        }}
+        linkColor={linkColor}
         linkWidth={(link: any) => {
           // Tag-based links thinner to distinguish from explicit links
           return link.type === 'tag' ? 0.5 : 1;
@@ -655,7 +702,7 @@ const GraphView: React.FC<GraphViewProps> = ({
 
             // Apply speed-triggered inertia push to nearby dots
             if (speed > speedTrigger) {
-              dotsRef.current.forEach((dot) => {
+              forEachNearbyDot(node.x!, node.y!, proximity, (dot) => {
                 const dist = Math.hypot(dot.cx - node.x!, dot.cy - node.y!);
                 if (dist < proximity && !dot._inertiaApplied) {
                   dot._inertiaApplied = true;
