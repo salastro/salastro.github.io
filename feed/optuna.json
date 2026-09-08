@@ -1,0 +1,24 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "SalahDin Rezk Blog",
+  "home_page_url": "https://salastro.github.io",
+  "feed_url": "https://salastro.github.io/feed/optuna.json",
+  "description": "Essays and technical writing from SalahDin Rezk.",
+  "items": [
+    {
+      "id": "https://salastro.github.io/#gsoc-week-13",
+      "url": "https://salastro.github.io/#gsoc-week-13",
+      "title": "GSoC Week 13: How Much Does Rule Order Actually Cost?",
+      "content_text": "Week thirteen had no new integration rules to show off. Instead it was seven pull requests closing out loose ends from earlier weeks, plus a side project that finally let me put a number on a question I'd been asking myself since week seven: when manualintegrate has several ways to solve an integral, how much does the order in which it tries them actually matter?",
+      "date_published": "2026-08-20",
+      "tags": [
+        "gsoc",
+        "sympy",
+        "manualintegrate",
+        "symbolic-integration",
+        "performance",
+        "optuna"
+      ]
+    }
+  ]
+}

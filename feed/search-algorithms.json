@@ -1,0 +1,24 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "SalahDin Rezk Blog",
+  "home_page_url": "https://salastro.github.io",
+  "feed_url": "https://salastro.github.io/feed/search-algorithms.json",
+  "description": "Essays and technical writing from SalahDin Rezk.",
+  "items": [
+    {
+      "id": "https://salastro.github.io/#gsoc-week-11",
+      "url": "https://salastro.github.io/#gsoc-week-11",
+      "title": "GSoC Week 11: Manual Integration as Search",
+      "content_text": "Week eleven is where the patchwork finally caught up with me. For the past several weeks I had been fixing manualintegrate one rule at a time, making a substitution smarter here, tightening a stopping condition there, adding a keyword so alternatives() could choose not to branch. Each fix was correct on its own, but all of them were treating symptoms of the same underlying problem, and this week I finally sat down and named it. manualintegrate is built as a tree of recursive strategy combinators, where every rule calls integralsteps again on whatever it produces, and the caller has no way to see or influence that recursion from the outside. Cyclic rule applications can fail to terminate, alternative strategies get tried one after another instead of in any principled order, and the logic for \"does this rule apply\" is welded to the logic for \"how do we search among rules that apply.\" The branch keyword I added a few weeks ago was a workaround for exactly this. I couldn't change how the search explored alternatives, so I gave callers a way to opt out of exploring them at all.",
+      "date_published": "2026-08-06",
+      "tags": [
+        "gsoc",
+        "sympy",
+        "manualintegrate",
+        "symbolic-integration",
+        "search-algorithms",
+        "software-architecture"
+      ]
+    }
+  ]
+}

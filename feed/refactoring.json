@@ -1,0 +1,39 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "SalahDin Rezk Blog",
+  "home_page_url": "https://salastro.github.io",
+  "feed_url": "https://salastro.github.io/feed/refactoring.json",
+  "description": "Essays and technical writing from SalahDin Rezk.",
+  "items": [
+    {
+      "id": "https://salastro.github.io/#gsoc-week-15",
+      "url": "https://salastro.github.io/#gsoc-week-15",
+      "title": "GSoC Week 15: Owning the Recursion",
+      "content_text": "This is the last week of coding, and it landed on the piece of work that everything else this summer had been quietly building toward: turning manualintegrate's tangle of self-recursive rules into a single IntegrationSolver that owns the recursion on their behalf.",
+      "date_published": "2026-09-03",
+      "tags": [
+        "gsoc",
+        "sympy",
+        "manualintegrate",
+        "symbolic-integration",
+        "refactoring",
+        "memoization"
+      ]
+    },
+    {
+      "id": "https://salastro.github.io/#gsoc-week-14",
+      "url": "https://salastro.github.io/#gsoc-week-14",
+      "title": "GSoC Week 14: The Stateful Solver Lands",
+      "content_text": "Back in week two, I noticed that a lot of manualintegrate's worst performance problems traced back to the same place: AlternativesRule generating too many candidate strategies and the search exploding underneath them. At the time all I had was a vague idea that the integrator needed something closer to a guided search than a pile of heuristics. This week that idea finally became code. PR 30311, the single largest thing I have touched all summer, migrated manualintegrate onto a stateful-solver architecture, and it took 79 commits in seven days to get there.",
+      "date_published": "2026-08-28",
+      "tags": [
+        "gsoc",
+        "sympy",
+        "manualintegrate",
+        "symbolic-integration",
+        "trigonometric-substitution",
+        "refactoring"
+      ]
+    }
+  ]
+}

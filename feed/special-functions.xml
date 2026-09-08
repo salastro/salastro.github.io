@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SalahDin Rezk Blog</title>
+    <link>https://salastro.github.io</link>
+    <description>Essays and technical writing from SalahDin Rezk.</description>
+    <lastBuildDate>Tue, 08 Sep 2026 17:54:28 GMT</lastBuildDate>
+    <atom:link href="https://salastro.github.io/feed/special-functions.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>GSoC Week 9-10: Teaching manualintegrate a New Special Function</title>
+      <link>https://salastro.github.io/#gsoc-week-9-10</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-9-10</guid>
+      <pubDate>Thu, 30 Jul 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <category>special-functions</category>
+      <category>owens-t</category>
+      <description>These two weeks were dominated by one project: getting Owen&apos;s T function into SymPy end to end, from its definition as an integral to the point where manualintegrate can produce it as an answer. Everything else I touched turned out to be preparation for that, whether I planned it that way or not.</description>
+    </item>
+  </channel>
+</rss>

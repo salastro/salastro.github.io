@@ -1,0 +1,83 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "SalahDin Rezk Blog",
+  "home_page_url": "https://salastro.github.io",
+  "feed_url": "https://salastro.github.io/feed/index.2.json",
+  "description": "Essays and technical writing from SalahDin Rezk.",
+  "items": [
+    {
+      "id": "https://salastro.github.io/#how-i-started-with-gsoc",
+      "url": "https://salastro.github.io/#how-i-started-with-gsoc",
+      "title": "How I started Google Summer of Code with SymPy",
+      "content_text": "Sometime during 2025, on what seemed like just another ordinary day, fate decided to intervene in its mysterious way. During a casual conversation, a friend of mine mentioned GSoC to me. Until that moment, I had never heard of it before, nor did I know about the opportunities it offered. Curious, I started looking into it, and the more I learned, the more interested I became. I have already tried contributing to open-source projects, yet the idea of collaborating with experienced developers felt exciting. So, naturally, I decided to take a chance and apply.",
+      "date_published": "2026-05-12",
+      "tags": [
+        "gsoc",
+        "sympy",
+        "open-source",
+        "contribution",
+        "community"
+      ]
+    },
+    {
+      "id": "https://salastro.github.io/#is-area-vector-or-scalar",
+      "url": "https://salastro.github.io/#is-area-vector-or-scalar",
+      "title": "Is Area a Vector or Scalar?",
+      "content_text": "In grade 10 we had a discussion with our mechanics and mathematics teacher about how should area be described. He insisted that area is a scalar, while some of us were totally convinced that it should be a vector. I, personally, was on the scalar side since vectors always have a direction, and area can not have such a characteristic. The only vector related to area is the normal to its surface, which is looked to me as a completely separate thing from area itself. It may be attached to it, but it is not what defines it.",
+      "date_published": "2022-04-01",
+      "tags": [
+        "Physics",
+        "Physical Models",
+        "Vectors"
+      ]
+    },
+    {
+      "id": "https://salastro.github.io/#leaving-social-media",
+      "url": "https://salastro.github.io/#leaving-social-media",
+      "title": "Leaving Social Media for Good",
+      "content_text": "In my humble opinion, the way modern social media is being used can't be more toxic. We don't really engage, have fun, or learn. You waste hours of your life doing nothing but scroll through an endless stream of meaningless content. Human lives should be wasted on nothing like this. I won't be talking about why to leave, you are here because you already want to leave.",
+      "date_published": "2022-03-04",
+      "tags": [
+        "Productivity",
+        "Digital",
+        "Habits"
+      ]
+    },
+    {
+      "id": "https://salastro.github.io/#apl-the-programming-of-wizards",
+      "url": "https://salastro.github.io/#apl-the-programming-of-wizards",
+      "title": "The Programming of Wizards",
+      "content_text": "APL (A Programming Language) is an exceptionally unique language. It mainly follows an array paradigm, unlike the usual functional and object-oriented approaches; it depends heavily on weird mathematical glyphs; and it is surprisingly elegant.",
+      "date_published": "2022-02-20",
+      "tags": [
+        "APL",
+        "Array Programming",
+        "Languages"
+      ]
+    },
+    {
+      "id": "https://salastro.github.io/#vimbrain",
+      "url": "https://salastro.github.io/#vimbrain",
+      "title": "VIM BRAIN",
+      "content_text": "[An obscure little project](https://github.com/salastro/vimBrain) that I finished recently was to create an esoteric programming language. My goal was to achieve the smallest possible set of vim-like instructions while being Turing-complete.",
+      "date_published": "2021-12-08",
+      "tags": [
+        "Vim",
+        "Esoteric Languages",
+        "Programming"
+      ]
+    },
+    {
+      "id": "https://salastro.github.io/#which-distro",
+      "url": "https://salastro.github.io/#which-distro",
+      "title": "A Linux dead simple guide!",
+      "content_text": "Introduction\n What is a Linux distribution \nLinux distributions usually refers to a family of operating systems that uses the Linux kernel and are similar in some design aspects. For the most part, Linux distributions follows the Unix philosophy and are Unix-like operating systems.",
+      "date_published": "2021-11-11",
+      "tags": [
+        "Distributions",
+        "Linux",
+        "Guide"
+      ]
+    }
+  ]
+}

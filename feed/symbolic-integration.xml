@@ -4,9 +4,100 @@
     <title>SalahDin Rezk Blog</title>
     <link>https://salastro.github.io</link>
     <description>Essays and technical writing from SalahDin Rezk.</description>
-    <lastBuildDate>Wed, 19 Aug 2026 09:45:15 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 17:54:28 GMT</lastBuildDate>
     <atom:link href="https://salastro.github.io/feed/symbolic-integration.xml" rel="self" type="application/rss+xml"/>
 
+    <item>
+      <title>GSoC Week 15: Owning the Recursion</title>
+      <link>https://salastro.github.io/#gsoc-week-15</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-15</guid>
+      <pubDate>Thu, 03 Sep 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <category>refactoring</category>
+      <category>memoization</category>
+      <description>This is the last week of coding, and it landed on the piece of work that everything else this summer had been quietly building toward: turning manualintegrate&apos;s tangle of self-recursive rules into a single IntegrationSolver that owns the recursion on their behalf.</description>
+    </item>
+    <item>
+      <title>GSoC Week 14: The Stateful Solver Lands</title>
+      <link>https://salastro.github.io/#gsoc-week-14</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-14</guid>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <category>trigonometric-substitution</category>
+      <category>refactoring</category>
+      <description>Back in week two, I noticed that a lot of manualintegrate&apos;s worst performance problems traced back to the same place: AlternativesRule generating too many candidate strategies and the search exploding underneath them. At the time all I had was a vague idea that the integrator needed something closer to a guided search than a pile of heuristics. This week that idea finally became code. PR 30311, the single largest thing I have touched all summer, migrated manualintegrate onto a stateful-solver architecture, and it took 79 commits in seven days to get there.</description>
+    </item>
+    <item>
+      <title>GSoC Week 13: How Much Does Rule Order Actually Cost?</title>
+      <link>https://salastro.github.io/#gsoc-week-13</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-13</guid>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <category>performance</category>
+      <category>optuna</category>
+      <description>Week thirteen had no new integration rules to show off. Instead it was seven pull requests closing out loose ends from earlier weeks, plus a side project that finally let me put a number on a question I&apos;d been asking myself since week seven: when manualintegrate has several ways to solve an integral, how much does the order in which it tries them actually matter?</description>
+    </item>
+    <item>
+      <title>GSoC Week 11: Manual Integration as Search</title>
+      <link>https://salastro.github.io/#gsoc-week-11</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-11</guid>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <category>search-algorithms</category>
+      <category>software-architecture</category>
+      <description>Week eleven is where the patchwork finally caught up with me. For the past several weeks I had been fixing manualintegrate one rule at a time, making a substitution smarter here, tightening a stopping condition there, adding a keyword so alternatives() could choose not to branch. Each fix was correct on its own, but all of them were treating symptoms of the same underlying problem, and this week I finally sat down and named it. manualintegrate is built as a tree of recursive strategy combinators, where every rule calls integralsteps again on whatever it produces, and the caller has no way to see or influence that recursion from the outside. Cyclic rule applications can fail to terminate, alternative strategies get tried one after another instead of in any principled order, and the logic for &quot;does this rule apply&quot; is welded to the logic for &quot;how do we search among rules that apply.&quot; The branch keyword I added a few weeks ago was a workaround for exactly this. I couldn&apos;t change how the search explored alternatives, so I gave callers a way to opt out of exploring them at all.</description>
+    </item>
+    <item>
+      <title>GSoC Week 9-10: Teaching manualintegrate a New Special Function</title>
+      <link>https://salastro.github.io/#gsoc-week-9-10</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-9-10</guid>
+      <pubDate>Thu, 30 Jul 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <category>special-functions</category>
+      <category>owens-t</category>
+      <description>These two weeks were dominated by one project: getting Owen&apos;s T function into SymPy end to end, from its definition as an integral to the point where manualintegrate can produce it as an answer. Everything else I touched turned out to be preparation for that, whether I planned it that way or not.</description>
+    </item>
+    <item>
+      <title>GSoC Week 8: Closing the sin(x^2)cos(x) Gap</title>
+      <link>https://salastro.github.io/#gsoc-week-8</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-8</guid>
+      <pubDate>Thu, 16 Jul 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <category>trigonometric-integrals</category>
+      <category>fresnel-integrals</category>
+      <description>Last week ended with a problem I couldn&apos;t solve: manualintegrate had no way to handle $\int x^2 \sin(x^2)\cos(x)\,dx$, even though Wolfram Alpha resolves it in a few standard steps. This week I went back and built the two rules that close that gap, and in the process learned that fixing one class of integral just moves the wall a little further out.</description>
+    </item>
+    <item>
+      <title>GSoC Week 7: Making manualintegrate Leaner</title>
+      <link>https://salastro.github.io/#gsoc-week-7</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-7</guid>
+      <pubDate>Thu, 09 Jul 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <category>integration-by-parts</category>
+      <category>u-substitution</category>
+      <description>Week seven was less about adding new integration rules and more about tightening the logic that decides when manualintegrate should stop looking for one. Several of the pull requests I opened this week replace a heuristic that happened to work with a check that is actually justified by the structure of the problem.</description>
+    </item>
     <item>
       <title>GSoC Week 3: Consolidating Manual Integration</title>
       <link>https://salastro.github.io/#gsoc-week-3</link>

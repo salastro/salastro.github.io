@@ -1,0 +1,24 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "SalahDin Rezk Blog",
+  "home_page_url": "https://salastro.github.io",
+  "feed_url": "https://salastro.github.io/feed/special-functions.json",
+  "description": "Essays and technical writing from SalahDin Rezk.",
+  "items": [
+    {
+      "id": "https://salastro.github.io/#gsoc-week-9-10",
+      "url": "https://salastro.github.io/#gsoc-week-9-10",
+      "title": "GSoC Week 9-10: Teaching manualintegrate a New Special Function",
+      "content_text": "These two weeks were dominated by one project: getting Owen's T function into SymPy end to end, from its definition as an integral to the point where manualintegrate can produce it as an answer. Everything else I touched turned out to be preparation for that, whether I planned it that way or not.",
+      "date_published": "2026-07-30",
+      "tags": [
+        "gsoc",
+        "sympy",
+        "manualintegrate",
+        "symbolic-integration",
+        "special-functions",
+        "owens-t"
+      ]
+    }
+  ]
+}

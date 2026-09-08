@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SalahDin Rezk Blog</title>
+    <link>https://salastro.github.io</link>
+    <description>Essays and technical writing from SalahDin Rezk.</description>
+    <lastBuildDate>Tue, 08 Sep 2026 17:54:28 GMT</lastBuildDate>
+    <atom:link href="https://salastro.github.io/feed/fresnel-integrals.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>GSoC Week 8: Closing the sin(x^2)cos(x) Gap</title>
+      <link>https://salastro.github.io/#gsoc-week-8</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-8</guid>
+      <pubDate>Thu, 16 Jul 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <category>trigonometric-integrals</category>
+      <category>fresnel-integrals</category>
+      <description>Last week ended with a problem I couldn&apos;t solve: manualintegrate had no way to handle $\int x^2 \sin(x^2)\cos(x)\,dx$, even though Wolfram Alpha resolves it in a few standard steps. This week I went back and built the two rules that close that gap, and in the process learned that fixing one class of integral just moves the wall a little further out.</description>
+    </item>
+  </channel>
+</rss>

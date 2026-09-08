@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SalahDin Rezk Blog</title>
+    <link>https://salastro.github.io</link>
+    <description>Essays and technical writing from SalahDin Rezk.</description>
+    <lastBuildDate>Tue, 08 Sep 2026 17:54:28 GMT</lastBuildDate>
+    <atom:link href="https://salastro.github.io/feed/refactoring.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>GSoC Week 15: Owning the Recursion</title>
+      <link>https://salastro.github.io/#gsoc-week-15</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-15</guid>
+      <pubDate>Thu, 03 Sep 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <category>refactoring</category>
+      <category>memoization</category>
+      <description>This is the last week of coding, and it landed on the piece of work that everything else this summer had been quietly building toward: turning manualintegrate&apos;s tangle of self-recursive rules into a single IntegrationSolver that owns the recursion on their behalf.</description>
+    </item>
+    <item>
+      <title>GSoC Week 14: The Stateful Solver Lands</title>
+      <link>https://salastro.github.io/#gsoc-week-14</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-14</guid>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <category>trigonometric-substitution</category>
+      <category>refactoring</category>
+      <description>Back in week two, I noticed that a lot of manualintegrate&apos;s worst performance problems traced back to the same place: AlternativesRule generating too many candidate strategies and the search exploding underneath them. At the time all I had was a vague idea that the integrator needed something closer to a guided search than a pile of heuristics. This week that idea finally became code. PR 30311, the single largest thing I have touched all summer, migrated manualintegrate onto a stateful-solver architecture, and it took 79 commits in seven days to get there.</description>
+    </item>
+  </channel>
+</rss>

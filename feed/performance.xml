@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SalahDin Rezk Blog</title>
+    <link>https://salastro.github.io</link>
+    <description>Essays and technical writing from SalahDin Rezk.</description>
+    <lastBuildDate>Tue, 08 Sep 2026 17:54:28 GMT</lastBuildDate>
+    <atom:link href="https://salastro.github.io/feed/performance.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>GSoC Week 13: How Much Does Rule Order Actually Cost?</title>
+      <link>https://salastro.github.io/#gsoc-week-13</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-13</guid>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <category>performance</category>
+      <category>optuna</category>
+      <description>Week thirteen had no new integration rules to show off. Instead it was seven pull requests closing out loose ends from earlier weeks, plus a side project that finally let me put a number on a question I&apos;d been asking myself since week seven: when manualintegrate has several ways to solve an integral, how much does the order in which it tries them actually matter?</description>
+    </item>
+  </channel>
+</rss>

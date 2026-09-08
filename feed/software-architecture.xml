@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SalahDin Rezk Blog</title>
+    <link>https://salastro.github.io</link>
+    <description>Essays and technical writing from SalahDin Rezk.</description>
+    <lastBuildDate>Tue, 08 Sep 2026 17:54:28 GMT</lastBuildDate>
+    <atom:link href="https://salastro.github.io/feed/software-architecture.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>GSoC Week 11: Manual Integration as Search</title>
+      <link>https://salastro.github.io/#gsoc-week-11</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-11</guid>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <category>search-algorithms</category>
+      <category>software-architecture</category>
+      <description>Week eleven is where the patchwork finally caught up with me. For the past several weeks I had been fixing manualintegrate one rule at a time, making a substitution smarter here, tightening a stopping condition there, adding a keyword so alternatives() could choose not to branch. Each fix was correct on its own, but all of them were treating symptoms of the same underlying problem, and this week I finally sat down and named it. manualintegrate is built as a tree of recursive strategy combinators, where every rule calls integralsteps again on whatever it produces, and the caller has no way to see or influence that recursion from the outside. Cyclic rule applications can fail to terminate, alternative strategies get tried one after another instead of in any principled order, and the logic for &quot;does this rule apply&quot; is welded to the logic for &quot;how do we search among rules that apply.&quot; The branch keyword I added a few weeks ago was a workaround for exactly this. I couldn&apos;t change how the search explored alternatives, so I gave callers a way to opt out of exploring them at all.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "SalahDin Rezk Blog",
+  "home_page_url": "https://salastro.github.io",
+  "feed_url": "https://salastro.github.io/feed/memoization.json",
+  "description": "Essays and technical writing from SalahDin Rezk.",
+  "items": [
+    {
+      "id": "https://salastro.github.io/#gsoc-week-15",
+      "url": "https://salastro.github.io/#gsoc-week-15",
+      "title": "GSoC Week 15: Owning the Recursion",
+      "content_text": "This is the last week of coding, and it landed on the piece of work that everything else this summer had been quietly building toward: turning manualintegrate's tangle of self-recursive rules into a single IntegrationSolver that owns the recursion on their behalf.",
+      "date_published": "2026-09-03",
+      "tags": [
+        "gsoc",
+        "sympy",
+        "manualintegrate",
+        "symbolic-integration",
+        "refactoring",
+        "memoization"
+      ]
+    }
+  ]
+}
