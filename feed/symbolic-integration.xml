@@ -4,7 +4,7 @@
     <title>SalahDin Rezk Blog</title>
     <link>https://salastro.github.io</link>
     <description>Essays and technical writing from SalahDin Rezk.</description>
-    <lastBuildDate>Tue, 08 Sep 2026 17:54:28 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 18:37:05 GMT</lastBuildDate>
     <atom:link href="https://salastro.github.io/feed/symbolic-integration.xml" rel="self" type="application/rss+xml"/>
 
     <item>
@@ -45,6 +45,19 @@
       <category>performance</category>
       <category>optuna</category>
       <description>Week thirteen had no new integration rules to show off. Instead it was seven pull requests closing out loose ends from earlier weeks, plus a side project that finally let me put a number on a question I&apos;d been asking myself since week seven: when manualintegrate has several ways to solve an integral, how much does the order in which it tries them actually matter?</description>
+    </item>
+    <item>
+      <title>GSoC Week 12: A Prototype for the Same Proposal</title>
+      <link>https://salastro.github.io/#gsoc-week-12</link>
+      <guid isPermaLink="true">https://salastro.github.io/#gsoc-week-12</guid>
+      <pubDate>Thu, 13 Aug 2026 00:00:00 GMT</pubDate>
+      <category>gsoc</category>
+      <category>sympy</category>
+      <category>manualintegrate</category>
+      <category>symbolic-integration</category>
+      <category>search-algorithms</category>
+      <category>software-architecture</category>
+      <description>Nothing changed in the diagnosis this week. The design proposal I wrote last week, replacing manualintegrate&apos;s recursive combinator tree with an explicit AND-OR search engine, is exactly where I left it, and the three integrals that motivated it are still open: $\int \frac{x}{e^x-1}\,dx$ still needs a reverse substitution the current rule can&apos;t perform, $\int \log(1+e^{2x})\,dx$ still has nowhere to send its own correctly-discovered substitution, and $\int \frac{dx}{\sqrt{-z\sin^2 x}}$ still needs a rewrite nothing in the rule set thinks to try. What&apos;s different is that the proposal now has a body. PR 30261 is a prototype that actually refactors manualintegrate into a stateful solver, instead of a design that only exists on a slide.</description>
     </item>
     <item>
       <title>GSoC Week 11: Manual Integration as Search</title>

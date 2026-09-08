@@ -6,6 +6,22 @@
   "description": "Essays and technical writing from SalahDin Rezk.",
   "items": [
     {
+      "id": "https://salastro.github.io/#understanding-sympy-integral-module",
+      "url": "https://salastro.github.io/#understanding-sympy-integral-module",
+      "title": "GSoC Week 1: The SymPy Integrals Module",
+      "content_text": "Understanding\n Top-level Integration Module",
+      "date_published": "2026-06-01",
+      "tags": [
+        "gsoc",
+        "sympy",
+        "open-source",
+        "python",
+        "integral",
+        "calculus",
+        "symbolic-computation"
+      ]
+    },
+    {
       "id": "https://salastro.github.io/#how-i-started-with-gsoc",
       "url": "https://salastro.github.io/#how-i-started-with-gsoc",
       "title": "How I started Google Summer of Code with SymPy",
