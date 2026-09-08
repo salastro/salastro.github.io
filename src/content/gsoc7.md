@@ -2,6 +2,7 @@
 
 id: "gsoc-week-7"
 title: "GSoC Week 7: Making manualintegrate Leaner"
+shortTitle: "GSoC Week 7"
 group: "essay"
 level: 2
 val: 10

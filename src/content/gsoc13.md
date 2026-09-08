@@ -2,6 +2,7 @@
 
 id: "gsoc-week-13"
 title: "GSoC Week 13: How Much Does Rule Order Actually Cost?"
+shortTitle: "GSoC Week 13"
 group: "essay"
 level: 2
 val: 10

@@ -515,7 +515,7 @@ const GraphView: React.FC<GraphViewProps> = ({
     }
 
     // Text Label
-    const label = node.title;
+    const label = node.shortTitle || node.title;
     if (label && (globalScale >= 1.5 || isRoot || node.group === 'focus' || isActive)) {
       const fontSize = isRoot ? 16 / globalScale : 12 / globalScale;
       ctx.font = `${isRoot ? '600' : '400'} ${fontSize}px Inter, sans-serif`;

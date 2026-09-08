@@ -5,6 +5,7 @@ export interface MyNode extends NodeObject {
   id: string;
   group: 'root' | 'focus' | 'project' | 'concept' | 'essay' | 'idea';
   title?: string; // Display name
+  shortTitle?: string; // Shortened label for graph-view canvas only
   description?: string;
   tags?: string[];
   level: number;

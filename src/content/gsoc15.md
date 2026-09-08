@@ -2,6 +2,7 @@
 
 id: "gsoc-week-15"
 title: "GSoC Week 15: Owning the Recursion"
+shortTitle: "GSoC Week 15"
 group: "essay"
 level: 2
 val: 10

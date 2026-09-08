@@ -1,6 +1,7 @@
 ---
 id: "understanding-sympy-integral-module"
 title: "GSoC Week 1: The SymPy Integrals Module"
+shortTitle: "GSoC Week 1"
 group: "essay"
 level: 3
 val: 10

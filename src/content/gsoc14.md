@@ -2,6 +2,7 @@
 
 id: "gsoc-week-14"
 title: "GSoC Week 14: The Stateful Solver Lands"
+shortTitle: "GSoC Week 14"
 group: "essay"
 level: 2
 val: 10

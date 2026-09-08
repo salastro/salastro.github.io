@@ -22,6 +22,7 @@ const PAGE_SIZE = 10;
 interface MarkdownFrontmatter {
     id: string;
     title: string;
+    shortTitle?: string;
     group?: string;
     level?: number;
     val?: number;
@@ -120,6 +121,7 @@ async function parseMarkdownContent(contentDir: string): Promise<ParsedContent> 
         nodes.push({
             id: frontmatter.id,
             title: frontmatter.title || frontmatter.id,
+            shortTitle: frontmatter.shortTitle || undefined,
             group: frontmatter.group || 'concept',
             level: frontmatter.level ?? 2,
             val: frontmatter.val ?? 5,

@@ -2,6 +2,7 @@
 
 id: "gsoc-week-11"
 title: "GSoC Week 11: Manual Integration as Search"
+shortTitle: "GSoC Week 11"
 group: "essay"
 level: 2
 val: 10

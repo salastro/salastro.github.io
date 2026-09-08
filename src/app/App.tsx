@@ -84,6 +84,11 @@ export default function App() {
         setIsPanelOpen(false);
     };
 
+    const handleNavigateToNode = (id: string) => {
+        setActiveNodeId(id);
+        setViewMode('document');
+    };
+
     const switchToGraphView = () => {
         setViewMode('graph');
     };
@@ -500,6 +505,7 @@ export default function App() {
                                         setActiveNodeId(null);
                                     }
                                 }}
+                                onNavigateToNode={handleNavigateToNode}
                             />
                         ) : (
                             renderIndex()

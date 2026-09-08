@@ -1,8 +1,8 @@
-
 ---
 
 id: "gsoc-week-12"
 title: "GSoC Week 12: A Prototype for the Same Proposal"
+shortTitle: "GSoC Week 12"
 group: "essay"
 level: 2
 val: 10

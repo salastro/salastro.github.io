@@ -2,6 +2,7 @@
 
 id: "gsoc-week-2"
 title: "GSoC Week 2: Looking for Patterns"
+shortTitle: "GSoC Week 2"
 group: "essay"
 level: 2
 val: 10

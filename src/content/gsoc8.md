@@ -2,6 +2,7 @@
 
 id: "gsoc-week-8"
 title: "GSoC Week 8: Closing the sin(x^2)cos(x) Gap"
+shortTitle: "GSoC Week 8"
 group: "essay"
 level: 2
 val: 10

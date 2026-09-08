@@ -2,6 +2,7 @@
 
 id: "gsoc-week-3"
 title: "GSoC Week 3: Consolidating Manual Integration"
+shortTitle: "GSoC Week 3"
 group: "essay"
 level: 2
 val: 10

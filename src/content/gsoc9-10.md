@@ -2,6 +2,7 @@
 
 id: "gsoc-week-9-10"
 title: "GSoC Week 9-10: Teaching manualintegrate a New Special Function"
+shortTitle: "GSoC Week 9-10"
 group: "essay"
 level: 2
 val: 10

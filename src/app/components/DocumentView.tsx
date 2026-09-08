@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { motion } from 'motion/react';
-import { nodeContent } from '../../data/graphData';
+import { nodeContent, graphData, MyNode } from '../../data/graphData';
 import { LaTeXBlock } from '../../components/LaTeX';
 import { CodeBlock } from '../../components/CodeBlock';
 import { formatDateDDMMYYYY } from '../../lib/utils';
@@ -10,7 +10,12 @@ interface DocumentViewProps {
     nodeId: string;
     onBack: () => void;
     backLabel?: string;
+    onNavigateToNode: (id: string) => void;
 }
+
+// react-force-graph-2d mutates graphData.links[].source/target from plain
+// ids into references to the node objects once the graph has rendered.
+const getEndpointId = (v: string | MyNode) => (typeof v === 'string' ? v : v.id);
 
 function formatReadingTime(minutes?: number) {
     if (!minutes) return null;
@@ -21,9 +26,27 @@ let isMermaidInitialized = false;
 const MERMAID_MIN_ZOOM = 0.5;
 const MERMAID_MAX_ZOOM = 20;
 
-const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel = 'Back' }) => {
+const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel = 'Back', onNavigateToNode }) => {
     const content = nodeContent[nodeId] || nodeContent['default'];
     const articleRef = useRef<HTMLElement | null>(null);
+
+    const currentNode = graphData.nodes.find(n => n.id === nodeId);
+    const isHubNode = currentNode?.group === 'focus' || currentNode?.group === 'idea';
+    const linkedNodes = isHubNode
+        ? Array.from(new Set(
+            graphData.links
+                .filter(l => getEndpointId(l.source) === nodeId || getEndpointId(l.target) === nodeId)
+                .map(l => (getEndpointId(l.source) === nodeId ? getEndpointId(l.target) : getEndpointId(l.source)))
+        ))
+            .filter(id => id !== nodeId)
+            .map(id => graphData.nodes.find(n => n.id === id))
+            .filter((n): n is MyNode => Boolean(n))
+            .sort((a, b) => {
+                const labelA = nodeContent[a.id]?.title || a.title || a.id;
+                const labelB = nodeContent[b.id]?.title || b.title || b.id;
+                return labelA.localeCompare(labelB, undefined, { numeric: true, sensitivity: 'base' });
+            })
+        : [];
 
     useEffect(() => {
         if (!content.htmlContent || !articleRef.current) return;
@@ -229,7 +252,28 @@ const DocumentView: React.FC<DocumentViewProps> = ({ nodeId, onBack, backLabel =
                             </div>
                         </aside>
                     </div>
-                ) : (
+                ) : null}
+
+                {isHubNode && linkedNodes.length > 0 && (
+                    <div className="mt-16 pt-8 border-t border-border">
+                        <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Related</h3>
+                        <ol className="space-y-2 text-sm text-muted-foreground">
+                            {linkedNodes.map((n, i) => (
+                                <li key={n.id}>
+                                    [{i + 1}]{' '}
+                                    <button
+                                        onClick={() => onNavigateToNode(n.id)}
+                                        className="underline underline-offset-2 hover:text-foreground cursor-pointer"
+                                    >
+                                        {nodeContent[n.id]?.title || n.title || n.id}
+                                    </button>
+                                </li>
+                            ))}
+                        </ol>
+                    </div>
+                )}
+
+                {!content.htmlContent && (
                     // ── Legacy hardcoded content layout ───────────────
                     <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-12">
 
